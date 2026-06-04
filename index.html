@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Adventure: Jelajah Nusantara</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #2ecc71;
+    --green-dark: #27ae60;
+    --blue: #3498db;
+    --blue-dark: #2980b9;
+    --yellow: #f1c40f;
+    --yellow-dark: #f39c12;
+    --red: #e74c3c;
+    --red-dark: #c0392b;
+    --purple: #9b59b6;
+    --orange: #e67e22;
+    --bg: #fef9f0;
+    --card: #ffffff;
+    --text: #2c3e50;
+    --muted: #7f8c8d;
+    --radius: 20px;
+    --shadow: 0 8px 32px rgba(0,0,0,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .screen { display: none; min-height: 100vh; }
+  .screen.active { display: flex; flex-direction: column; }
+
+  /* ========== PATTERN BG ========== */
+  .pattern-bg {
+    background-color: #fef9f0;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(46,204,113,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(52,152,219,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(241,196,15,0.05) 0%, transparent 60%);
+  }
+
+  /* ========== MENU SCREEN ========== */
+  #screen-menu {
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #screen-menu::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='2' fill='%232ecc71' opacity='0.15'/%3E%3Ccircle cx='10' cy='10' r='1.5' fill='%233498db' opacity='0.12'/%3E%3Ccircle cx='70' cy='15' r='1.5' fill='%23f1c40f' opacity='0.15'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .menu-hero {
+    text-align: center;
+    max-width: 520px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .menu-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--green), var(--blue));
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 99px;
+    margin-bottom: 1.5rem;
+  }
+
+  .menu-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .menu-title span { color: var(--green-dark); }
+
+  .menu-subtitle {
+    font-size: 1.05rem;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+
+  .islands-preview {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+
+  .island-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: white;
+    border: 2px solid #e8f5e9;
+    border-radius: 99px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .island-chip .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+
+  .menu-btn {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: var(--radius);
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--green), var(--green-dark));
+    color: white;
+    box-shadow: 0 6px 20px rgba(46,204,113,0.35);
+  }
+
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(46,204,113,0.45); }
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-secondary {
+    background: white;
+    color: var(--text);
+    border: 2px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  }
+
+  .btn-secondary:hover { background: #f8f8f8; transform: translateY(-1px); }
+
+  /* ========== MAP SCREEN ========== */
+  #screen-map {
+    padding: 0;
+    background: linear-gradient(180deg, #87CEEB 0%, #b5e8f5 40%, #90EE90 60%, #7ec850 100%);
+    position: relative;
+    align-items: stretch;
+    justify-content: stretch;
+  }
+
+  .map-header {
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    flex-shrink: 0;
+  }
+
+  .map-header h2 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.3rem;
+    font-weight: 800;
+  }
+
+  .score-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--yellow), var(--yellow-dark));
+    color: white;
+    padding: 8px 16px;
+    border-radius: 99px;
+    font-weight: 800;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(241,196,15,0.4);
+  }
+
+  .map-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .map-svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Island buttons overlay */
+  .islands-grid {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+  }
+
+  .island-btn-wrap {
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+
+  .island-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.8rem;
+    font-weight: 800;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    transition: all 0.25s;
+    position: relative;
+  }
+
+  .island-btn:hover { transform: scale(1.12); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+  .island-btn.locked { opacity: 0.5; cursor: not-allowed; filter: grayscale(0.5); }
+  .island-btn.locked:hover { transform: none; }
+  .island-btn.completed { border-color: var(--yellow); }
+
+  .island-label {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 6px;
+    background: white;
+    color: var(--text);
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 99px;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+
+  .lock-icon {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    width: 24px; height: 24px;
+    background: #555;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    border: 2px solid white;
+  }
+
+  .star-icon {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    font-size: 20px;
+  }
+
+  .progress-bar-wrap {
+    background: rgba(255,255,255,0.9);
+    padding: 10px 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .progress-label { font-size: 12px; font-weight: 700; color: var(--muted); white-space: nowrap; }
+  .progress-bar { flex: 1; height: 10px; background: #e0e0e0; border-radius: 99px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--green), var(--blue)); border-radius: 99px; transition: width 0.5s ease; }
+
+  /* ========== QUIZ SCREEN ========== */
+  #screen-quiz {
+    padding: 0;
+    background: var(--bg);
+  }
+
+  .quiz-header {
+    padding: 1.2rem 1.5rem;
+    background: white;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+
+  .quiz-island-badge {
+    font-size: 1.5rem;
+    width: 42px; height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .quiz-info { flex: 1; }
+  .quiz-island-name { font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 1rem; }
+  .quiz-progress-text { font-size: 12px; color: var(--muted); font-weight: 600; }
+
+  .quiz-timer {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 3px solid var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--green-dark);
+    flex-shrink: 0;
+    transition: border-color 0.3s, color 0.3s;
+  }
+
+  .quiz-timer.urgent { border-color: var(--red); color: var(--red); }
+
+  .quiz-body {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .question-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    box-shadow: var(--shadow);
+  }
+
+  .question-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+
+  .question-text {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.45;
+    color: var(--text);
+  }
+
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .option-btn {
+    padding: 16px 14px;
+    border-radius: 16px;
+    border: 2.5px solid #e8e8e8;
+    background: white;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    text-align: left;
+    transition: all 0.2s;
+    line-height: 1.35;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+
+  .option-btn:hover:not(:disabled) {
+    border-color: var(--blue);
+    background: #f0f7ff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(52,152,219,0.15);
+  }
+
+  .option-btn.correct {
+    border-color: var(--green);
+    background: #e8f8ef;
+    color: var(--green-dark);
+  }
+
+  .option-btn.wrong {
+    border-color: var(--red);
+    background: #fef0f0;
+    color: var(--red-dark);
+  }
+
+  .option-btn:disabled { cursor: not-allowed; }
+
+  .feedback-box {
+    border-radius: var(--radius);
+    padding: 1.2rem 1.5rem;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    animation: slideUp 0.3s ease;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .feedback-box.correct { background: #e8f8ef; color: var(--green-dark); border: 2px solid var(--green); }
+  .feedback-box.wrong { background: #fef0f0; color: var(--red-dark); border: 2px solid var(--red); }
+  .feedback-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .feedback-text { line-height: 1.5; }
+
+  .quiz-footer {
+    padding: 1rem 1.5rem;
+    background: white;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.06);
+    flex-shrink: 0;
+  }
+
+  .next-btn {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+    color: white;
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 6px 18px rgba(52,152,219,0.35);
+    display: none;
+  }
+
+  .next-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(52,152,219,0.4); }
+  .next-btn.visible { display: block; }
+
+  /* ========== RESULT SCREEN ========== */
+  #screen-result {
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: var(--bg);
+  }
+
+  .result-card {
+    background: white;
+    border-radius: 28px;
+    padding: 2.5rem 2rem;
+    max-width: 480px;
+    width: 100%;
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+
+  .result-emoji { font-size: 5rem; margin-bottom: 1rem; display: block; }
+
+  .result-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+
+  .result-subtitle { color: var(--muted); font-size: 1rem; margin-bottom: 2rem; }
+
+  .stars-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .star { transition: transform 0.3s; }
+  .star.earned { animation: starPop 0.4s ease forwards; }
+
+  @keyframes starPop {
+    0% { transform: scale(0); }
+    70% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 2rem;
+  }
+
+  .stat-box {
+    background: var(--bg);
+    border-radius: 16px;
+    padding: 14px 8px;
+  }
+
+  .stat-value {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--text);
+  }
+
+  .stat-label { font-size: 11px; color: var(--muted); font-weight: 700; margin-top: 2px; }
+
+  .reward-card {
+    background: linear-gradient(135deg, #fff9e6, #fffbf0);
+    border: 2px solid var(--yellow);
+    border-radius: 16px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .reward-icon { font-size: 2.2rem; }
+  .reward-name { font-weight: 800; font-size: 0.95rem; color: var(--text); }
+  .reward-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* ========== COLLECTION SCREEN ========== */
+  #screen-collection {
+    padding: 0;
+    background: var(--bg);
+  }
+
+  .collection-header {
+    padding: 1.2rem 1.5rem;
+    background: white;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .back-btn {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .back-btn:hover { background: #f5f5f5; }
+
+  .collection-header h2 {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    font-size: 1.2rem;
+  }
+
+  .collection-body {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+  }
+
+  .collection-section { margin-bottom: 2rem; }
+  .section-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+
+  .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+  }
+
+  .collect-item {
+    background: white;
+    border-radius: 16px;
+    padding: 1.2rem 1rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 2px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .collect-item.unlocked { border-color: var(--yellow); }
+  .collect-item.locked { opacity: 0.4; filter: grayscale(1); }
+
+  .collect-item .ci-icon { font-size: 2.2rem; margin-bottom: 8px; display: block; }
+  .collect-item .ci-name { font-size: 12px; font-weight: 800; color: var(--text); }
+  .collect-item .ci-from { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  /* ========== TOAST ========== */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--text);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 99px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 480px) {
+    .options-grid { grid-template-columns: 1fr; }
+    .island-btn { width: 64px; height: 64px; font-size: 1.4rem; }
+    .island-label { font-size: 10px; }
+    .menu-title { font-size: 2rem; }
+  }
+
+  .confetti-burst {
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+    top: 0; left: 0; right: 0; bottom: 0;
+    overflow: hidden;
+  }
+
+  .confetti-piece {
+    position: absolute;
+    width: 10px; height: 10px;
+    border-radius: 2px;
+    animation: confettiFall 1.2s ease-in forwards;
+  }
+
+  @keyframes confettiFall {
+    0% { opacity: 1; transform: translateY(-20px) rotate(0deg); }
+    100% { opacity: 0; transform: translateY(100vh) rotate(720deg); }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ===== MENU SCREEN ===== -->
+<div class="screen active pattern-bg" id="screen-menu">
+  <div class="menu-hero">
+    <div class="menu-badge">🎮 Game Edukasi</div>
+    <h1 class="menu-title">Quiz Adventure<br><span>Jelajah Nusantara</span></h1>
+    <p class="menu-subtitle">Jelajahi 5 pulau Indonesia, jawab kuis budaya, dan kumpulkan koleksi nusantara!</p>
+    <div class="islands-preview">
+      <div class="island-chip"><div class="dot" style="background:#e74c3c"></div>Sumatera</div>
+      <div class="island-chip"><div class="dot" style="background:#3498db"></div>Jawa</div>
+      <div class="island-chip"><div class="dot" style="background:#2ecc71"></div>Kalimantan</div>
+      <div class="island-chip"><div class="dot" style="background:#9b59b6"></div>Sulawesi</div>
+      <div class="island-chip"><div class="dot" style="background:#e67e22"></div>Papua</div>
+    </div>
+    <button class="menu-btn btn-primary" onclick="showMap()">🚀 Mulai Petualangan</button>
+    <button class="menu-btn btn-secondary" onclick="showCollection()">🏆 Koleksi Budaya</button>
+  </div>
+</div>
+
+<!-- ===== MAP SCREEN ===== -->
+<div class="screen" id="screen-map">
+  <div class="map-header">
+    <div>
+      <h2>🗺️ Peta Nusantara</h2>
+      <div style="font-size:12px;color:var(--muted);font-weight:600;" id="map-subtitle">Pilih pulau untuk memulai kuis</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div class="score-badge">⭐ <span id="total-score">0</span></div>
+      <button class="back-btn" onclick="showScreen('screen-menu')" title="Menu">🏠</button>
+    </div>
+  </div>
+
+  <div class="map-container">
+    <!-- SVG Map of Indonesia (simplified) -->
+    <svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;">
+      <defs>
+        <linearGradient id="seaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1"/>
+          <stop offset="100%" style="stop-color:#4fc3f7;stop-opacity:1"/>
+        </linearGradient>
+      </defs>
+      <!-- Sea -->
+      <rect width="900" height="400" fill="url(#seaGrad)" rx="0"/>
+      <!-- Sumatera -->
+      <ellipse cx="160" cy="200" rx="80" ry="40" fill="#7ec850" opacity="0.9" transform="rotate(-15 160 200)"/>
+      <ellipse cx="155" cy="205" rx="65" ry="30" fill="#6bb840" opacity="0.8" transform="rotate(-15 155 205)"/>
+      <!-- Jawa -->
+      <ellipse cx="360" cy="240" rx="100" ry="28" fill="#7ec850" opacity="0.9" transform="rotate(-5 360 240)"/>
+      <ellipse cx="358" cy="243" rx="85" ry="20" fill="#6bb840" opacity="0.8" transform="rotate(-5 358 243)"/>
+      <!-- Kalimantan -->
+      <ellipse cx="460" cy="170" rx="75" ry="65" fill="#7ec850" opacity="0.9"/>
+      <ellipse cx="462" cy="175" rx="62" ry="52" fill="#6bb840" opacity="0.8"/>
+      <!-- Sulawesi -->
+      <path d="M590,130 Q620,140 625,170 Q630,200 610,210 Q590,215 585,200 Q600,185 595,165 Q585,150 590,130Z" fill="#7ec850" opacity="0.9"/>
+      <path d="M608,175 Q620,195 635,220 Q645,235 635,245 Q622,250 615,240 Q620,225 610,210Z" fill="#7ec850" opacity="0.9"/>
+      <!-- Papua -->
+      <ellipse cx="770" cy="195" rx="85" ry="55" fill="#7ec850" opacity="0.9"/>
+      <ellipse cx="768" cy="198" rx="70" ry="42" fill="#6bb840" opacity="0.8"/>
+      <!-- Small islands -->
+      <ellipse cx="520" cy="260" rx="20" ry="10" fill="#7ec850" opacity="0.7"/>
+      <ellipse cx="560" cy="270" rx="15" ry="8" fill="#7ec850" opacity="0.7"/>
+      <ellipse cx="680" cy="230" rx="18" ry="10" fill="#7ec850" opacity="0.7"/>
+      <ellipse cx="720" cy="260" rx="12" ry="7" fill="#7ec850" opacity="0.7"/>
+      <!-- Bali -->
+      <ellipse cx="430" cy="255" rx="12" ry="8" fill="#7ec850" opacity="0.8"/>
+    </svg>
+
+    <!-- Island buttons overlay -->
+    <div class="islands-grid">
+      <!-- Sumatera: ~18% from left, 50% from top -->
+      <div class="island-btn-wrap" style="left:18%;top:50%;">
+        <button class="island-btn" id="btn-sumatera" style="background:linear-gradient(135deg,#e74c3c,#c0392b);" onclick="startQuiz(0)">
+          🌋
+          <div class="island-label">Sumatera</div>
+        </button>
+      </div>
+      <!-- Jawa: ~40% left, 60% top -->
+      <div class="island-btn-wrap" style="left:40%;top:60%;">
+        <button class="island-btn" id="btn-jawa" style="background:linear-gradient(135deg,#3498db,#2980b9);" onclick="startQuiz(1)">
+          🏯
+          <div class="island-label">Jawa</div>
+        </button>
+      </div>
+      <!-- Kalimantan: ~51% left, 42% top -->
+      <div class="island-btn-wrap" style="left:51%;top:42%;">
+        <button class="island-btn" id="btn-kalimantan" style="background:linear-gradient(135deg,#2ecc71,#27ae60);" onclick="startQuiz(2)">
+          🌿
+          <div class="island-label">Kalimantan</div>
+        </button>
+      </div>
+      <!-- Sulawesi: ~66% left, 42% top -->
+      <div class="island-btn-wrap" style="left:66%;top:42%;">
+        <button class="island-btn" id="btn-sulawesi" style="background:linear-gradient(135deg,#9b59b6,#8e44ad);" onclick="startQuiz(3)">
+          🦺
+          <div class="island-label">Sulawesi</div>
+        </button>
+      </div>
+      <!-- Papua: ~85% left, 50% top -->
+      <div class="island-btn-wrap" style="left:85%;top:50%;">
+        <button class="island-btn" id="btn-papua" style="background:linear-gradient(135deg,#e67e22,#d35400);" onclick="startQuiz(4)">
+          🦜
+          <div class="island-label">Papua</div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="progress-bar-wrap">
+    <span class="progress-label">Progress</span>
+    <div class="progress-bar"><div class="progress-fill" id="overall-progress" style="width:0%"></div></div>
+    <span class="progress-label" id="progress-text">0/5 Pulau</span>
+  </div>
+</div>
+
+<!-- ===== QUIZ SCREEN ===== -->
+<div class="screen" id="screen-quiz">
+  <div class="quiz-header">
+    <div class="quiz-island-badge" id="quiz-island-badge">🌋</div>
+    <div class="quiz-info">
+      <div class="quiz-island-name" id="quiz-island-name">Sumatera</div>
+      <div class="quiz-progress-text" id="quiz-progress">Soal 1 dari 5</div>
+    </div>
+    <div class="quiz-timer" id="quiz-timer">30</div>
+  </div>
+
+  <div class="quiz-body" id="quiz-body">
+    <div class="question-card">
+      <div class="question-num" id="question-num">Pertanyaan 1</div>
+      <div class="question-text" id="question-text"></div>
+    </div>
+
+    <div class="options-grid" id="options-grid"></div>
+
+    <div id="feedback-area"></div>
+  </div>
+
+  <div class="quiz-footer">
+    <button class="next-btn" id="next-btn" onclick="nextQuestion()">Lanjut →</button>
+  </div>
+</div>
+
+<!-- ===== RESULT SCREEN ===== -->
+<div class="screen" id="screen-result">
+  <div class="result-card">
+    <span class="result-emoji" id="result-emoji">🎉</span>
+    <div class="result-title" id="result-title">Luar Biasa!</div>
+    <div class="result-subtitle" id="result-subtitle">Kamu berhasil menyelesaikan kuis ini</div>
+
+    <div class="stars-row" id="stars-row">
+      <span class="star">⭐</span>
+      <span class="star">⭐</span>
+      <span class="star">⭐</span>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-value" id="stat-correct">0</div>
+        <div class="stat-label">Benar</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" id="stat-score">0</div>
+        <div class="stat-label">Poin</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-value" id="stat-time">0s</div>
+        <div class="stat-label">Waktu</div>
+      </div>
+    </div>
+
+    <div class="reward-card" id="reward-card">
+      <div class="reward-icon" id="reward-icon">🏆</div>
+      <div>
+        <div class="reward-name" id="reward-name">Koleksi Terbuka!</div>
+        <div class="reward-desc" id="reward-desc">Kamu mendapatkan item budaya baru</div>
+      </div>
+    </div>
+
+    <button class="menu-btn btn-primary" onclick="showMap()" style="margin-bottom:10px;">🗺️ Kembali ke Peta</button>
+    <button class="menu-btn btn-secondary" onclick="retryQuiz()">🔁 Coba Lagi</button>
+  </div>
+</div>
+
+<!-- ===== COLLECTION SCREEN ===== -->
+<div class="screen" id="screen-collection">
+  <div class="collection-header">
+    <button class="back-btn" onclick="showScreen('screen-menu')">←</button>
+    <h2>🏆 Koleksi Budaya</h2>
+  </div>
+  <div class="collection-body" id="collection-body"></div>
+</div>
+
+<script>
+// ===================== DATA =====================
+
+const ISLANDS = [
+  {
+    id: 'sumatera',
+    name: 'Sumatera',
+    emoji: '🌋',
+    color: '#e74c3c',
+    description: 'Pulau Sumatera',
+    reward: { icon: '🏠', name: 'Rumah Gadang', desc: 'Rumah adat Minangkabau dari Sumatera Barat' }
+  },
+  {
+    id: 'jawa',
+    name: 'Jawa',
+    emoji: '🏯',
+    color: '#3498db',
+    description: 'Pulau Jawa',
+    reward: { icon: '🎭', name: 'Wayang Kulit', desc: 'Seni pertunjukan tradisional dari Jawa' }
+  },
+  {
+    id: 'kalimantan',
+    name: 'Kalimantan',
+    emoji: '🌿',
+    color: '#2ecc71',
+    description: 'Pulau Kalimantan',
+    reward: { icon: '🦅', name: 'Mandau', desc: 'Senjata tradisional suku Dayak Kalimantan' }
+  },
+  {
+    id: 'sulawesi',
+    name: 'Sulawesi',
+    emoji: '🦺',
+    color: '#9b59b6',
+    description: 'Pulau Sulawesi',
+    reward: { icon: '⚓', name: 'Perahu Pinisi', desc: 'Kapal tradisional suku Bugis Sulawesi Selatan' }
+  },
+  {
+    id: 'papua',
+    name: 'Papua',
+    emoji: '🦜',
+    color: '#e67e22',
+    description: 'Papua',
+    reward: { icon: '🪗', name: 'Tifa', desc: 'Alat musik tradisional khas Papua' }
+  }
+];
+
+const QUESTIONS = {
+  sumatera: [
+    {
+      q: 'Rumah adat Sumatera Barat yang atapnya berbentuk seperti tanduk kerbau disebut...?',
+      options: ['Rumah Joglo', 'Rumah Gadang', 'Rumah Limas', 'Rumah Bolon'],
+      answer: 1,
+      explanation: 'Rumah Gadang adalah rumah adat Minangkabau dengan atap yang menyerupai tanduk kerbau (gonjong).'
+    },
+    {
+      q: 'Tarian tradisional Aceh yang terkenal dengan gerakan baris serentak disebut...?',
+      options: ['Tari Saman', 'Tari Kecak', 'Tari Piring', 'Tari Jaipong'],
+      answer: 0,
+      explanation: 'Tari Saman berasal dari Suku Gayo, Aceh dan terkenal karena gerakannya yang kompak dan cepat.'
+    },
+    {
+      q: 'Danau vulkanik terbesar di dunia yang ada di Sumatera bernama...?',
+      options: ['Danau Singkarak', 'Danau Maninjau', 'Danau Toba', 'Danau Ranau'],
+      answer: 2,
+      explanation: 'Danau Toba di Sumatera Utara adalah danau vulkanik terbesar di dunia yang terbentuk dari letusan gunung berapi purba.'
+    },
+    {
+      q: 'Makanan khas Sumatera Barat yang terkenal dengan kuah santannya yang kaya rempah adalah...?',
+      options: ['Soto Ayam', 'Rendang', 'Gado-gado', 'Pempek'],
+      answer: 1,
+      explanation: 'Rendang adalah masakan khas Minangkabau, Sumatera Barat. Bahkan terpilih sebagai makanan terlezat di dunia!'
+    },
+    {
+      q: 'Bahasa daerah yang paling banyak digunakan di Sumatera Utara adalah...?',
+      options: ['Minangkabau', 'Batak', 'Melayu', 'Lampung'],
+      answer: 1,
+      explanation: 'Bahasa Batak (Toba, Karo, Simalungun, dll) adalah bahasa utama di Sumatera Utara.'
+    }
+  ],
+  jawa: [
+    {
+      q: 'Seni pertunjukan bayangan boneka dari kulit yang terkenal dari Jawa disebut...?',
+      options: ['Ketoprak', 'Ludruk', 'Wayang Kulit', 'Reog'],
+      answer: 2,
+      explanation: 'Wayang Kulit adalah seni pertunjukan tradisional Jawa menggunakan boneka kulit yang diproyeksikan sebagai bayangan.'
+    },
+    {
+      q: 'Kain batik yang memiliki pola khusus dari Yogyakarta dan Solo adalah batik...?',
+      options: ['Batik Pesisir', 'Batik Parang', 'Batik Mega Mendung', 'Batik Jumputan'],
+      answer: 1,
+      explanation: 'Batik Parang adalah motif batik tertua dari Jawa yang melambangkan kekuasaan dan keberanian.'
+    },
+    {
+      q: 'Rumah adat tradisional Jawa yang memiliki atap berbentuk pelana kuda disebut...?',
+      options: ['Rumah Joglo', 'Rumah Limasan', 'Rumah Panggung', 'Rumah Adat Betawi'],
+      answer: 0,
+      explanation: 'Rumah Joglo adalah rumah adat Jawa yang memiliki atap bertingkat (tumpang sari) dan menjadi simbol status sosial.'
+    },
+    {
+      q: 'Tarian tradisional Jawa Tengah yang biasanya ditampilkan sebagai tari penyambutan tamu adalah...?',
+      options: ['Tari Serimpi', 'Tari Gambyong', 'Tari Kecak', 'Tari Saman'],
+      answer: 1,
+      explanation: 'Tari Gambyong adalah tarian Jawa untuk menyambut tamu dan ungkapan syukur, berasal dari Surakarta.'
+    },
+    {
+      q: 'Makanan khas Yogyakarta yang terbuat dari nasi dengan lauk sederhana dan dimasak dengan cara tradisional disebut...?',
+      options: ['Nasi Gudeg', 'Nasi Rawon', 'Nasi Pecel', 'Nasi Kucing'],
+      answer: 0,
+      explanation: 'Gudeg adalah makanan khas Yogyakarta terbuat dari nangka muda yang dimasak dengan santan dan rempah hingga berwarna coklat.'
+    }
+  ],
+  kalimantan: [
+    {
+      q: 'Suku asli yang paling terkenal di Kalimantan adalah suku...?',
+      options: ['Bugis', 'Dayak', 'Toraja', 'Batak'],
+      answer: 1,
+      explanation: 'Suku Dayak adalah penduduk asli Kalimantan dengan berbagai sub-suku seperti Ngaju, Iban, Kenyah, dan lainnya.'
+    },
+    {
+      q: 'Senjata tradisional khas Suku Dayak Kalimantan adalah...?',
+      options: ['Keris', 'Rencong', 'Mandau', 'Badik'],
+      answer: 2,
+      explanation: 'Mandau adalah senjata tradisional Suku Dayak Kalimantan, bentuknya seperti parang dengan ukiran khas dan bulu di gagangnya.'
+    },
+    {
+      q: 'Rumah adat suku Dayak Kalimantan yang panjangnya bisa mencapai ratusan meter adalah...?',
+      options: ['Rumah Betang', 'Rumah Lamin', 'Rumah Banjar', 'Rumah Bubungan Tinggi'],
+      answer: 0,
+      explanation: 'Rumah Betang adalah rumah adat Dayak Kalimantan Tengah, bisa dihuni oleh puluhan hingga ratusan keluarga.'
+    },
+    {
+      q: 'Hewan endemik yang hanya ada di Kalimantan (Borneo) dan menjadi maskot adalah...?',
+      options: ['Harimau Sumatera', 'Orangutan Borneo', 'Komodo', 'Cendrawasih'],
+      answer: 1,
+      explanation: 'Orangutan Borneo (Pongo pygmaeus) adalah primata endemik Kalimantan yang kini terancam punah.'
+    },
+    {
+      q: 'Kota terbesar di Kalimantan Timur yang juga pernah menjadi ibu kota rencana pindahan adalah...?',
+      options: ['Pontianak', 'Samarinda', 'Balikpapan', 'Banjarmasin'],
+      answer: 2,
+      explanation: 'Balikpapan adalah kota terbesar di Kalimantan Timur, dekat dengan Nusantara, ibu kota baru Indonesia.'
+    }
+  ],
+  sulawesi: [
+    {
+      q: 'Kapal tradisional dari Sulawesi Selatan yang terkenal dalam pelayaran internasional adalah...?',
+      options: ['Kapal Lancang', 'Perahu Pinisi', 'Kapal Jong', 'Kapal Proa'],
+      answer: 1,
+      explanation: 'Perahu Pinisi adalah kapal tradisional suku Bugis-Makassar yang pernah berlayar ke berbagai penjuru dunia.'
+    },
+    {
+      q: 'Upacara pemakaman adat suku Toraja Sulawesi Selatan disebut...?',
+      options: ['Ngaben', 'Rambu Solo', 'Tabuik', 'Kasada'],
+      answer: 1,
+      explanation: 'Rambu Solo adalah upacara pemakaman suku Toraja yang sangat meriah dan bisa berlangsung berhari-hari.'
+    },
+    {
+      q: 'Taman Nasional yang terkenal di Sulawesi Utara dengan keindahan bawah lautnya adalah...?',
+      options: ['Taman Nasional Bunaken', 'Taman Nasional Komodo', 'Taman Nasional Wakatobi', 'Taman Nasional Lorentz'],
+      answer: 0,
+      explanation: 'Taman Nasional Bunaken di Sulawesi Utara adalah surga bawah laut dengan lebih dari 390 spesies terumbu karang.'
+    },
+    {
+      q: 'Makanan khas Sulawesi Utara yang terbuat dari daging babi muda yang dimasak spesial disebut...?',
+      options: ['Coto Makassar', 'Sop Konro', 'Tinutuan', 'Pallubasa'],
+      answer: 2,
+      explanation: 'Tinutuan (Bubur Manado) adalah makanan khas Sulawesi Utara, berupa bubur sayuran yang penuh gizi.'
+    },
+    {
+      q: 'Suku yang terkenal sebagai pelaut ulung dan penjelajah dari Sulawesi adalah...?',
+      options: ['Suku Minahasa', 'Suku Bugis', 'Suku Toraja', 'Suku Gorontalo'],
+      answer: 1,
+      explanation: 'Suku Bugis terkenal sebagai pelaut tangguh yang menjelajahi Nusantara bahkan hingga ke mancanegara.'
+    }
+  ],
+  papua: [
+    {
+      q: 'Alat musik tradisional khas Papua yang berbentuk seperti drum panjang adalah...?',
+      options: ['Kolintang', 'Tifa', 'Sasando', 'Gendang'],
+      answer: 1,
+      explanation: 'Tifa adalah alat musik pukul khas Papua dan Maluku, biasanya digunakan dalam upacara adat dan peperangan.'
+    },
+    {
+      q: 'Burung endemik Papua yang terkenal dengan bulu-bulu indahnya disebut...?',
+      options: ['Elang Jawa', 'Cendrawasih', 'Jalak Bali', 'Kakatua Putih'],
+      answer: 1,
+      explanation: 'Burung Cendrawasih (Bird of Paradise) adalah burung khas Papua yang terkenal dengan bulu-bulunya yang sangat indah dan berwarna-warni.'
+    },
+    {
+      q: 'Festival budaya terbesar Papua yang menampilkan berbagai suku dan budaya setempat adalah...?',
+      options: ['Pasola Festival', 'Festival Danau Sentani', 'Festival Lembah Baliem', 'Festival Wakatobi'],
+      answer: 2,
+      explanation: 'Festival Lembah Baliem menampilkan berbagai suku di Pegunungan Tengah Papua, termasuk perang-perangan adat.'
+    },
+    {
+      q: 'Pegunungan tertinggi di Indonesia yang ada di Papua bernama...?',
+      options: ['Pegunungan Jayawijaya', 'Gunung Rinjani', 'Gunung Semeru', 'Gunung Kerinci'],
+      answer: 0,
+      explanation: 'Pegunungan Jayawijaya di Papua memiliki puncak Carstensz (Puncak Jaya) setinggi 4.884 m, tertinggi di Indonesia.'
+    },
+    {
+      q: 'Suku terbesar di Papua Pegunungan yang terkenal dengan tradisi koteka adalah...?',
+      options: ['Suku Asmat', 'Suku Dani', 'Suku Biak', 'Suku Sentani'],
+      answer: 1,
+      explanation: 'Suku Dani adalah salah satu suku terbesar di Papua yang tinggal di Lembah Baliem, terkenal dengan koteka dan tradisi perang adat.'
+    }
+  ]
+};
+
+// ===================== STATE =====================
+const state = {
+  completed: JSON.parse(localStorage.getItem('nusantara_completed') || '[]'),
+  scores: JSON.parse(localStorage.getItem('nusantara_scores') || '{}'),
+  collection: JSON.parse(localStorage.getItem('nusantara_collection') || '[]'),
+  totalScore: parseInt(localStorage.getItem('nusantara_total') || '0'),
+
+  currentIslandIdx: 0,
+  currentQ: 0,
+  answered: false,
+  correct: 0,
+  elapsed: 0,
+  timerInterval: null,
+  timeLeft: 30,
+  quizStartTime: 0
+};
+
+function saveState() {
+  localStorage.setItem('nusantara_completed', JSON.stringify(state.completed));
+  localStorage.setItem('nusantara_scores', JSON.stringify(state.scores));
+  localStorage.setItem('nusantara_collection', JSON.stringify(state.collection));
+  localStorage.setItem('nusantara_total', state.totalScore.toString());
+}
+
+// ===================== NAVIGATION =====================
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function showMap() {
+  updateMapUI();
+  showScreen('screen-map');
+}
+
+function showCollection() {
+  renderCollection();
+  showScreen('screen-collection');
+}
+
+// ===================== MAP UI =====================
+function updateMapUI() {
+  document.getElementById('total-score').textContent = state.totalScore;
+
+  const ids = ['sumatera','jawa','kalimantan','sulawesi','papua'];
+  ids.forEach((id, i) => {
+    const btn = document.getElementById('btn-' + id);
+    const isCompleted = state.completed.includes(i);
+    const isLocked = i > 0 && !state.completed.includes(i - 1);
+
+    btn.classList.remove('locked','completed');
+    const lockEl = btn.querySelector('.lock-icon');
+    const starEl = btn.querySelector('.star-icon');
+    if (lockEl) lockEl.remove();
+    if (starEl) starEl.remove();
+
+    if (isLocked) {
+      btn.classList.add('locked');
+      const lock = document.createElement('div');
+      lock.className = 'lock-icon';
+      lock.textContent = '🔒';
+      btn.appendChild(lock);
+    } else if (isCompleted) {
+      btn.classList.add('completed');
+      const star = document.createElement('div');
+      star.className = 'star-icon';
+      star.textContent = '⭐';
+      btn.appendChild(star);
+    }
+  });
+
+  const done = state.completed.length;
+  document.getElementById('overall-progress').style.width = (done / 5 * 100) + '%';
+  document.getElementById('progress-text').textContent = done + '/5 Pulau';
+  document.getElementById('map-subtitle').textContent = done === 5 ? '🎉 Semua pulau sudah dijelajahi!' : 'Pilih pulau untuk memulai kuis';
+}
+
+// ===================== QUIZ =====================
+function startQuiz(islandIdx) {
+  const isLocked = islandIdx > 0 && !state.completed.includes(islandIdx - 1);
+  if (isLocked) {
+    showToast('🔒 Selesaikan pulau sebelumnya dulu!');
+    return;
+  }
+
+  state.currentIslandIdx = islandIdx;
+  state.currentQ = 0;
+  state.answered = false;
+  state.correct = 0;
+  state.elapsed = 0;
+  state.quizStartTime = Date.now();
+
+  const island = ISLANDS[islandIdx];
+  document.getElementById('quiz-island-badge').textContent = island.emoji;
+  document.getElementById('quiz-island-badge').style.background = island.color + '22';
+  document.getElementById('quiz-island-name').textContent = island.name;
+
+  showScreen('screen-quiz');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const island = ISLANDS[state.currentIslandIdx];
+  const questions = QUESTIONS[island.id];
+  const q = questions[state.currentQ];
+  const total = questions.length;
+
+  document.getElementById('quiz-progress').textContent = `Soal ${state.currentQ + 1} dari ${total}`;
+  document.getElementById('question-num').textContent = `Pertanyaan ${state.currentQ + 1}`;
+  document.getElementById('question-text').textContent = q.q;
+
+  const grid = document.getElementById('options-grid');
+  grid.innerHTML = '';
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.textContent = opt;
+    btn.onclick = () => selectAnswer(i);
+    grid.appendChild(btn);
+  });
+
+  document.getElementById('feedback-area').innerHTML = '';
+  document.getElementById('next-btn').classList.remove('visible');
+  state.answered = false;
+
+  startTimer();
+}
+
+function startTimer() {
+  clearInterval(state.timerInterval);
+  state.timeLeft = 30;
+  updateTimerUI();
+
+  state.timerInterval = setInterval(() => {
+    state.timeLeft--;
+    updateTimerUI();
+    if (state.timeLeft <= 0) {
+      clearInterval(state.timerInterval);
+      if (!state.answered) {
+        timeOut();
+      }
+    }
+  }, 1000);
+}
+
+function updateTimerUI() {
+  const el = document.getElementById('quiz-timer');
+  el.textContent = state.timeLeft;
+  el.classList.toggle('urgent', state.timeLeft <= 10);
+}
+
+function timeOut() {
+  state.answered = true;
+  const island = ISLANDS[state.currentIslandIdx];
+  const q = QUESTIONS[island.id][state.currentQ];
+
+  const btns = document.querySelectorAll('.option-btn');
+  btns.forEach(b => b.disabled = true);
+  btns[q.answer].classList.add('correct');
+
+  showFeedback(false, '⏰ Waktu habis! Jawaban yang benar: ' + q.options[q.answer], q.explanation);
+  document.getElementById('next-btn').classList.add('visible');
+}
+
+function selectAnswer(idx) {
+  if (state.answered) return;
+  state.answered = true;
+  clearInterval(state.timerInterval);
+
+  const island = ISLANDS[state.currentIslandIdx];
+  const q = QUESTIONS[island.id][state.currentQ];
+  const isCorrect = idx === q.answer;
+
+  const btns = document.querySelectorAll('.option-btn');
+  btns.forEach(b => b.disabled = true);
+  btns[q.answer].classList.add('correct');
+  if (!isCorrect) btns[idx].classList.add('wrong');
+
+  if (isCorrect) {
+    state.correct++;
+    state.totalScore += 20 + state.timeLeft;
+    saveState();
+    showFeedback(true, '✅ Benar sekali!', q.explanation);
+  } else {
+    showFeedback(false, '❌ Kurang tepat. Jawaban: ' + q.options[q.answer], q.explanation);
+  }
+
+  document.getElementById('next-btn').classList.add('visible');
+}
+
+function showFeedback(correct, title, explanation) {
+  const area = document.getElementById('feedback-area');
+  area.innerHTML = `
+    <div class="feedback-box ${correct ? 'correct' : 'wrong'}">
+      <div class="feedback-icon">${correct ? '🎉' : '📚'}</div>
+      <div class="feedback-text">
+        <strong>${title}</strong><br>
+        <span style="font-weight:400;font-size:0.9rem;">${explanation}</span>
+      </div>
+    </div>`;
+}
+
+function nextQuestion() {
+  const island = ISLANDS[state.currentIslandIdx];
+  const total = QUESTIONS[island.id].length;
+  state.currentQ++;
+
+  if (state.currentQ >= total) {
+    showResult();
+  } else {
+    renderQuestion();
+    document.getElementById('quiz-body').scrollTop = 0;
+  }
+}
+
+function retryQuiz() {
+  startQuiz(state.currentIslandIdx);
+}
+
+// ===================== RESULT =====================
+function showResult() {
+  clearInterval(state.timerInterval);
+  const island = ISLANDS[state.currentIslandIdx];
+  const total = QUESTIONS[island.id].length;
+  const pct = state.correct / total;
+  const timeSpent = Math.round((Date.now() - state.quizStartTime) / 1000);
+
+  const stars = pct >= 0.8 ? 3 : pct >= 0.6 ? 2 : pct >= 0.4 ? 1 : 0;
+  const earned = pct >= 0.6;
+
+  let emoji, title, subtitle;
+  if (pct === 1) { emoji = '🏆'; title = 'Sempurna!'; subtitle = 'Jawaban 100% benar, kamu hebat!'; }
+  else if (pct >= 0.8) { emoji = '🎉'; title = 'Luar Biasa!'; subtitle = 'Kamu hampir sempurna!'; }
+  else if (pct >= 0.6) { emoji = '😊'; title = 'Bagus!'; subtitle = 'Kamu berhasil melewati kuis ini!'; }
+  else if (pct >= 0.4) { emoji = '💪'; title = 'Terus Belajar!'; subtitle = 'Latihan lagi untuk hasil yang lebih baik.'; }
+  else { emoji = '📚'; title = 'Ayo Coba Lagi!'; subtitle = 'Pelajari budaya Indonesia lebih dalam!'; }
+
+  document.getElementById('result-emoji').textContent = emoji;
+  document.getElementById('result-title').textContent = title;
+  document.getElementById('result-subtitle').textContent = subtitle;
+  document.getElementById('stat-correct').textContent = state.correct + '/' + total;
+  document.getElementById('stat-score').textContent = state.totalScore;
+  document.getElementById('stat-time').textContent = timeSpent + 's';
+
+  // Stars
+  const starsRow = document.getElementById('stars-row');
+  starsRow.innerHTML = '';
+  for (let i = 0; i < 3; i++) {
+    const s = document.createElement('span');
+    s.className = 'star';
+    s.textContent = i < stars ? '⭐' : '☆';
+    starsRow.appendChild(s);
+    if (i < stars) {
+      setTimeout(() => s.classList.add('earned'), i * 200 + 100);
+    }
+  }
+
+  // Reward
+  const reward = island.reward;
+  const isNew = earned && !state.collection.includes(island.id);
+  if (earned) {
+    if (isNew) {
+      state.collection.push(island.id);
+      document.getElementById('reward-card').style.display = 'flex';
+      document.getElementById('reward-icon').textContent = reward.icon;
+      document.getElementById('reward-name').textContent = '🎁 Baru! ' + reward.name;
+      document.getElementById('reward-desc').textContent = reward.desc;
+      confetti();
+    } else {
+      document.getElementById('reward-card').style.display = 'flex';
+      document.getElementById('reward-icon').textContent = reward.icon;
+      document.getElementById('reward-name').textContent = reward.name + ' (Sudah dimiliki)';
+      document.getElementById('reward-desc').textContent = reward.desc;
+    }
+
+    if (!state.completed.includes(state.currentIslandIdx)) {
+      state.completed.push(state.currentIslandIdx);
+    }
+  } else {
+    document.getElementById('reward-card').style.display = 'none';
+  }
+
+  saveState();
+  showScreen('screen-result');
+}
+
+// ===================== COLLECTION =====================
+function renderCollection() {
+  const body = document.getElementById('collection-body');
+  body.innerHTML = '';
+
+  ISLANDS.forEach((island, i) => {
+    const section = document.createElement('div');
+    section.className = 'collection-section';
+
+    const title = document.createElement('div');
+    title.className = 'section-title';
+    title.textContent = island.emoji + ' ' + island.name;
+    section.appendChild(title);
+
+    const grid = document.createElement('div');
+    grid.className = 'collection-grid';
+
+    const item = document.createElement('div');
+    const unlocked = state.collection.includes(island.id);
+    item.className = 'collect-item ' + (unlocked ? 'unlocked' : 'locked');
+
+    const score = state.scores[island.id] || 0;
+    const completed = state.completed.includes(i);
+
+    item.innerHTML = `
+      <span class="ci-icon">${island.reward.icon}</span>
+      <div class="ci-name">${island.reward.name}</div>
+      <div class="ci-from">${unlocked ? '✅ Diperoleh' : '🔒 Selesaikan ' + island.name}</div>
+    `;
+    grid.appendChild(item);
+    section.appendChild(grid);
+    body.appendChild(section);
+  });
+
+  const totalEl = document.createElement('div');
+  totalEl.style.cssText = 'text-align:center;padding:1rem;color:var(--muted);font-weight:700;font-size:0.9rem;';
+  totalEl.textContent = `Koleksi: ${state.collection.length}/5 item terkumpul • Total Skor: ${state.totalScore}`;
+  body.appendChild(totalEl);
+}
+
+// ===================== HELPERS =====================
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function confetti() {
+  const burst = document.createElement('div');
+  burst.className = 'confetti-burst';
+  document.body.appendChild(burst);
+
+  const colors = ['#e74c3c','#3498db','#2ecc71','#f1c40f','#9b59b6','#e67e22'];
+  for (let i = 0; i < 60; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + 'vw';
+    piece.style.top = '-10px';
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.animationDelay = Math.random() * 0.5 + 's';
+    piece.style.animationDuration = (0.8 + Math.random() * 0.8) + 's';
+    burst.appendChild(piece);
+  }
+
+  setTimeout(() => burst.remove(), 2000);
+}
+
+// ===================== INIT =====================
+updateMapUI();
+</script>
+</body>
+</html>
