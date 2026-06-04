@@ -19,23 +19,14 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   font-family: 'Nunito', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  overflow-x: hidden;
-  user-select: none;
+  background: var(--bg); color: var(--text);
+  min-height: 100vh; overflow-x: hidden; user-select: none;
 }
 .screen { display: none; min-height: 100vh; }
 .screen.active { display: flex; flex-direction: column; }
 
-/* ===== FLOATING SHAPES BG ===== */
-.floating-shapes {
-  position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
-}
-.shape {
-  position: absolute; border-radius: 50%; opacity: 0.06;
-  animation: floatShape 8s ease-in-out infinite;
-}
+.floating-shapes { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.shape { position: absolute; border-radius: 50%; opacity: 0.06; animation: floatShape 8s ease-in-out infinite; }
 .shape:nth-child(1) { width:120px;height:120px;background:#2ecc71;top:5%;left:5%;animation-delay:0s; }
 .shape:nth-child(2) { width:80px;height:80px;background:#3498db;top:15%;right:8%;animation-delay:1.5s; }
 .shape:nth-child(3) { width:150px;height:150px;background:#f1c40f;top:50%;left:2%;animation-delay:3s; }
@@ -46,7 +37,6 @@ body {
   50% { transform: translateY(-30px) rotate(180deg); }
 }
 
-/* ===== MUSIC BUTTON ===== */
 .music-toggle {
   position: fixed; top: 14px; right: 14px; z-index: 999;
   width: 44px; height: 44px; border-radius: 50%;
@@ -60,22 +50,15 @@ body {
 .music-toggle:hover { transform: scale(1.1); }
 .music-toggle.muted { opacity: 0.5; }
 
-/* ===== MENU SCREEN ===== */
+/* ===== MENU ===== */
 #screen-menu {
   align-items: center; justify-content: center;
   padding: 2rem; position: relative;
   background: linear-gradient(160deg, #e8f8ef 0%, #e3f2fd 50%, #fef9e7 100%);
   overflow: hidden;
 }
-.menu-hero {
-  text-align: center; max-width: 540px; width: 100%;
-  position: relative; z-index: 1;
-}
-.menu-mascot {
-  font-size: 5rem; margin-bottom: 0.5rem;
-  animation: mascotBounce 2s ease-in-out infinite;
-  display: block;
-}
+.menu-hero { text-align: center; max-width: 540px; width: 100%; position: relative; z-index: 1; }
+.menu-mascot { font-size: 5rem; margin-bottom: 0.5rem; animation: mascotBounce 2s ease-in-out infinite; display: block; }
 @keyframes mascotBounce {
   0%,100% { transform: translateY(0) rotate(-5deg); }
   50% { transform: translateY(-12px) rotate(5deg); }
@@ -92,25 +75,18 @@ body {
   font-family: 'Baloo 2', cursive; font-size: clamp(2rem,6vw,3.2rem);
   font-weight: 900; line-height: 1.1; color: var(--text); margin-bottom: 0.4rem;
 }
-.menu-title span { 
+.menu-title span {
   background: linear-gradient(135deg, #27ae60, #2980b9);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-.menu-subtitle {
-  font-size: 1rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.6;
-}
-.character-row {
-  display: flex; justify-content: center; gap: 8px;
-  flex-wrap: wrap; margin-bottom: 2rem;
-}
+.menu-subtitle { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.6; }
+.character-row { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 2rem; }
 .char-chip {
   display: flex; align-items: center; gap: 6px;
   background: white; border: 2.5px solid #e0f0ff;
   border-radius: 99px; padding: 7px 16px;
   font-size: 13px; font-weight: 800; color: var(--text);
-  box-shadow: 0 3px 10px rgba(0,0,0,0.07);
-  transition: all 0.2s;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.07); transition: all 0.2s;
 }
 .char-chip:hover { transform: translateY(-2px); border-color: var(--blue); }
 .menu-btn {
@@ -120,32 +96,21 @@ body {
   font-weight: 800; cursor: pointer; transition: all 0.2s;
   margin-bottom: 12px; letter-spacing: 0.5px;
 }
-.btn-primary {
-  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-  color: white; box-shadow: 0 6px 20px rgba(255,107,107,0.4);
-}
+.btn-primary { background: linear-gradient(135deg, #ff6b6b, #ee5a24); color: white; box-shadow: 0 6px 20px rgba(255,107,107,0.4); }
 .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(255,107,107,0.5); }
-.btn-primary:active { transform: translateY(0); }
-.btn-secondary {
-  background: linear-gradient(135deg, #a29bfe, #6c5ce7);
-  color: white; box-shadow: 0 6px 20px rgba(108,92,231,0.35);
-}
+.btn-secondary { background: linear-gradient(135deg, #a29bfe, #6c5ce7); color: white; box-shadow: 0 6px 20px rgba(108,92,231,0.35); }
 .btn-secondary:hover { transform: translateY(-3px); }
-.btn-tertiary {
-  background: white; color: var(--text);
-  border: 2px solid #e0e0e0; box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-}
+.btn-tertiary { background: white; color: var(--text); border: 2px solid #e0e0e0; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
 .btn-tertiary:hover { background: #f8f8f8; transform: translateY(-1px); }
 
-/* ===== MAP SCREEN ===== */
+/* ===== MAP ===== */
 #screen-map {
   padding: 0;
   background: linear-gradient(180deg, #87CEEB 0%, #b5e8f5 35%, #90EE90 60%, #7ec850 100%);
   position: relative; align-items: stretch; justify-content: stretch;
 }
 .map-header {
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(12px); padding: 0.9rem 1.3rem;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); padding: 0.9rem 1.3rem;
   display: flex; align-items: center; justify-content: space-between;
   box-shadow: 0 2px 16px rgba(0,0,0,0.1); flex-shrink: 0; z-index: 10;
 }
@@ -173,14 +138,6 @@ body {
   transition: all 0.25s; position: relative;
 }
 .island-btn:hover { transform: scale(1.15); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
-.island-btn:hover::after {
-  content: attr(data-name);
-  position: absolute; bottom: -30px; left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0,0,0,0.75); color: white;
-  font-size: 11px; font-weight: 700;
-  padding: 3px 10px; border-radius: 99px; white-space: nowrap;
-}
 .island-btn.locked { opacity: 0.45; cursor: not-allowed; filter: grayscale(0.6); }
 .island-btn.locked:hover { transform: none; box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
 .island-btn.completed { border-color: #f1c40f; }
@@ -204,6 +161,12 @@ body {
   0%,100% { transform: rotate(-10deg) scale(1); }
   50% { transform: rotate(10deg) scale(1.2); }
 }
+.island-visit-count {
+  position: absolute; bottom: -4px; left: -4px;
+  min-width: 22px; height: 22px; background: #3498db; color: white;
+  border-radius: 99px; display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 900; border: 2px solid white; padding: 0 4px;
+}
 .progress-bar-wrap {
   background: rgba(255,255,255,0.95); padding: 10px 1.2rem;
   display: flex; align-items: center; gap: 10px; flex-shrink: 0;
@@ -213,7 +176,7 @@ body {
 .progress-bar { flex: 1; height: 12px; background: #e0e0e0; border-radius: 99px; overflow: hidden; }
 .progress-fill { height: 100%; background: linear-gradient(90deg, #ff6b6b, #f1c40f, #2ecc71); border-radius: 99px; transition: width 0.5s ease; }
 
-/* ===== QUIZ SCREEN ===== */
+/* ===== QUIZ ===== */
 #screen-quiz { padding: 0; background: var(--bg); }
 .quiz-header {
   padding: 1rem 1.2rem; background: white;
@@ -233,21 +196,14 @@ body {
   border: 3px solid var(--green); display: flex;
   align-items: center; justify-content: center;
   font-weight: 900; font-size: 1.1rem; color: var(--green-dark);
-  flex-shrink: 0; transition: all 0.3s;
-  font-family: 'Baloo 2', cursive;
+  flex-shrink: 0; transition: all 0.3s; font-family: 'Baloo 2', cursive;
 }
-.quiz-timer.urgent {
-  border-color: var(--red); color: var(--red);
-  animation: timerPulse 0.5s ease-in-out infinite;
-}
-@keyframes timerPulse {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-.quiz-body { flex: 1; padding: 1.2rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1.2rem; }
+.quiz-timer.urgent { border-color: var(--red); color: var(--red); animation: timerPulse 0.5s ease-in-out infinite; }
+@keyframes timerPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+.quiz-body { flex: 1; padding: 1.2rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; }
 .question-card {
   background: white; border-radius: var(--radius);
-  padding: 1.6rem; box-shadow: var(--shadow);
+  padding: 1.4rem; box-shadow: var(--shadow);
   border-left: 6px solid var(--blue);
   animation: slideIn 0.3s ease;
 }
@@ -257,62 +213,48 @@ body {
   text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px;
   display: flex; align-items: center; gap: 6px;
 }
-.question-text {
-  font-family: 'Baloo 2', cursive; font-size: 1.15rem;
-  font-weight: 700; line-height: 1.5; color: var(--text);
+/* === QUESTION IMAGE === */
+.question-image-wrap {
+  width: 100%; height: 170px; border-radius: 14px; overflow: hidden;
+  margin-bottom: 12px; background: #f0f4f8;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
 }
+.question-image-wrap svg { width: 100%; height: 100%; }
+.question-text { font-family: 'Baloo 2', cursive; font-size: 1.1rem; font-weight: 700; line-height: 1.5; color: var(--text); }
 .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .option-btn {
-  padding: 16px 14px; border-radius: 16px;
+  padding: 14px 12px; border-radius: 16px;
   border: 2.5px solid #e8e8e8; background: white;
   cursor: pointer; font-family: 'Nunito', sans-serif;
-  font-size: 0.92rem; font-weight: 800; color: var(--text);
+  font-size: 0.88rem; font-weight: 800; color: var(--text);
   text-align: left; transition: all 0.18s; line-height: 1.4;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   position: relative; overflow: hidden;
 }
-.option-btn::before {
-  content: '';position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
-  background: transparent; transition: background 0.2s;
-}
-.option-btn:hover:not(:disabled) {
-  border-color: var(--blue); background: #f0f7ff;
-  transform: translateY(-3px) scale(1.01);
-  box-shadow: 0 8px 20px rgba(52,152,219,0.15);
-}
+.option-btn::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:transparent; transition:background 0.2s; }
+.option-btn:hover:not(:disabled) { border-color:var(--blue); background:#f0f7ff; transform:translateY(-3px) scale(1.01); box-shadow:0 8px 20px rgba(52,152,219,0.15); }
 .option-btn:hover:not(:disabled)::before { background: var(--blue); }
-.option-btn.correct { border-color: var(--green); background: #e8f8ef; color: var(--green-dark); }
-.option-btn.correct::before { background: var(--green); }
-.option-btn.wrong { border-color: var(--red); background: #fef0f0; color: var(--red-dark); }
-.option-btn.wrong::before { background: var(--red); }
-.option-btn:disabled { cursor: not-allowed; }
-.option-letter {
-  display: inline-block; width: 24px; height: 24px; border-radius: 50%;
-  background: #f0f0f0; text-align: center; line-height: 24px;
-  font-size: 12px; margin-right: 8px; font-weight: 900; flex-shrink: 0;
-}
+.option-btn.correct { border-color:var(--green); background:#e8f8ef; color:var(--green-dark); }
+.option-btn.correct::before { background:var(--green); }
+.option-btn.wrong { border-color:var(--red); background:#fef0f0; color:var(--red-dark); }
+.option-btn.wrong::before { background:var(--red); }
+.option-btn:disabled { cursor:not-allowed; }
+.option-letter { display:inline-block; width:24px; height:24px; border-radius:50%; background:#f0f0f0; text-align:center; line-height:24px; font-size:12px; margin-right:8px; font-weight:900; }
 .feedback-box {
-  border-radius: var(--radius); padding: 1.2rem 1.4rem;
-  font-weight: 700; font-size: 0.95rem;
-  display: flex; align-items: flex-start; gap: 12px;
+  border-radius: var(--radius); padding: 1rem 1.2rem;
+  font-weight: 700; font-size: 0.9rem;
+  display: flex; align-items: flex-start; gap: 10px;
   animation: bounceIn 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97);
 }
-@keyframes bounceIn {
-  0% { opacity:0; transform: scale(0.8); }
-  70% { transform: scale(1.05); }
-  100% { opacity:1; transform: scale(1); }
-}
-.feedback-box.correct { background: #e8f8ef; color: var(--green-dark); border: 2px solid var(--green); }
-.feedback-box.wrong { background: #fef0f0; color: var(--red-dark); border: 2px solid var(--red); }
-.feedback-icon { font-size: 1.6rem; flex-shrink: 0; }
-.feedback-text { line-height: 1.5; }
-.quiz-footer {
-  padding: 1rem 1.2rem; background: white;
-  box-shadow: 0 -2px 12px rgba(0,0,0,0.06); flex-shrink: 0;
-}
+@keyframes bounceIn { 0%{opacity:0;transform:scale(0.8);} 70%{transform:scale(1.05);} 100%{opacity:1;transform:scale(1);} }
+.feedback-box.correct { background:#e8f8ef; color:var(--green-dark); border:2px solid var(--green); }
+.feedback-box.wrong { background:#fef0f0; color:var(--red-dark); border:2px solid var(--red); }
+.feedback-icon { font-size:1.6rem; flex-shrink:0; }
+.feedback-text { line-height:1.5; }
+.quiz-footer { padding: 1rem 1.2rem; background: white; box-shadow: 0 -2px 12px rgba(0,0,0,0.06); flex-shrink: 0; }
 .next-btn {
-  width: 100%; padding: 16px; border: none;
-  border-radius: var(--radius);
+  width: 100%; padding: 16px; border: none; border-radius: var(--radius);
   background: linear-gradient(135deg, #6c5ce7, #a29bfe);
   color: white; font-family: 'Baloo 2', cursive;
   font-size: 1.1rem; font-weight: 800; cursor: pointer;
@@ -323,53 +265,53 @@ body {
 .next-btn.visible { display: block; animation: slideUp 0.3s ease; }
 @keyframes slideUp { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
 
-/* ===== RESULT SCREEN ===== */
+/* Rolling badge */
+.rolling-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: linear-gradient(135deg, #fd79a8, #e84393);
+  color: white; padding: 4px 12px; border-radius: 99px;
+  font-size: 11px; font-weight: 900; margin-left: 8px;
+  box-shadow: 0 3px 10px rgba(232,67,147,0.3);
+}
+
+/* ===== RESULT ===== */
 #screen-result {
-  align-items: center; justify-content: center;
-  padding: 2rem;
+  align-items: center; justify-content: center; padding: 2rem;
   background: linear-gradient(160deg, #e8f8ef, #e3f2fd, #fef9e7);
   position: relative; overflow: hidden;
 }
 .result-card {
-  background: white; border-radius: 28px; padding: 2.5rem 2rem;
+  background: white; border-radius: 28px; padding: 2rem 1.8rem;
   max-width: 480px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.12);
   text-align: center; position: relative; z-index: 1;
-  border: 3px solid rgba(255,255,255,0.8);
+  border: 3px solid rgba(255,255,255,0.8); overflow-y: auto; max-height: 95vh;
 }
-.result-emoji { font-size: 5rem; margin-bottom: 0.8rem; display: block; animation: trophyBounce 1s ease; }
-@keyframes trophyBounce {
-  0% { transform: scale(0) rotate(-30deg); }
-  60% { transform: scale(1.2) rotate(5deg); }
-  100% { transform: scale(1) rotate(0deg); }
-}
-.result-title { font-family: 'Baloo 2', cursive; font-size: 2rem; font-weight: 900; margin-bottom: 0.3rem; }
-.result-subtitle { color: var(--muted); font-size: 1rem; margin-bottom: 1.5rem; }
-.stars-row { display: flex; justify-content: center; gap: 10px; font-size: 2.6rem; margin-bottom: 1.5rem; }
+.result-emoji { font-size: 4rem; margin-bottom: 0.6rem; display: block; animation: trophyBounce 1s ease; }
+@keyframes trophyBounce { 0%{transform:scale(0) rotate(-30deg);} 60%{transform:scale(1.2) rotate(5deg);} 100%{transform:scale(1) rotate(0);} }
+.result-title { font-family: 'Baloo 2', cursive; font-size: 1.8rem; font-weight: 900; margin-bottom: 0.3rem; }
+.result-subtitle { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.3rem; }
+.stars-row { display: flex; justify-content: center; gap: 10px; font-size: 2.4rem; margin-bottom: 1.3rem; }
 .star { transition: transform 0.3s; filter: grayscale(1) opacity(0.3); }
 .star.earned { filter: none; animation: starPop 0.4s ease forwards; }
-@keyframes starPop { 0% { transform: scale(0); } 70% { transform: scale(1.4); } 100% { transform: scale(1); } }
-.stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 1.5rem; }
-.stat-box {
-  background: var(--bg); border-radius: 16px; padding: 14px 8px;
-  border: 2px solid #f0f0f0; transition: all 0.2s;
-}
-.stat-box:hover { transform: translateY(-2px); border-color: var(--blue); }
-.stat-value { font-family: 'Baloo 2', cursive; font-size: 1.5rem; font-weight: 900; color: var(--text); }
-.stat-label { font-size: 11px; color: var(--muted); font-weight: 700; margin-top: 2px; }
+@keyframes starPop { 0%{transform:scale(0);} 70%{transform:scale(1.4);} 100%{transform:scale(1);} }
+.stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 1.3rem; }
+.stat-box { background:var(--bg); border-radius:16px; padding:12px 8px; border:2px solid #f0f0f0; }
+.stat-value { font-family:'Baloo 2',cursive; font-size:1.4rem; font-weight:900; }
+.stat-label { font-size:11px; color:var(--muted); font-weight:700; margin-top:2px; }
 .reward-card {
   background: linear-gradient(135deg, #fff9e6, #fffbf0);
   border: 2.5px solid var(--yellow); border-radius: 18px;
-  padding: 1rem 1.2rem; margin-bottom: 1.5rem;
+  padding: 1rem 1.2rem; margin-bottom: 1.3rem;
   text-align: left; display: flex; align-items: center; gap: 12px;
   animation: rewardPop 0.5s ease 0.5s both;
 }
-@keyframes rewardPop { from { opacity:0; transform: scale(0.9); } to { opacity:1; transform: scale(1); } }
-.reward-icon { font-size: 2.4rem; }
-.reward-name { font-weight: 900; font-size: 0.95rem; color: var(--text); }
-.reward-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+@keyframes rewardPop { from{opacity:0;transform:scale(0.9);} to{opacity:1;transform:scale(1);} }
+.reward-icon { font-size: 2.2rem; }
+.reward-name { font-weight:900; font-size:0.92rem; }
+.reward-desc { font-size:12px; color:var(--muted); margin-top:2px; }
 .result-btn-group { display: flex; flex-direction: column; gap: 10px; }
 
-/* ===== COLLECTION SCREEN ===== */
+/* ===== COLLECTION ===== */
 #screen-collection { padding: 0; background: var(--bg); }
 .collection-header {
   padding: 1.2rem 1.4rem; background: white;
@@ -392,17 +334,17 @@ body {
   display: flex; align-items: center; gap: 8px;
 }
 .section-title::after { content:''; flex:1; height:1px; background:#e0e0e0; }
-.collection-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px,1fr)); gap: 10px; }
+.collection-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px,1fr)); gap: 10px; }
 .collect-item {
-  background: white; border-radius: 18px; padding: 1.2rem 0.8rem;
+  background: white; border-radius: 18px; padding: 1rem 0.8rem;
   text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.06);
   border: 2.5px solid transparent; transition: all 0.2s;
 }
 .collect-item:hover { transform: translateY(-3px); }
 .collect-item.unlocked { border-color: var(--yellow); box-shadow: 0 6px 18px rgba(241,196,15,0.25); }
 .collect-item.locked { opacity: 0.4; filter: grayscale(1); }
-.ci-icon { font-size: 2.2rem; margin-bottom: 8px; display: block; }
-.ci-name { font-size: 12px; font-weight: 800; color: var(--text); }
+.ci-icon { font-size: 2rem; margin-bottom: 8px; display: block; }
+.ci-name { font-size: 12px; font-weight: 800; }
 .ci-from { font-size: 11px; color: var(--muted); margin-top: 3px; }
 
 /* ===== TOAST ===== */
@@ -420,62 +362,55 @@ body {
 
 /* ===== CONFETTI ===== */
 .confetti-burst { position: fixed; pointer-events: none; z-index: 999; inset: 0; overflow: hidden; }
-.confetti-piece {
-  position: absolute; border-radius: 2px;
-  animation: confettiFall 1.4s ease-in forwards;
-}
+.confetti-piece { position: absolute; border-radius: 2px; animation: confettiFall 1.4s ease-in forwards; }
 @keyframes confettiFall {
-  0% { opacity:1; transform: translateY(-20px) rotate(0deg) scale(1); }
-  100% { opacity:0; transform: translateY(100vh) rotate(720deg) scale(0.5); }
+  0%{opacity:1;transform:translateY(-20px) rotate(0deg) scale(1);}
+  100%{opacity:0;transform:translateY(100vh) rotate(720deg) scale(0.5);}
 }
 
-/* ===== STREAK BADGE ===== */
+/* ===== STREAK ===== */
 .streak-badge {
   display: inline-flex; align-items: center; gap: 5px;
   background: linear-gradient(135deg, #ff6b6b, #feca57);
   color: white; padding: 5px 12px; border-radius: 99px;
-  font-size: 12px; font-weight: 900;
-  box-shadow: 0 3px 10px rgba(255,107,107,0.35);
+  font-size: 12px; font-weight: 900; box-shadow: 0 3px 10px rgba(255,107,107,0.35);
 }
 
-/* ===== HINT BUTTON ===== */
+/* ===== HINT ===== */
 .hint-btn {
   width: 100%; padding: 10px; border: 2px dashed var(--yellow-dark);
-  border-radius: 14px; background: #fffbf0;
-  color: var(--yellow-dark); font-family: 'Nunito', sans-serif;
-  font-size: 0.88rem; font-weight: 800; cursor: pointer;
-  transition: all 0.2s; margin-bottom: -4px;
+  border-radius: 14px; background: #fffbf0; color: var(--yellow-dark);
+  font-family: 'Nunito', sans-serif; font-size: 0.88rem; font-weight: 800;
+  cursor: pointer; transition: all 0.2s;
 }
 .hint-btn:hover { background: #fff3d0; transform: translateY(-1px); }
 .hint-box {
-  background: #fffbf0; border: 2px solid var(--yellow);
-  border-radius: 14px; padding: 10px 14px;
-  font-size: 0.88rem; font-weight: 700; color: var(--yellow-dark);
+  background: #fffbf0; border: 2px solid var(--yellow); border-radius: 14px;
+  padding: 10px 14px; font-size: 0.88rem; font-weight: 700; color: var(--yellow-dark);
   animation: bounceIn 0.3s ease;
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 480px) {
   .options-grid { grid-template-columns: 1fr; }
   .island-btn { width: 62px; height: 62px; font-size: 1.4rem; }
   .menu-title { font-size: 1.9rem; }
-  .result-card { padding: 1.8rem 1.2rem; }
+  .question-image-wrap { height: 130px; }
 }
 
-/* ===== LEVEL UP OVERLAY ===== */
+/* ===== LEVEL UP ===== */
 .levelup-overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,0.7);
   z-index: 9999; display: flex; align-items: center; justify-content: center;
   animation: fadeIn 0.3s ease;
 }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
 .levelup-card {
   background: white; border-radius: 28px; padding: 3rem 2.5rem;
   text-align: center; max-width: 380px; width: 90%;
   animation: popIn 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97);
   box-shadow: 0 30px 80px rgba(0,0,0,0.3);
 }
-@keyframes popIn { 0% { transform: scale(0.5) rotate(-5deg); } 80% { transform: scale(1.05); } 100% { transform: scale(1); } }
+@keyframes popIn { 0%{transform:scale(0.5) rotate(-5deg);} 80%{transform:scale(1.05);} 100%{transform:scale(1);} }
 .levelup-emoji { font-size: 5rem; display: block; margin-bottom: 1rem; }
 .levelup-title { font-family: 'Baloo 2', cursive; font-size: 2rem; font-weight: 900; color: var(--text); margin-bottom: 0.5rem; }
 .levelup-sub { color: var(--muted); font-size: 1rem; margin-bottom: 1.5rem; }
@@ -491,132 +426,68 @@ body {
 </head>
 <body>
 
-<!-- FLOATING SHAPES -->
 <div class="floating-shapes">
   <div class="shape"></div><div class="shape"></div><div class="shape"></div>
   <div class="shape"></div><div class="shape"></div>
 </div>
 
-<!-- MUSIC TOGGLE -->
 <button class="music-toggle" id="music-toggle" onclick="toggleMusic()" title="Musik">🎵</button>
-
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
-<!-- ===== AUDIO ENGINE ===== -->
+<!-- AUDIO ENGINE -->
 <script>
-// Web Audio API - generates music procedurally (no external files needed)
-let audioCtx = null, musicPlaying = false, musicNodes = [], scheduledNotes = [];
-let musicEnabled = true;
-
-function getAudioCtx() {
-  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  return audioCtx;
+let audioCtx=null, musicPlaying=false, loopHandle=null, musicEnabled=true;
+const SCALE=[261.63,293.66,329.63,392.00,440.00,523.25,587.33,659.26,783.99,880.00];
+const MELODY=[0,2,4,5,7,5,4,2,0,2,4,7,5,4,2,0];
+const BASS=[0,0,4,4,5,5,7,7];
+function getAudioCtx(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();return audioCtx;}
+function playNote(freq,start,duration,type='sine',vol=0.08){
+  const ctx=getAudioCtx();const osc=ctx.createOscillator();const gain=ctx.createGain();
+  osc.connect(gain);gain.connect(ctx.destination);osc.type=type;osc.frequency.value=freq;
+  gain.gain.setValueAtTime(0,ctx.currentTime+start);
+  gain.gain.linearRampToValueAtTime(vol,ctx.currentTime+start+0.01);
+  gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+start+duration);
+  osc.start(ctx.currentTime+start);osc.stop(ctx.currentTime+start+duration+0.1);
 }
-
-// Pentatonic scale notes (gamelan-inspired)
-const SCALE = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.26, 783.99, 880.00];
-const MELODY = [0,2,4,5,7,5,4,2,0,2,4,7,5,4,2,0]; // index into SCALE
-const BASS = [0,0,4,4,5,5,7,7];
-
-function playNote(freq, start, duration, type='sine', vol=0.08) {
-  const ctx = getAudioCtx();
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-  osc.connect(gain); gain.connect(ctx.destination);
-  osc.type = type; osc.frequency.value = freq;
-  gain.gain.setValueAtTime(0, ctx.currentTime + start);
-  gain.gain.linearRampToValueAtTime(vol, ctx.currentTime + start + 0.01);
-  gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + start + duration);
-  osc.start(ctx.currentTime + start);
-  osc.stop(ctx.currentTime + start + duration + 0.1);
-  return { osc, gain };
+function playPercussion(start,vol=0.05){
+  const ctx=getAudioCtx();const bufSize=ctx.sampleRate*0.1;
+  const buffer=ctx.createBuffer(1,bufSize,ctx.sampleRate);const data=buffer.getChannelData(0);
+  for(let i=0;i<bufSize;i++)data[i]=(Math.random()*2-1)*Math.pow(1-i/bufSize,3);
+  const src=ctx.createBufferSource();const gain=ctx.createGain();
+  src.buffer=buffer;src.connect(gain);gain.connect(ctx.destination);
+  gain.gain.setValueAtTime(vol,ctx.currentTime+start);src.start(ctx.currentTime+start);
 }
-
-function playPercussion(start, vol=0.05) {
-  const ctx = getAudioCtx();
-  const bufSize = ctx.sampleRate * 0.1;
-  const buffer = ctx.createBuffer(1, bufSize, ctx.sampleRate);
-  const data = buffer.getChannelData(0);
-  for (let i = 0; i < bufSize; i++) data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufSize, 3);
-  const src = ctx.createBufferSource();
-  const gain = ctx.createGain();
-  src.buffer = buffer; src.connect(gain); gain.connect(ctx.destination);
-  gain.gain.setValueAtTime(vol, ctx.currentTime + start);
-  src.start(ctx.currentTime + start);
-}
-
-let loopHandle = null;
-function startMusic() {
-  if (!musicEnabled || musicPlaying) return;
-  musicPlaying = true;
-  const ctx = getAudioCtx();
-  if (ctx.state === 'suspended') ctx.resume();
-  
-  function playLoop() {
-    if (!musicPlaying || !musicEnabled) return;
-    const tempo = 0.35;
-    // Melody
-    MELODY.forEach((noteIdx, i) => {
-      playNote(SCALE[noteIdx], i * tempo, tempo * 0.7, 'triangle', 0.06);
-    });
-    // Harmony (octave up, delayed)
-    MELODY.forEach((noteIdx, i) => {
-      if (i % 2 === 0) playNote(SCALE[noteIdx] * 2, i * tempo + 0.1, tempo * 0.5, 'sine', 0.03);
-    });
-    // Bass
-    BASS.forEach((noteIdx, i) => {
-      playNote(SCALE[noteIdx] / 2, i * tempo * 2, tempo * 1.5, 'sawtooth', 0.04);
-    });
-    // Percussion
-    for (let i = 0; i < 16; i++) {
-      if (i % 2 === 0) playPercussion(i * tempo, 0.04);
-    }
-    loopHandle = setTimeout(playLoop, MELODY.length * tempo * 1000);
+function startMusic(){
+  if(!musicEnabled||musicPlaying)return;musicPlaying=true;
+  const ctx=getAudioCtx();if(ctx.state==='suspended')ctx.resume();
+  function playLoop(){
+    if(!musicPlaying||!musicEnabled)return;
+    const tempo=0.35;
+    MELODY.forEach((n,i)=>playNote(SCALE[n],i*tempo,tempo*0.7,'triangle',0.06));
+    MELODY.forEach((n,i)=>{if(i%2===0)playNote(SCALE[n]*2,i*tempo+0.1,tempo*0.5,'sine',0.03);});
+    BASS.forEach((n,i)=>playNote(SCALE[n]/2,i*tempo*2,tempo*1.5,'sawtooth',0.04));
+    for(let i=0;i<16;i++){if(i%2===0)playPercussion(i*tempo,0.04);}
+    loopHandle=setTimeout(playLoop,MELODY.length*tempo*1000);
   }
   playLoop();
 }
-
-function stopMusic() {
-  musicPlaying = false;
-  if (loopHandle) clearTimeout(loopHandle);
+function stopMusic(){musicPlaying=false;if(loopHandle)clearTimeout(loopHandle);}
+function toggleMusic(){
+  musicEnabled=!musicEnabled;const btn=document.getElementById('music-toggle');
+  if(musicEnabled){btn.textContent='🎵';btn.classList.remove('muted');startMusic();}
+  else{btn.textContent='🔇';btn.classList.add('muted');stopMusic();}
 }
-
-function toggleMusic() {
-  musicEnabled = !musicEnabled;
-  const btn = document.getElementById('music-toggle');
-  if (musicEnabled) {
-    btn.textContent = '🎵'; btn.classList.remove('muted');
-    startMusic();
-  } else {
-    btn.textContent = '🔇'; btn.classList.add('muted');
-    stopMusic();
-  }
-}
-
-function playSFX(type) {
-  if (!musicEnabled) return;
-  const ctx = getAudioCtx();
-  if (ctx.state === 'suspended') ctx.resume();
-  if (type === 'correct') {
-    playNote(523.25, 0, 0.15, 'sine', 0.15);
-    playNote(659.26, 0.12, 0.15, 'sine', 0.15);
-    playNote(783.99, 0.24, 0.3, 'sine', 0.15);
-  } else if (type === 'wrong') {
-    playNote(220, 0, 0.1, 'sawtooth', 0.1);
-    playNote(180, 0.1, 0.2, 'sawtooth', 0.1);
-  } else if (type === 'click') {
-    playNote(440, 0, 0.08, 'sine', 0.08);
-  } else if (type === 'win') {
-    [523,659,784,1047].forEach((f,i) => playNote(f, i*0.1, 0.2, 'sine', 0.12));
-  } else if (type === 'timeout') {
-    playNote(300, 0, 0.1, 'square', 0.1);
-    playNote(250, 0.1, 0.15, 'square', 0.1);
-  }
+function playSFX(type){
+  if(!musicEnabled)return;const ctx=getAudioCtx();if(ctx.state==='suspended')ctx.resume();
+  if(type==='correct'){playNote(523.25,0,0.15,'sine',0.15);playNote(659.26,0.12,0.15,'sine',0.15);playNote(783.99,0.24,0.3,'sine',0.15);}
+  else if(type==='wrong'){playNote(220,0,0.1,'sawtooth',0.1);playNote(180,0.1,0.2,'sawtooth',0.1);}
+  else if(type==='click'){playNote(440,0,0.08,'sine',0.08);}
+  else if(type==='win'){[523,659,784,1047].forEach((f,i)=>playNote(f,i*0.1,0.2,'sine',0.12));}
+  else if(type==='timeout'){playNote(300,0,0.1,'square',0.1);playNote(250,0.1,0.15,'square',0.1);}
 }
 </script>
 
-<!-- ===== MENU SCREEN ===== -->
+<!-- MENU SCREEN -->
 <div class="screen active" id="screen-menu">
   <div class="menu-hero">
     <span class="menu-mascot">🧭</span>
@@ -636,7 +507,7 @@ function playSFX(type) {
   </div>
 </div>
 
-<!-- ===== MAP SCREEN ===== -->
+<!-- MAP SCREEN -->
 <div class="screen" id="screen-map">
   <div class="map-header">
     <div class="map-header-left">
@@ -659,37 +530,24 @@ function playSFX(type) {
         <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
       </defs>
       <rect width="900" height="400" fill="url(#seaGrad)"/>
-      <!-- Wave decoration -->
       <path d="M0,300 Q100,280 200,300 Q300,320 400,300 Q500,280 600,300 Q700,320 800,300 Q850,290 900,300 L900,400 L0,400Z" fill="rgba(255,255,255,0.08)"/>
-      <!-- Sumatera -->
       <ellipse cx="155" cy="200" rx="78" ry="40" fill="#5cb85c" opacity="0.95" transform="rotate(-15 155 200)" filter="url(#glow)"/>
       <ellipse cx="152" cy="204" rx="62" ry="28" fill="#4cae4c" opacity="0.85" transform="rotate(-15 152 204)"/>
-      <!-- Jawa -->
       <ellipse cx="358" cy="242" rx="98" ry="27" fill="#5cb85c" opacity="0.95" transform="rotate(-5 358 242)" filter="url(#glow)"/>
       <ellipse cx="356" cy="245" rx="82" ry="19" fill="#4cae4c" opacity="0.85" transform="rotate(-5 356 245)"/>
-      <!-- Kalimantan -->
       <ellipse cx="460" cy="168" rx="74" ry="63" fill="#5cb85c" opacity="0.95" filter="url(#glow)"/>
       <ellipse cx="462" cy="172" rx="60" ry="50" fill="#4cae4c" opacity="0.85"/>
-      <!-- Sulawesi -->
       <path d="M590,128 Q622,138 627,168 Q632,198 612,208 Q592,213 587,198 Q602,183 597,163 Q587,148 590,128Z" fill="#5cb85c" opacity="0.95" filter="url(#glow)"/>
       <path d="M610,173 Q622,193 637,218 Q647,233 637,243 Q624,248 617,238 Q622,223 612,208Z" fill="#5cb85c" opacity="0.95"/>
-      <!-- Papua -->
       <ellipse cx="768" cy="195" rx="84" ry="54" fill="#5cb85c" opacity="0.95" filter="url(#glow)"/>
       <ellipse cx="766" cy="198" rx="68" ry="41" fill="#4cae4c" opacity="0.85"/>
-      <!-- Small islands -->
       <ellipse cx="520" cy="260" rx="18" ry="9" fill="#5cb85c" opacity="0.7"/>
       <ellipse cx="558" cy="272" rx="13" ry="7" fill="#5cb85c" opacity="0.7"/>
       <ellipse cx="680" cy="230" rx="16" ry="9" fill="#5cb85c" opacity="0.7"/>
-      <ellipse cx="718" cy="258" rx="11" ry="6" fill="#5cb85c" opacity="0.7"/>
-      <ellipse cx="428" cy="257" rx="11" ry="7" fill="#5cb85c" opacity="0.8"/>
-      <!-- Cloud decorations -->
       <ellipse cx="80" cy="60" rx="40" ry="18" fill="white" opacity="0.5"/>
       <ellipse cx="110" cy="55" rx="30" ry="14" fill="white" opacity="0.5"/>
       <ellipse cx="700" cy="50" rx="35" ry="15" fill="white" opacity="0.4"/>
-      <ellipse cx="730" cy="45" rx="25" ry="12" fill="white" opacity="0.4"/>
     </svg>
-
-    <!-- Island buttons -->
     <div class="islands-grid">
       <div class="island-btn-wrap" style="left:17%;top:50%;">
         <button class="island-btn" id="btn-sumatera" data-name="Sumatera"
@@ -731,7 +589,7 @@ function playSFX(type) {
   </div>
 </div>
 
-<!-- ===== QUIZ SCREEN ===== -->
+<!-- QUIZ SCREEN -->
 <div class="screen" id="screen-quiz">
   <div class="quiz-header">
     <div class="quiz-island-badge" id="quiz-island-badge">🌋</div>
@@ -746,8 +604,9 @@ function playSFX(type) {
   </div>
 
   <div class="quiz-body" id="quiz-body">
-    <div class="question-card">
+    <div class="question-card" id="question-card">
       <div class="question-num" id="question-num">❓ Pertanyaan 1</div>
+      <div class="question-image-wrap" id="question-image-wrap"></div>
       <div class="question-text" id="question-text"></div>
     </div>
     <div class="options-grid" id="options-grid"></div>
@@ -761,7 +620,7 @@ function playSFX(type) {
   </div>
 </div>
 
-<!-- ===== RESULT SCREEN ===== -->
+<!-- RESULT SCREEN -->
 <div class="screen" id="screen-result">
   <div class="result-card">
     <span class="result-emoji" id="result-emoji">🎉</span>
@@ -769,25 +628,13 @@ function playSFX(type) {
     <div class="result-subtitle" id="result-subtitle">Kamu berhasil menyelesaikan kuis ini</div>
     <div class="stars-row" id="stars-row"></div>
     <div class="stats-row">
-      <div class="stat-box">
-        <div class="stat-value" id="stat-correct">0</div>
-        <div class="stat-label">✅ Benar</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-value" id="stat-score">0</div>
-        <div class="stat-label">⭐ Poin</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-value" id="stat-time">0s</div>
-        <div class="stat-label">⏱️ Waktu</div>
-      </div>
+      <div class="stat-box"><div class="stat-value" id="stat-correct">0</div><div class="stat-label">✅ Benar</div></div>
+      <div class="stat-box"><div class="stat-value" id="stat-score">0</div><div class="stat-label">⭐ Poin</div></div>
+      <div class="stat-box"><div class="stat-value" id="stat-time">0s</div><div class="stat-label">⏱️ Waktu</div></div>
     </div>
     <div class="reward-card" id="reward-card">
       <div class="reward-icon" id="reward-icon">🏆</div>
-      <div>
-        <div class="reward-name" id="reward-name">Koleksi Terbuka!</div>
-        <div class="reward-desc" id="reward-desc">Kamu mendapatkan item budaya baru</div>
-      </div>
+      <div><div class="reward-name" id="reward-name">Koleksi Terbuka!</div><div class="reward-desc" id="reward-desc">Kamu mendapatkan item budaya baru</div></div>
     </div>
     <div class="result-btn-group">
       <button class="menu-btn btn-primary" onclick="playSFX('click');showMap()">🗺️ Kembali ke Peta</button>
@@ -797,7 +644,7 @@ function playSFX(type) {
   </div>
 </div>
 
-<!-- ===== COLLECTION SCREEN ===== -->
+<!-- COLLECTION SCREEN -->
 <div class="screen" id="screen-collection">
   <div class="collection-header">
     <button class="back-btn" onclick="playSFX('click');showScreen('screen-menu')">←</button>
@@ -807,10 +654,1154 @@ function playSFX(type) {
 </div>
 
 <script>
+// ===================== SVG ILLUSTRATIONS =====================
+// Each question has a custom SVG illustration
+const ILLUSTRATIONS = {
+  // SUMATERA
+  rumah_gadang: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#87CEEB"/>
+    <rect x="0" y="120" width="300" height="40" fill="#7ec850"/>
+    <!-- Mountains bg -->
+    <polygon points="0,100 60,40 120,100" fill="#5a8a3c" opacity="0.5"/>
+    <polygon points="80,110 160,30 240,110" fill="#4a7a2c" opacity="0.6"/>
+    <polygon points="180,105 250,50 300,105" fill="#5a8a3c" opacity="0.5"/>
+    <!-- House base -->
+    <rect x="70" y="95" width="160" height="35" fill="#c8914a"/>
+    <!-- Curved roof wings -->
+    <path d="M40,95 Q80,50 150,80 Q220,50 260,95" fill="#8B4513" stroke="#5D2A0E" stroke-width="2"/>
+    <path d="M55,95 Q90,62 150,85 Q210,62 245,95" fill="#A0522D"/>
+    <!-- Roof peak ornaments -->
+    <line x1="40" y1="95" x2="55" y2="70" stroke="#5D2A0E" stroke-width="3"/>
+    <line x1="260" y1="95" x2="245" y2="70" stroke="#5D2A0E" stroke-width="3"/>
+    <!-- Door & windows -->
+    <rect x="135" y="105" width="30" height="25" fill="#5D2A0E" rx="2"/>
+    <rect x="85" y="105" width="25" height="18" fill="#ffd27f" rx="2"/>
+    <rect x="190" y="105" width="25" height="18" fill="#ffd27f" rx="2"/>
+    <!-- Pillars -->
+    <rect x="80" y="95" width="8" height="35" fill="#9C6B3C"/>
+    <rect x="105" y="95" width="8" height="35" fill="#9C6B3C"/>
+    <rect x="187" y="95" width="8" height="35" fill="#9C6B3C"/>
+    <rect x="212" y="95" width="8" height="35" fill="#9C6B3C"/>
+    <!-- Label -->
+    <rect x="80" y="8" width="140" height="26" rx="13" fill="rgba(139,69,19,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">🏠 Rumah Gadang</text>
+  </svg>`,
+
+  tari_saman: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#1a3a2a"/>
+    <!-- Stage floor -->
+    <rect x="0" y="120" width="300" height="40" fill="#2d5a3d"/>
+    <!-- Dancers (5 figures) -->
+    ${[40,80,120,160,200,240].map((x,i)=>`
+    <g transform="translate(${x},60)">
+      <circle cx="0" cy="-20" r="9" fill="#f5c87a"/>
+      <!-- Colorful costume body -->
+      <rect x="-8" y="-10" width="16" height="25" fill="${['#e74c3c','#f39c12','#27ae60','#3498db','#9b59b6','#e67e22'][i]}" rx="3"/>
+      <!-- Arms raised in sync -->
+      <line x1="-8" y1="0" x2="-20" y2="${-8+i*2}" stroke="#f5c87a" stroke-width="3" stroke-linecap="round"/>
+      <line x1="8" y1="0" x2="20" y2="${-8+i*2}" stroke="#f5c87a" stroke-width="3" stroke-linecap="round"/>
+      <!-- Legs -->
+      <line x1="-3" y1="15" x2="-3" y2="30" stroke="#f5c87a" stroke-width="3"/>
+      <line x1="3" y1="15" x2="3" y2="30" stroke="#f5c87a" stroke-width="3"/>
+    </g>`).join('')}
+    <!-- Sparkles -->
+    <text x="10" y="25" font-size="14">✨</text>
+    <text x="265" y="25" font-size="14">✨</text>
+    <rect x="60" y="8" width="180" height="26" rx="13" fill="rgba(231,76,60,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">💃 Tari Saman</text>
+  </svg>`,
+
+  danau_toba: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#87CEEB"/><stop offset="100%" stop-color="#b5e8f5"/></linearGradient>
+      <linearGradient id="lakeG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1e90ff"/><stop offset="100%" stop-color="#0055aa"/></linearGradient>
+    </defs>
+    <rect width="300" height="160" fill="url(#skyG)"/>
+    <!-- Mountains -->
+    <polygon points="0,90 50,30 100,90" fill="#4a7a2c"/>
+    <polygon points="50,95 130,20 200,95" fill="#5a8a3c"/>
+    <polygon points="180,90 240,35 300,90" fill="#4a7a2c"/>
+    <!-- Lake -->
+    <ellipse cx="150" cy="115" rx="130" ry="40" fill="url(#lakeG)"/>
+    <!-- Lake shimmer -->
+    <ellipse cx="150" cy="113" rx="120" ry="35" fill="rgba(255,255,255,0.12)"/>
+    <!-- Island Samosir -->
+    <ellipse cx="150" cy="108" rx="45" ry="15" fill="#5a8a3c"/>
+    <polygon points="135,108 150,85 165,108" fill="#4a7a2c"/>
+    <!-- Clouds -->
+    <ellipse cx="60" cy="20" rx="25" ry="10" fill="white" opacity="0.8"/>
+    <ellipse cx="240" cy="15" rx="20" ry="8" fill="white" opacity="0.7"/>
+    <rect x="55" y="8" width="190" height="26" rx="13" fill="rgba(0,85,170,0.8)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">🌋 Danau Toba</text>
+  </svg>`,
+
+  rendang: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#fff8f0"/>
+    <!-- Table -->
+    <rect x="30" y="110" width="240" height="12" fill="#c8914a" rx="3"/>
+    <rect x="50" y="122" width="15" height="30" fill="#a07030"/>
+    <rect x="235" y="122" width="15" height="30" fill="#a07030"/>
+    <!-- Plate -->
+    <ellipse cx="150" cy="108" rx="90" ry="22" fill="#ddd"/>
+    <ellipse cx="150" cy="106" rx="82" ry="18" fill="white"/>
+    <!-- Rice mound -->
+    <ellipse cx="130" cy="100" rx="35" ry="18" fill="#fffff0"/>
+    <ellipse cx="130" cy="97" rx="30" ry="13" fill="white"/>
+    <!-- Rendang meat -->
+    <ellipse cx="185" cy="100" rx="38" ry="16" fill="#4a1500"/>
+    <ellipse cx="185" cy="98" rx="33" ry="12" fill="#6b2500"/>
+    <!-- Texture on rendang -->
+    <path d="M162,96 Q175,90 190,96 Q200,90 210,96" stroke="#3a1000" stroke-width="2" fill="none"/>
+    <path d="M163,102 Q178,96 193,102 Q203,96 213,102" stroke="#3a1000" stroke-width="2" fill="none"/>
+    <!-- Garnish -->
+    <text x="150" y="88" font-size="12">🌿</text>
+    <!-- Steam -->
+    <path d="M125,78 Q122,68 125,60" stroke="#ccc" stroke-width="2" fill="none" opacity="0.7"/>
+    <path d="M133,76 Q130,66 133,58" stroke="#ccc" stroke-width="2" fill="none" opacity="0.7"/>
+    <path d="M185,78 Q182,68 185,60" stroke="#ccc" stroke-width="2" fill="none" opacity="0.7"/>
+    <rect x="65" y="8" width="170" height="26" rx="13" fill="rgba(107,37,0,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">🍲 Rendang</text>
+  </svg>`,
+
+  suku_batak: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#f0e8d0"/>
+    <!-- Traditional house bg -->
+    <polygon points="70,70 150,20 230,70" fill="#8B4513" opacity="0.3"/>
+    <!-- Three figures in traditional costume -->
+    <g transform="translate(90,80)">
+      <circle cx="0" cy="-25" r="12" fill="#f5c87a"/>
+      <rect x="-12" y="-12" width="24" height="35" fill="#c0392b" rx="3"/>
+      <rect x="-14" y="-12" width="28" height="8" fill="#e74c3c" rx="2"/>
+      <!-- Ulos cloth -->
+      <rect x="-18" y="-5" width="36" height="5" fill="#f39c12" rx="1"/>
+    </g>
+    <g transform="translate(150,75)">
+      <circle cx="0" cy="-25" r="13" fill="#f5c87a"/>
+      <rect x="-13" y="-12" width="26" height="38" fill="#8B0000" rx="3"/>
+      <!-- Crown/headdress -->
+      <polygon points="-10,-38 0,-52 10,-38" fill="#f1c40f"/>
+      <circle cx="0" cy="-55" r="5" fill="#e74c3c"/>
+      <!-- Ulos -->
+      <rect x="-20" y="-5" width="40" height="6" fill="#f39c12" rx="1"/>
+    </g>
+    <g transform="translate(210,80)">
+      <circle cx="0" cy="-25" r="12" fill="#f5c87a"/>
+      <rect x="-12" y="-12" width="24" height="35" fill="#c0392b" rx="3"/>
+      <rect x="-14" y="-12" width="28" height="8" fill="#e74c3c" rx="2"/>
+      <rect x="-18" y="-5" width="36" height="5" fill="#f39c12" rx="1"/>
+    </g>
+    <!-- Ground -->
+    <rect x="0" y="118" width="300" height="42" fill="#7ec850"/>
+    <rect x="65" y="8" width="170" height="26" rx="13" fill="rgba(139,0,0,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">🎺 Suku Batak</text>
+  </svg>`,
+
+  minangkabau: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#e8f4e8"/>
+    <!-- Family gathering scene -->
+    <!-- Table with food -->
+    <rect x="90" y="85" width="120" height="8" fill="#c8914a" rx="2"/>
+    <ellipse cx="130" cy="83" rx="18" ry="6" fill="#e74c3c" opacity="0.7"/>
+    <ellipse cx="165" cy="83" rx="15" ry="5" fill="#f39c12" opacity="0.7"/>
+    <ellipse cx="197" cy="83" rx="12" ry="5" fill="#27ae60" opacity="0.7"/>
+    <!-- Mother figure (center, larger) -->
+    <circle cx="150" cy="52" r="14" fill="#f5c87a"/>
+    <rect x="138" y="65" width="24" height="30" fill="#9b59b6" rx="4"/>
+    <!-- Headscarf -->
+    <path d="M136,48 Q150,35 164,48" fill="#3498db" stroke="#2980b9" stroke-width="1"/>
+    <!-- Family members -->
+    <circle cx="105" cy="58" r="11" fill="#f5c87a"/>
+    <rect x="95" y="68" width="20" height="25" fill="#e74c3c" rx="3"/>
+    <circle cx="195" cy="58" r="11" fill="#f5c87a"/>
+    <rect x="185" y="68" width="20" height="25" fill="#27ae60" rx="3"/>
+    <!-- Small children -->
+    <circle cx="70" cy="72" r="8" fill="#f5c87a"/>
+    <rect x="63" y="79" width="14" height="20" fill="#f1c40f" rx="3"/>
+    <circle cx="230" cy="72" r="8" fill="#f5c87a"/>
+    <rect x="223" y="79" width="14" height="20" fill="#e74c3c" rx="3"/>
+    <!-- Ground -->
+    <rect x="0" y="118" width="300" height="42" fill="#7ec850"/>
+    <rect x="55" y="8" width="190" height="26" rx="13" fill="rgba(155,89,182,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">👩 Suku Minangkabau</text>
+  </svg>`,
+
+  palembang: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="riverG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4fc3f7"/><stop offset="100%" stop-color="#0288d1"/></linearGradient>
+    </defs>
+    <rect width="300" height="100" fill="#87CEEB"/>
+    <rect x="0" y="100" width="300" height="60" fill="url(#riverG)"/>
+    <!-- Ampera Bridge -->
+    <rect x="20" y="75" width="260" height="8" fill="#e74c3c"/>
+    <!-- Bridge towers -->
+    <rect x="90" y="35" width="14" height="48" fill="#c0392b"/>
+    <rect x="196" y="35" width="14" height="48" fill="#c0392b"/>
+    <!-- Bridge cables -->
+    <line x1="97" y1="38" x2="50" y2="75" stroke="#c0392b" stroke-width="1.5"/>
+    <line x1="97" y1="38" x2="145" y2="75" stroke="#c0392b" stroke-width="1.5"/>
+    <line x1="203" y1="38" x2="155" y2="75" stroke="#c0392b" stroke-width="1.5"/>
+    <line x1="203" y1="38" x2="250" y2="75" stroke="#c0392b" stroke-width="1.5"/>
+    <!-- Boats on river -->
+    <path d="M30,118 Q50,110 70,118 Q50,128 30,118Z" fill="#8B4513"/>
+    <path d="M200,115 Q225,107 250,115 Q225,125 200,115Z" fill="#6B3410"/>
+    <!-- Buildings -->
+    <rect x="10" y="55" width="30" height="25" fill="#ddd"/>
+    <rect x="265" y="50" width="28" height="30" fill="#ddd"/>
+    <!-- Reflection in water -->
+    <rect x="88" y="103" width="12" height="20" fill="#c0392b" opacity="0.3"/>
+    <rect x="200" y="103" width="12" height="20" fill="#c0392b" opacity="0.3"/>
+    <rect x="55" y="8" width="190" height="26" rx="13" fill="rgba(192,57,43,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">🌉 Kota Palembang</text>
+  </svg>`,
+
+  // JAWA
+  wayang_kulit: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#1a0a00"/>
+    <!-- Screen/kelir -->
+    <rect x="40" y="20" width="220" height="120" fill="#fffff0" opacity="0.95"/>
+    <!-- Shadow puppet silhouette -->
+    <g fill="#2c1500" opacity="0.85">
+      <!-- Body -->
+      <rect x="138" y="65" width="24" height="45" rx="3"/>
+      <!-- Head with crown -->
+      <circle cx="150" cy="58" r="16"/>
+      <polygon points="140,44 150,28 160,44" fill="#2c1500"/>
+      <polygon points="144,44 150,32 156,44" fill="#2c1500"/>
+      <!-- Elaborate arm out -->
+      <path d="M138,78 Q110,65 90,75 Q80,80 85,90 Q100,85 138,85" />
+      <!-- Other arm with weapon -->
+      <path d="M162,78 Q185,65 205,60 Q215,58 218,65 Q210,72 162,85"/>
+      <!-- Fancy headdress extra -->
+      <path d="M140,44 Q130,30 120,25 Q125,35 135,42"/>
+      <path d="M160,44 Q170,30 180,25 Q175,35 165,42"/>
+    </g>
+    <!-- Blencong lamp glow -->
+    <circle cx="150" cy="145" r="12" fill="#f1c40f" opacity="0.5"/>
+    <circle cx="150" cy="145" r="6" fill="#f39c12"/>
+    <!-- Decorative frame -->
+    <rect x="40" y="20" width="220" height="120" fill="none" stroke="#c8914a" stroke-width="4"/>
+    <rect x="50" y="8" width="200" height="26" rx="13" fill="rgba(44,21,0,0.9)"/>
+    <text x="150" y="26" text-anchor="middle" fill="#f1c40f" font-size="13" font-weight="bold" font-family="sans-serif">🎭 Wayang Kulit</text>
+  </svg>`,
+
+  batik_parang: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#f5f0e8"/>
+    <!-- Batik cloth -->
+    <rect x="40" y="30" width="220" height="100" fill="#8B4513"/>
+    <!-- Parang motif pattern (diagonal stripes with parang design) -->
+    ${Array.from({length:8},(_,i)=>`
+    <g transform="rotate(-30, 150, 80)">
+      <path d="M${-20+i*40},10 C${-10+i*40},30 ${i*40},50 ${-10+i*40},70 C${i*40},90 ${10+i*40},110 ${i*40},130" 
+            stroke="#f1c40f" stroke-width="3" fill="none" opacity="0.8"/>
+      <path d="M${-10+i*40},10 C${i*40},30 ${10+i*40},50 ${i*40},70 C${10+i*40},90 ${20+i*40},110 ${10+i*40},130" 
+            stroke="#e67e22" stroke-width="2" fill="none" opacity="0.6"/>
+    </g>`).join('')}
+    <!-- Cloth fold shadow -->
+    <rect x="40" y="30" width="10" height="100" fill="rgba(0,0,0,0.2)"/>
+    <rect x="250" y="30" width="10" height="100" fill="rgba(0,0,0,0.2)"/>
+    <!-- Batik label tag -->
+    <rect x="95" y="8" width="110" height="26" rx="13" fill="rgba(139,69,19,0.9)"/>
+    <text x="150" y="26" text-anchor="middle" fill="#f1c40f" font-size="13" font-weight="bold" font-family="sans-serif">👘 Batik Parang</text>
+  </svg>`,
+
+  rumah_joglo: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#e8f4e8"/>
+    <!-- Trees -->
+    <circle cx="40" cy="80" r="22" fill="#27ae60"/>
+    <rect x="34" y="95" width="12" height="30" fill="#8B4513"/>
+    <circle cx="260" cy="80" r="22" fill="#27ae60"/>
+    <rect x="254" y="95" width="12" height="30" fill="#8B4513"/>
+    <!-- Ground -->
+    <rect x="0" y="118" width="300" height="42" fill="#7ec850"/>
+    <!-- House base platform -->
+    <rect x="55" y="110" width="190" height="12" fill="#c8914a" rx="2"/>
+    <!-- Main body -->
+    <rect x="70" y="85" width="160" height="30" fill="#deb887"/>
+    <!-- Roof layers (tumpang sari) - 3 levels -->
+    <polygon points="55,90 150,65 245,90" fill="#8B4513"/>
+    <polygon points="65,75 150,48 235,75" fill="#6B2E0A"/>
+    <polygon points="78,60 150,32 222,60" fill="#8B4513"/>
+    <!-- Roof peak ornament -->
+    <line x1="150" y1="30" x2="150" y2="20" stroke="#c0392b" stroke-width="3"/>
+    <circle cx="150" cy="18" r="4" fill="#c0392b"/>
+    <!-- Pillars (soko guru) -->
+    <rect x="90" y="85" width="10" height="37" fill="#9C6B3C"/>
+    <rect x="120" y="85" width="10" height="37" fill="#9C6B3C"/>
+    <rect x="170" y="85" width="10" height="37" fill="#9C6B3C"/>
+    <rect x="200" y="85" width="10" height="37" fill="#9C6B3C"/>
+    <!-- Door -->
+    <rect x="135" y="97" width="30" height="25" fill="#5D2A0E" rx="2"/>
+    <!-- Windows -->
+    <rect x="88" y="97" width="22" height="15" fill="#ffd27f" rx="2"/>
+    <rect x="190" y="97" width="22" height="15" fill="#ffd27f" rx="2"/>
+    <rect x="65" y="8" width="170" height="26" rx="13" fill="rgba(107,46,10,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">🏰 Rumah Joglo</text>
+  </svg>`,
+
+  tari_gambyong: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#2c1810"/>
+    <!-- Stage backdrop with batik pattern -->
+    <rect x="20" y="15" width="260" height="110" fill="#4a0e2a" opacity="0.7"/>
+    <!-- Dancer figure -->
+    <g transform="translate(150, 90)">
+      <!-- Flowing skirt -->
+      <path d="M-18,0 Q-30,30 -15,50 Q0,55 15,50 Q30,30 18,0Z" fill="#e74c3c" opacity="0.9"/>
+      <!-- Batik pattern on skirt -->
+      <path d="M-14,10 Q0,8 14,10 Q8,25 0,28 Q-8,25 -14,10Z" fill="#f39c12" opacity="0.6"/>
+      <!-- Body in kebaya -->
+      <rect x="-10" y="-30" width="20" height="32" fill="#27ae60" rx="4"/>
+      <!-- Arms in elegant pose (ngithing) -->
+      <path d="M-10,-15 Q-30,-30 -40,-25 Q-42,-20 -38,-18 Q-28,-24 -10,-10" fill="#f5c87a" stroke="none"/>
+      <path d="M10,-15 Q30,-30 40,-25 Q42,-20 38,-18 Q28,-24 10,-10" fill="#f5c87a" stroke="none"/>
+      <!-- Head with ornate headdress -->
+      <circle cx="0" cy="-42" r="12" fill="#f5c87a"/>
+      <!-- Sunduk mentul headdress -->
+      <rect x="-8" y="-56" width="16" height="6" fill="#f1c40f" rx="2"/>
+      <circle cx="-8" cy="-58" r="3" fill="#e74c3c"/>
+      <circle cx="0" cy="-60" r="4" fill="#f39c12"/>
+      <circle cx="8" cy="-58" r="3" fill="#e74c3c"/>
+    </g>
+    <!-- Stage lights -->
+    <circle cx="60" cy="20" r="15" fill="rgba(255,220,80,0.15)"/>
+    <circle cx="240" cy="20" r="15" fill="rgba(255,220,80,0.15)"/>
+    <!-- Floor reflection -->
+    <rect x="20" y="125" width="260" height="5" fill="rgba(231,76,60,0.2)"/>
+    <rect x="65" y="8" width="170" height="26" rx="13" fill="rgba(231,76,60,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">💃 Tari Gambyong</text>
+  </svg>`,
+
+  gudeg: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#fff8e8"/>
+    <!-- Banana leaf plate background -->
+    <ellipse cx="150" cy="110" rx="110" ry="35" fill="#27ae60" opacity="0.6"/>
+    <ellipse cx="150" cy="108" rx="100" ry="28" fill="#2ecc71" opacity="0.5"/>
+    <!-- Rice -->
+    <ellipse cx="110" cy="100" rx="38" ry="22" fill="#fffef0"/>
+    <ellipse cx="110" cy="97" rx="33" ry="17" fill="white"/>
+    <!-- Gudeg (jackfruit, brown) -->
+    <ellipse cx="175" cy="100" rx="42" ry="20" fill="#5d2c00"/>
+    <ellipse cx="175" cy="98" rx="37" ry="15" fill="#7a3b00"/>
+    <!-- Texture chunks -->
+    <ellipse cx="165" cy="95" rx="10" ry="7" fill="#5d2c00"/>
+    <ellipse cx="185" cy="97" rx="8" ry="6" fill="#5d2c00"/>
+    <ellipse cx="175" cy="102" rx="9" ry="6" fill="#5d2c00"/>
+    <!-- Egg (optional) -->
+    <ellipse cx="210" cy="95" rx="12" ry="16" fill="#f5c842"/>
+    <ellipse cx="210" cy="93" rx="8" ry="11" fill="#f39c12"/>
+    <!-- Opor/chicken piece -->
+    <path d="M120,88 Q135,80 140,88 Q143,96 135,98 Q127,97 120,88Z" fill="#f5deb3"/>
+    <!-- Steam -->
+    <path d="M110,75 Q107,65 110,57" stroke="#ccc" stroke-width="2" fill="none" opacity="0.6"/>
+    <path d="M175,75 Q172,65 175,57" stroke="#ccc" stroke-width="2" fill="none" opacity="0.6"/>
+    <rect x="70" y="8" width="160" height="26" rx="13" fill="rgba(93,44,0,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">🍛 Nasi Gudeg</text>
+  </svg>`,
+
+  candi_prambanan: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="sunsetG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF7043"/><stop offset="60%" stop-color="#FFCA28"/><stop offset="100%" stop-color="#8bc34a"/></linearGradient></defs>
+    <rect width="300" height="160" fill="url(#sunsetG)"/>
+    <!-- Ground -->
+    <rect x="0" y="130" width="300" height="30" fill="#558b2f"/>
+    <!-- Main central temple (tallest) -->
+    <g transform="translate(150,30)">
+      <!-- Base platforms -->
+      <rect x="-35" y="80" width="70" height="15" fill="#9e9e9e"/>
+      <rect x="-28" y="65" width="56" height="18" fill="#bdbdbd"/>
+      <rect x="-22" y="50" width="44" height="18" fill="#d4d4d4"/>
+      <!-- Tower body -->
+      <rect x="-18" y="20" width="36" height="33" fill="#bdbdbd"/>
+      <!-- Shikhara (pointed top) -->
+      <polygon points="-15,20 0,-20 15,20" fill="#9e9e9e"/>
+      <polygon points="-8,0 0,-25 8,0" fill="#757575"/>
+      <circle cx="0" cy="-28" r="4" fill="#ffd700"/>
+    </g>
+    <!-- Side temples -->
+    <g transform="translate(100,55)">
+      <rect x="-20" y="55" width="40" height="10" fill="#9e9e9e"/>
+      <rect x="-16" y="42" width="32" height="16" fill="#bdbdbd"/>
+      <rect x="-13" y="22" width="26" height="23" fill="#bdbdbd"/>
+      <polygon points="-10,22 0,-8 10,22" fill="#9e9e9e"/>
+      <circle cx="0" cy="-10" r="3" fill="#ffd700"/>
+    </g>
+    <g transform="translate(200,55)">
+      <rect x="-20" y="55" width="40" height="10" fill="#9e9e9e"/>
+      <rect x="-16" y="42" width="32" height="16" fill="#bdbdbd"/>
+      <rect x="-13" y="22" width="26" height="23" fill="#bdbdbd"/>
+      <polygon points="-10,22 0,-8 10,22" fill="#9e9e9e"/>
+      <circle cx="0" cy="-10" r="3" fill="#ffd700"/>
+    </g>
+    <rect x="50" y="8" width="200" height="26" rx="13" fill="rgba(100,50,0,0.8)"/>
+    <text x="150" y="26" text-anchor="middle" fill="#ffd700" font-size="13" font-weight="bold" font-family="sans-serif">🛕 Candi Prambanan</text>
+  </svg>`,
+
+  gamelan: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#2c1810"/>
+    <!-- Gamelan instruments spread out -->
+    <!-- Gong -->
+    <circle cx="60" cy="95" r="28" fill="#b8860b" stroke="#daa520" stroke-width="3"/>
+    <circle cx="60" cy="95" r="18" fill="#daa520"/>
+    <circle cx="60" cy="95" r="8" fill="#ffd700"/>
+    <!-- Kenong (pot gongs) -->
+    <ellipse cx="130" cy="105" rx="20" ry="10" fill="#9C6B3C" stroke="#c8914a" stroke-width="2"/>
+    <ellipse cx="130" cy="100" rx="16" ry="8" fill="#daa520"/>
+    <circle cx="130" cy="98" r="5" fill="#ffd700"/>
+    <ellipse cx="170" cy="105" rx="20" ry="10" fill="#9C6B3C" stroke="#c8914a" stroke-width="2"/>
+    <ellipse cx="170" cy="100" rx="16" ry="8" fill="#daa520"/>
+    <circle cx="170" cy="98" r="5" fill="#ffd700"/>
+    <!-- Saron (metallophone bars) -->
+    <rect x="205" y="80" width="70" height="14" fill="#8B4513" rx="3"/>
+    ${[0,1,2,3,4,5,6].map(i=>`<rect x="${207+i*9}" y="82" width="7" height="10" fill="#daa520" rx="1"/>`).join('')}
+    <!-- Mallet player arms -->
+    <path d="M230,76 Q235,60 240,55" stroke="#f5c87a" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="240" cy="54" r="4" fill="#f5c87a"/>
+    <!-- Kendang drum -->
+    <ellipse cx="60" cy="140" rx="35" ry="12" fill="#8B4513"/>
+    <rect x="25" y="128" width="70" height="12" fill="#5D2A0E" rx="6"/>
+    <!-- Decorative batik cloth -->
+    <rect x="22" y="128" width="76" height="4" fill="#e74c3c"/>
+    <rect x="65" y="8" width="170" height="26" rx="13" fill="rgba(184,134,11,0.9)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">🎶 Gamelan</text>
+  </svg>`,
+
+  // KALIMANTAN
+  suku_dayak: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#1a3a1a"/>
+    <!-- Jungle background -->
+    <rect x="0" y="100" width="300" height="60" fill="#2d5a1b"/>
+    <circle cx="30" cy="85" r="30" fill="#1a5c1a"/>
+    <circle cx="270" cy="80" r="35" fill="#1a5c1a"/>
+    <circle cx="50" cy="75" r="25" fill="#27ae60" opacity="0.7"/>
+    <circle cx="245" cy="70" r="28" fill="#27ae60" opacity="0.7"/>
+    <!-- Dayak warrior -->
+    <g transform="translate(150,90)">
+      <!-- Body with vest -->
+      <rect x="-14" y="-25" width="28" height="35" fill="#c0392b" rx="3"/>
+      <!-- Bead necklace & accessories -->
+      <rect x="-14" y="-22" width="28" height="4" fill="#f1c40f" rx="2"/>
+      <!-- Head -->
+      <circle cx="0" cy="-38" r="14" fill="#f5c87a"/>
+      <!-- Elaborate feather headdress -->
+      <path d="M-12,-50 Q-20,-70 -10,-80 Q-5,-60 0,-52" fill="#e74c3c"/>
+      <path d="M-5,-52 Q-5,-75 5,-82 Q8,-62 5,-52" fill="#f39c12"/>
+      <path d="M5,-52 Q15,-72 20,-78 Q12,-60 8,-52" fill="#27ae60"/>
+      <path d="M8,-52 Q25,-65 28,-70 Q18,-56 12,-52" fill="#3498db"/>
+      <!-- Mandau (weapon) -->
+      <line x1="20" y1="-20" x2="45" y2="-45" stroke="#808080" stroke-width="3"/>
+      <path d="M45,-45 Q52,-50 48,-42 Q43,-38 45,-45Z" fill="#a0a0a0"/>
+      <!-- Leg skirt -->
+      <rect x="-16" y="10" width="32" height="18" fill="#8B4513"/>
+    </g>
+    <rect x="65" y="8" width="170" height="26" rx="13" fill="rgba(192,57,43,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">⚔️ Suku Dayak</text>
+  </svg>`,
+
+  mandau: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#1a1a2e"/>
+    <!-- Display stand -->
+    <rect x="110" y="120" width="80" height="8" fill="#8B4513" rx="4"/>
+    <rect x="130" y="110" width="40" height="15" fill="#6B3410" rx="2"/>
+    <!-- Mandau blade - curved -->
+    <path d="M50,80 Q150,20 250,65 Q245,80 240,78 Q145,42 58,92Z" fill="#c0c0c0" stroke="#a0a0a0" stroke-width="1"/>
+    <!-- Blade fuller (groove) -->
+    <path d="M75,78 Q160,38 230,68" stroke="#9a9a9a" stroke-width="1.5" fill="none"/>
+    <!-- Blade edge sheen -->
+    <path d="M52,80 Q150,22 248,66" stroke="white" stroke-width="1" fill="none" opacity="0.6"/>
+    <!-- Handle (hulu) -->
+    <path d="M240,78 Q260,75 268,82 Q265,95 255,95 Q245,90 240,92 Q238,85 240,78Z" fill="#8B4513"/>
+    <!-- Handle wrap/rattan -->
+    ${[0,1,2,3,4].map(i=>`<line x1="${243+i*4}" y1="79" x2="${242+i*4}" y2="91" stroke="#5D2A0E" stroke-width="2"/>`).join('')}
+    <!-- Feather decoration on handle -->
+    <path d="M265,80 Q278,70 285,62 Q278,74 272,80" fill="#e74c3c" opacity="0.9"/>
+    <path d="M265,82 Q280,75 288,68 Q280,78 272,83" fill="#f39c12" opacity="0.8"/>
+    <!-- Scabbard (sarung) -->
+    <path d="M45,90 Q50,82 58,92 L50,130 Q45,132 42,128 Z" fill="#8B4513"/>
+    <!-- Carving on scabbard -->
+    <path d="M46,100 Q50,95 54,100 Q50,105 46,100Z" fill="#f1c40f" opacity="0.7"/>
+    <path d="M46,112 Q50,107 54,112 Q50,117 46,112Z" fill="#f1c40f" opacity="0.7"/>
+    <rect x="65" y="8" width="170" height="26" rx="13" fill="rgba(139,69,19,0.9)"/>
+    <text x="150" y="26" text-anchor="middle" fill="#f1c40f" font-size="13" font-weight="bold" font-family="sans-serif">⚔️ Mandau Dayak</text>
+  </svg>`,
+
+  rumah_betang: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#87CEEB"/>
+    <!-- Sky and jungle bg -->
+    <circle cx="40" cy="100" r="35" fill="#27ae60" opacity="0.5"/>
+    <circle cx="260" cy="95" r="40" fill="#27ae60" opacity="0.5"/>
+    <!-- River below house -->
+    <rect x="0" y="130" width="300" height="30" fill="#4fc3f7"/>
+    <!-- Longhouse on stilts -->
+    <!-- Stilts -->
+    ${[35,65,95,125,155,185,215,245].map(x=>`<rect x="${x}" y="100" width="8" height="35" fill="#5D2A0E"/>`).join('')}
+    <!-- Main house body (very long) -->
+    <rect x="25" y="68" width="250" height="38" fill="#deb887"/>
+    <!-- Roof -->
+    <polygon points="15,70 150,38 285,70" fill="#8B4513"/>
+    <polygon points="25,70 150,45 275,70" fill="#A0522D"/>
+    <!-- Roof peak ornament (cross) -->
+    <line x1="150" y1="43" x2="150" y2="25" stroke="#c0392b" stroke-width="3"/>
+    <line x1="140" y1="30" x2="160" y2="30" stroke="#c0392b" stroke-width="3"/>
+    <!-- Windows/doors (repeating) -->
+    ${[50,100,150,200].map(x=>`<rect x="${x}" y="80" width="18" height="20" fill="#ffd27f" rx="2"/>`).join('')}
+    <rect x="138" y="80" width="24" height="26" fill="#5D2A0E" rx="2"/>
+    <!-- People on veranda -->
+    ${[40,80,210,250].map(x=>`<circle cx="${x+4}" cy="72" r="5" fill="#f5c87a"/><rect x="${x}" y="76" width="10" height="14" fill="#e74c3c" rx="2"/>`).join('')}
+    <rect x="40" y="8" width="220" height="26" rx="13" fill="rgba(139,69,19,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">🏘️ Rumah Betang</text>
+  </svg>`,
+
+  orangutan: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#1a4a1a"/>
+    <!-- Jungle canopy -->
+    <circle cx="60" cy="50" r="50" fill="#2e7d32"/>
+    <circle cx="150" cy="30" r="60" fill="#388e3c"/>
+    <circle cx="240" cy="50" r="50" fill="#2e7d32"/>
+    <circle cx="100" cy="60" r="40" fill="#43a047"/>
+    <circle cx="200" cy="55" r="45" fill="#43a047"/>
+    <!-- Branch -->
+    <path d="M40,90 Q150,70 260,90" stroke="#5D2A0E" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <path d="M40,90 Q150,70 260,90" stroke="#8B4513" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <!-- Orangutan body -->
+    <g transform="translate(150,88)">
+      <!-- Long arms hanging from branch -->
+      <path d="M-22,0 Q-45,-8 -50,-18" stroke="#c47a3a" stroke-width="10" fill="none" stroke-linecap="round"/>
+      <path d="M22,0 Q45,-8 50,-18" stroke="#c47a3a" stroke-width="10" fill="none" stroke-linecap="round"/>
+      <!-- Hands on branch -->
+      <circle cx="-50" cy="-18" r="6" fill="#8B4513"/>
+      <circle cx="50" cy="-18" r="6" fill="#8B4513"/>
+      <!-- Body -->
+      <ellipse cx="0" cy="15" rx="22" ry="25" fill="#c47a3a"/>
+      <!-- Head -->
+      <circle cx="0" cy="-8" r="22" fill="#c47a3a"/>
+      <!-- Face disc (cheek pads) -->
+      <ellipse cx="-14" cy="-5" rx="8" ry="12" fill="#d4892a" opacity="0.7"/>
+      <ellipse cx="14" cy="-5" rx="8" ry="12" fill="#d4892a" opacity="0.7"/>
+      <!-- Face features -->
+      <circle cx="-6" cy="-10" r="4" fill="#2c1810"/>
+      <circle cx="6" cy="-10" r="4" fill="#2c1810"/>
+      <circle cx="-4" cy="-11" r="1.5" fill="white"/>
+      <circle cx="4" cy="-11" r="1.5" fill="white"/>
+      <!-- Nose -->
+      <ellipse cx="0" cy="-2" rx="5" ry="4" fill="#8B4513"/>
+      <!-- Mouth smile -->
+      <path d="M-6,6 Q0,12 6,6" stroke="#2c1810" stroke-width="2" fill="none"/>
+    </g>
+    <rect x="60" y="8" width="180" height="26" rx="13" fill="rgba(46,125,50,0.9)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">🦧 Orangutan Borneo</text>
+  </svg>`,
+
+  banjarmasin: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="rG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4fc3f7"/><stop offset="100%" stop-color="#0277bd"/></linearGradient></defs>
+    <rect width="300" height="160" fill="#87CEEB"/>
+    <!-- Water everywhere -->
+    <rect x="0" y="90" width="300" height="70" fill="url(#rG)"/>
+    <!-- Small waves -->
+    <path d="M0,95 Q30,88 60,95 Q90,102 120,95 Q150,88 180,95 Q210,102 240,95 Q270,88 300,95" stroke="white" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <!-- Floating market boats -->
+    <!-- Boat 1 with produce -->
+    <path d="M20,110 Q50,103 80,110 Q50,120 20,110Z" fill="#8B4513"/>
+    <rect x="30" y="100" width="40" height="12" fill="#654321"/>
+    <!-- Colorful produce on boat -->
+    <circle cx="38" cy="99" r="4" fill="#e74c3c"/>
+    <circle cx="48" cy="97" r="5" fill="#f39c12"/>
+    <circle cx="58" cy="99" r="4" fill="#27ae60"/>
+    <circle cx="65" cy="98" r="3" fill="#f1c40f"/>
+    <!-- Vendor hat -->
+    <ellipse cx="50" cy="93" rx="10" ry="4" fill="#c8914a"/>
+    <circle cx="50" cy="90" r="4" fill="#f5c87a"/>
+    <!-- Boat 2 -->
+    <path d="M160,115 Q195,107 230,115 Q195,126 160,115Z" fill="#5D2A0E"/>
+    <rect x="172" y="104" width="46" height="13" fill="#6B3410"/>
+    <circle cx="182" cy="103" r="4" fill="#ff6b6b"/>
+    <circle cx="193" cy="101" r="5" fill="#feca57"/>
+    <circle cx="204" cy="103" r="4" fill="#54a0ff"/>
+    <!-- Vendor -->
+    <circle cx="195" cy="97" r="5" fill="#f5c87a"/>
+    <ellipse cx="195" cy="93" rx="8" ry="3" fill="#c8914a"/>
+    <!-- Buildings on stilts -->
+    <rect x="100" y="60" width="35" height="35" fill="#deb887"/>
+    <polygon points="98,62 117,42 136,62" fill="#8B4513"/>
+    <rect x="107" y="72" width="12" height="18" fill="#5D2A0E" rx="1"/>
+    <!-- Stilts in water -->
+    <rect x="104" y="93" width="5" height="20" fill="#5D2A0E"/>
+    <rect x="128" y="93" width="5" height="20" fill="#5D2A0E"/>
+    <rect x="60" y="8" width="180" height="26" rx="13" fill="rgba(2,119,189,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">🛶 Pasar Terapung</text>
+  </svg>`,
+
+  tari_kancet: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#0d2b1a"/>
+    <circle cx="50" cy="40" r="35" fill="#1a4a22" opacity="0.6"/>
+    <circle cx="250" cy="40" r="35" fill="#1a4a22" opacity="0.6"/>
+    <!-- Warrior dancer -->
+    <g transform="translate(150,90)">
+      <!-- Shield (perisai) -->
+      <path d="M-45,-10 Q-50,10 -45,30 Q-35,40 -30,30 Q-25,10 -30,-10Z" fill="#8B4513" stroke="#f1c40f" stroke-width="1.5"/>
+      <!-- Shield pattern -->
+      <path d="M-43,0 Q-38,-5 -33,0 Q-38,5 -43,0Z" fill="#f1c40f"/>
+      <path d="M-43,15 Q-38,10 -33,15 Q-38,20 -43,15Z" fill="#e74c3c"/>
+      <!-- Body in warrior pose -->
+      <rect x="-12" y="-28" width="24" height="38" fill="#c0392b" rx="3"/>
+      <!-- War pattern vest -->
+      <path d="M-12,-20 Q0,-24 12,-20 Q8,-14 0,-12 Q-8,-14 -12,-20Z" fill="#f39c12"/>
+      <!-- Head with war headdress -->
+      <circle cx="0" cy="-42" r="13" fill="#f5c87a"/>
+      <!-- Bulu burung (feather crown) -->
+      <path d="M-10,-54 Q-15,-70 -5,-78 Q-2,-62 0,-54" fill="#27ae60"/>
+      <path d="M0,-55 Q0,-72 8,-78 Q8,-62 5,-55" fill="#e74c3c"/>
+      <path d="M5,-54 Q15,-68 20,-72 Q14,-58 8,-54" fill="#f39c12"/>
+      <!-- Mandau raised -->
+      <line x1="30" y1="-25" x2="55" y2="-55" stroke="#c0c0c0" stroke-width="4"/>
+      <path d="M55,-55 Q62,-60 58,-50 Q52,-45 55,-55Z" fill="#d0d0d0"/>
+      <!-- Legs in battle stance -->
+      <line x1="-6" y1="10" x2="-15" y2="38" stroke="#f5c87a" stroke-width="5" stroke-linecap="round"/>
+      <line x1="6" y1="10" x2="18" y2="38" stroke="#f5c87a" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <rect x="45" y="8" width="210" height="26" rx="13" fill="rgba(192,57,43,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">⚔️ Tari Kancet Papatai</text>
+  </svg>`,
+
+  soto_banjar: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#fffaf0"/>
+    <!-- Bowl of soto -->
+    <ellipse cx="150" cy="120" rx="90" ry="25" fill="#deb887"/>
+    <ellipse cx="150" cy="115" rx="82" ry="20" fill="#c8914a"/>
+    <!-- Broth (clear golden) -->
+    <ellipse cx="150" cy="110" rx="72" ry="17" fill="#f1c40f" opacity="0.8"/>
+    <!-- Contents in bowl -->
+    <!-- Vermicelli/noodles -->
+    <path d="M108,108 Q125,103 140,108 Q155,113 170,108 Q185,103 198,108" stroke="white" stroke-width="2" fill="none"/>
+    <path d="M112,112 Q128,107 143,112 Q158,117 173,112" stroke="white" stroke-width="2" fill="none" opacity="0.7"/>
+    <!-- Chicken pieces -->
+    <path d="M120,106 Q130,100 140,106 Q135,112 120,106Z" fill="#f5deb3"/>
+    <!-- Egg half -->
+    <ellipse cx="175" cy="107" rx="12" ry="8" fill="#f5c842"/>
+    <ellipse cx="175" cy="106" rx="6" ry="5" fill="#f39c12"/>
+    <!-- Herbs garnish -->
+    <path d="M155,100 Q160,96 165,100 Q160,104 155,100Z" fill="#27ae60"/>
+    <path d="M140,99 Q145,95 148,99" fill="#27ae60"/>
+    <!-- Ketupat (rice cake) beside bowl -->
+    <path d="M55,95 Q65,80 80,95 Q75,115 65,112 Q50,110 55,95Z" fill="#deb887" stroke="#c8914a" stroke-width="2"/>
+    <!-- Diamond weave pattern on ketupat -->
+    <line x1="60" y1="93" x2="75" y2="93" stroke="#c8914a" stroke-width="1"/>
+    <line x1="58" y1="100" x2="78" y2="100" stroke="#c8914a" stroke-width="1"/>
+    <line x1="60" y1="107" x2="77" y2="107" stroke="#c8914a" stroke-width="1"/>
+    <line x1="64" y1="86" x2="69" y2="113" stroke="#c8914a" stroke-width="1"/>
+    <line x1="72" y1="84" x2="76" y2="113" stroke="#c8914a" stroke-width="1"/>
+    <!-- Steam -->
+    <path d="M148,88 Q145,78 148,70" stroke="#ccc" stroke-width="2" fill="none" opacity="0.6"/>
+    <path d="M158,86 Q155,76 158,68" stroke="#ccc" stroke-width="2" fill="none" opacity="0.6"/>
+    <rect x="70" y="8" width="160" height="26" rx="13" fill="rgba(200,145,74,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">🍜 Soto Banjar</text>
+  </svg>`,
+
+  // SULAWESI
+  perahu_pinisi: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="oceanG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1565C0"/><stop offset="100%" stop-color="#0d47a1"/></linearGradient></defs>
+    <rect width="300" height="160" fill="#87CEEB"/>
+    <!-- Ocean -->
+    <rect x="0" y="95" width="300" height="65" fill="url(#oceanG)"/>
+    <!-- Wave lines -->
+    <path d="M0,100 Q40,93 80,100 Q120,107 160,100 Q200,93 240,100 Q270,107 300,100" stroke="rgba(255,255,255,0.4)" stroke-width="2" fill="none"/>
+    <!-- Pinisi hull -->
+    <path d="M45,100 Q150,80 255,100 Q240,120 150,122 Q60,120 45,100Z" fill="#5D2A0E"/>
+    <path d="M50,100 Q150,83 250,100 Q235,115 150,117 Q65,115 50,100Z" fill="#8B4513"/>
+    <!-- Wooden planks details -->
+    <path d="M80,98 Q150,85 220,98" stroke="#6B3410" stroke-width="1" fill="none"/>
+    <path d="M70,104 Q150,92 230,104" stroke="#6B3410" stroke-width="1" fill="none"/>
+    <!-- Main mast -->
+    <line x1="150" y1="100" x2="150" y2="25" stroke="#5D2A0E" stroke-width="5"/>
+    <!-- Fore mast -->
+    <line x1="100" y1="98" x2="100" y2="38" stroke="#5D2A0E" stroke-width="4"/>
+    <!-- Sails (layar) -->
+    <path d="M150,27 Q185,45 180,80 Q160,65 150,100Z" fill="white" opacity="0.9"/>
+    <path d="M150,27 Q115,45 120,80 Q140,65 150,100Z" fill="#f5f5f5" opacity="0.8"/>
+    <path d="M100,40 Q128,52 125,80 Q110,68 100,98Z" fill="white" opacity="0.85"/>
+    <!-- Sail decoration -->
+    <path d="M155,35 Q175,50 172,72" stroke="#e74c3c" stroke-width="1.5" fill="none"/>
+    <!-- Flag on top -->
+    <path d="M150,25 Q162,20 158,28 Q150,30 150,25Z" fill="#e74c3c"/>
+    <!-- Clouds -->
+    <ellipse cx="60" cy="22" rx="28" ry="12" fill="white" opacity="0.8"/>
+    <ellipse cx="245" cy="18" rx="22" ry="10" fill="white" opacity="0.7"/>
+    <rect x="60" y="8" width="180" height="26" rx="13" fill="rgba(13,71,161,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">⛵ Perahu Pinisi</text>
+  </svg>`,
+
+  rambu_solo: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#1a1a2e"/>
+    <!-- Night sky (torajan ceremony often at night) -->
+    <circle cx="240" cy="25" r="15" fill="#ffd700" opacity="0.8"/>
+    ${Array.from({length:15},(_,i)=>`<circle cx="${Math.sin(i*37)*130+150}" cy="${Math.cos(i*37)*40+35}" r="1.5" fill="white" opacity="0.7"/>`).join('')}
+    <!-- Tongkonan houses background -->
+    <g transform="translate(30,80)">
+      <rect x="0" y="30" width="50" height="25" fill="#8B4513"/>
+      <path d="M-5,32 Q25,8 55,32" fill="#5D2A0E"/>
+      <path d="M0,32 Q25,12 50,32" fill="#6B3410"/>
+    </g>
+    <g transform="translate(220,75)">
+      <rect x="0" y="30" width="55" height="28" fill="#8B4513"/>
+      <path d="M-5,32 Q27,5 60,32" fill="#5D2A0E"/>
+    </g>
+    <!-- Ceremony crowd (silhouettes) -->
+    ${[60,80,100,120,140,160,180,200,220,240].map(x=>`
+    <rect x="${x}" y="128" width="8" height="${18+Math.sin(x)*5}" fill="#2c1810" rx="4"/>
+    <circle cx="${x+4}" cy="${125}" r="5" fill="#2c1810"/>`).join('')}
+    <!-- Torch lights -->
+    ${[50,150,250].map(x=>`
+    <line x1="${x}" y1="110" x2="${x}" y2="80" stroke="#8B4513" stroke-width="3"/>
+    <circle cx="${x}" cy="77" r="8" fill="#f39c12" opacity="0.9"/>
+    <circle cx="${x}" cy="77" r="4" fill="#f1c40f"/>
+    <ellipse cx="${x}" cy="73" rx="4" ry="8" fill="#ff6b00" opacity="0.5"/>`).join('')}
+    <!-- Buffalo (kerbau) - important in ceremony -->
+    <g transform="translate(148,118)">
+      <ellipse cx="0" cy="0" rx="22" ry="12" fill="#4a3728"/>
+      <circle cx="20" cy="-5" r="10" fill="#4a3728"/>
+      <!-- Horns -->
+      <path d="M14,-12 Q8,-22 16,-24 Q20,-16 14,-12" fill="#2c1810"/>
+      <path d="M26,-12 Q32,-22 24,-24 Q20,-16 26,-12" fill="#2c1810"/>
+      <!-- Eye -->
+      <circle cx="24" cy="-6" r="2" fill="#f5c842"/>
+    </g>
+    <rect x="60" y="8" width="180" height="26" rx="13" fill="rgba(139,69,19,0.9)"/>
+    <text x="150" y="26" text-anchor="middle" fill="#ffd700" font-size="13" font-weight="bold" font-family="sans-serif">🎺 Rambu Solo Toraja</text>
+  </svg>`,
+
+  bunaken: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="seaDepth" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00bcd4"/><stop offset="50%" stop-color="#006064"/><stop offset="100%" stop-color="#002b2e"/></linearGradient>
+    </defs>
+    <rect width="300" height="160" fill="url(#seaDepth)"/>
+    <!-- Light rays from above -->
+    <path d="M80,0 L110,80 L120,80 L100,0Z" fill="rgba(255,255,255,0.06)"/>
+    <path d="M140,0 L160,80 L170,80 L155,0Z" fill="rgba(255,255,255,0.06)"/>
+    <path d="M200,0 L215,80 L225,80 L215,0Z" fill="rgba(255,255,255,0.06)"/>
+    <!-- Coral reef -->
+    <!-- Brain coral -->
+    <ellipse cx="60" cy="140" rx="30" ry="18" fill="#e57373"/>
+    <path d="M35,138 Q45,130 55,138 Q65,130 75,138 Q70,148 55,150 Q40,148 35,138Z" fill="#ef9a9a"/>
+    <!-- Staghorn coral -->
+    <path d="M130,155 Q125,130 120,115 Q128,125 135,115 Q140,125 142,130 Q148,120 145,108 Q155,120 150,130 Q155,118 162,110 Q163,125 158,135 Q160,128 170,125 Q168,140 155,148Z" fill="#ff8a65"/>
+    <!-- Sea anemone -->
+    <circle cx="230" cy="145" r="12" fill="#ab47bc"/>
+    ${[0,45,90,135,180,225,270,315].map(a=>`<path d="M230,145 Q${230+20*Math.cos(a*Math.PI/180)},${145+20*Math.sin(a*Math.PI/180)} ${230+28*Math.cos(a*Math.PI/180)},${145+28*Math.sin(a*Math.PI/180)}" stroke="#ce93d8" stroke-width="3" fill="none" stroke-linecap="round"/>`).join('')}
+    <!-- Clownfish (Nemo) -->
+    <ellipse cx="90" cy="105" rx="12" ry="8" fill="#ff5722"/>
+    <line x1="84" y1="100" x2="84" y2="112" stroke="white" stroke-width="2"/>
+    <line x1="91" y1="98" x2="91" y2="113" stroke="white" stroke-width="2"/>
+    <circle cx="96" cy="103" r="3" fill="#1a1a1a"/>
+    <!-- Tropical fish -->
+    <ellipse cx="180" cy="80" rx="14" ry="9" fill="#ffee58"/>
+    <path d="M166,80 Q158,73 158,87Z" fill="#fdd835"/>
+    <circle cx="186" cy="79" r="3" fill="#1a1a1a"/>
+    <!-- Turtle -->
+    <ellipse cx="200" cy="50" rx="20" ry="14" fill="#4caf50"/>
+    <ellipse cx="200" cy="49" rx="14" ry="10" fill="#81c784"/>
+    <circle cx="215" cy="48" r="6" fill="#4caf50"/>
+    <!-- Bubbles -->
+    ${[95,185,205].map(x=>`<circle cx="${x}" cy="60" r="3" fill="rgba(255,255,255,0.4)"/>
+    <circle cx="${x+8}" cy="40" r="2" fill="rgba(255,255,255,0.3)"/>`).join('')}
+    <rect x="65" y="8" width="170" height="26" rx="13" fill="rgba(0,96,100,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">🐠 Taman Bunaken</text>
+  </svg>`,
+
+  tinutuan: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#f0ffe8"/>
+    <!-- Big bowl -->
+    <ellipse cx="150" cy="128" rx="95" ry="28" fill="#c8914a"/>
+    <ellipse cx="150" cy="124" rx="86" ry="22" fill="#deb887"/>
+    <!-- Porridge/bubur inside -->
+    <ellipse cx="150" cy="118" rx="76" ry="18" fill="#fff9e6"/>
+    <ellipse cx="150" cy="116" rx="68" ry="14" fill="#fffef5"/>
+    <!-- Corn kernels -->
+    ${[115,130,145,160,175].map(x=>`<ellipse cx="${x}" cy="115" rx="5" ry="4" fill="#ffd700"/>`).join('')}
+    <!-- Spinach/leafy greens -->
+    <path d="M95,113 Q105,105 115,113 Q108,120 95,113Z" fill="#27ae60"/>
+    <path d="M180,112 Q192,104 200,112 Q193,120 180,112Z" fill="#27ae60"/>
+    <path d="M155,108 Q165,102 170,108 Q163,114 155,108Z" fill="#2ecc71"/>
+    <!-- Sweet potato -->
+    <ellipse cx="130" cy="114" rx="8" ry="5" fill="#ff7043"/>
+    <!-- Water spinach / kangkung -->
+    <path d="M100,110 Q112,106 118,112 Q110,117 100,110Z" fill="#55a14a"/>
+    <!-- Garnish (fried shallots) -->
+    <circle cx="145" cy="107" r="4" fill="#daa520"/>
+    <circle cx="155" cy="106" r="3" fill="#c8960c"/>
+    <circle cx="162" cy="108" r="4" fill="#daa520"/>
+    <!-- Crackers on side -->
+    <rect x="55" y="95" width="28" height="28" fill="#fffef0" stroke="#daa520" stroke-width="2" rx="3"/>
+    <line x1="55" y1="102" x2="83" y2="102" stroke="#daa520" stroke-width="1"/>
+    <line x1="55" y1="109" x2="83" y2="109" stroke="#daa520" stroke-width="1"/>
+    <line x1="55" y1="116" x2="83" y2="116" stroke="#daa520" stroke-width="1"/>
+    <line x1="62" y1="95" x2="62" y2="123" stroke="#daa520" stroke-width="1"/>
+    <line x1="69" y1="95" x2="69" y2="123" stroke="#daa520" stroke-width="1"/>
+    <line x1="76" y1="95" x2="76" y2="123" stroke="#daa520" stroke-width="1"/>
+    <!-- Steam -->
+    <path d="M148,92 Q145,82 148,74" stroke="#ccc" stroke-width="2" fill="none" opacity="0.6"/>
+    <path d="M157,90 Q154,80 157,72" stroke="#ccc" stroke-width="2" fill="none" opacity="0.6"/>
+    <rect x="70" y="8" width="160" height="26" rx="13" fill="rgba(39,174,96,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">🥣 Tinutuan (Bubur Manado)</text>
+  </svg>`,
+
+  suku_bugis: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="seaG2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1e90ff"/><stop offset="100%" stop-color="#0055aa"/></linearGradient></defs>
+    <rect width="300" height="100" fill="#87CEEB"/>
+    <rect x="0" y="100" width="300" height="60" fill="url(#seaG2)"/>
+    <!-- Sun on horizon -->
+    <circle cx="150" cy="98" r="20" fill="#ff9800" opacity="0.9"/>
+    <path d="M0,98 Q75,85 150,98 Q225,85 300,98" fill="rgba(255,150,0,0.15)"/>
+    <!-- Pinisi ship sailing -->
+    <path d="M60,105 Q150,92 240,105 Q225,118 150,120 Q75,118 60,105Z" fill="#5D2A0E"/>
+    <line x1="150" y1="105" x2="150" y2="50" stroke="#4a2000" stroke-width="4"/>
+    <line x1="105" y1="102" x2="105" y2="55" stroke="#4a2000" stroke-width="3"/>
+    <path d="M150,52 Q178,65 175,90 Q160,75 150,105Z" fill="rgba(255,255,255,0.9)"/>
+    <path d="M150,52 Q122,65 125,90 Q140,75 150,105Z" fill="rgba(240,240,240,0.85)"/>
+    <path d="M105,57 Q128,68 126,90 Q113,76 105,102Z" fill="rgba(255,255,255,0.85)"/>
+    <!-- Bugis sailor figure -->
+    <circle cx="150" cy="88" r="7" fill="#f5c87a"/>
+    <rect x="144" y="94" width="12" height="14" fill="#c0392b"/>
+    <!-- Waves -->
+    <path d="M0,112 Q30,105 60,112 Q90,119 120,112 Q150,105 180,112 Q210,119 240,112 Q270,105 300,112" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
+    <rect x="55" y="8" width="190" height="26" rx="13" fill="rgba(0,85,170,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">⚓ Pelaut Bugis</text>
+  </svg>`,
+
+  kolintang: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#2c1810"/>
+    <!-- Instrument frame/resonator box -->
+    <rect x="30" y="80" width="240" height="50" fill="#8B4513" rx="5"/>
+    <!-- Carving on frame -->
+    <path d="M30,88 Q45,80 60,88 Q75,96 90,88 Q105,80 120,88" stroke="#c8914a" stroke-width="2" fill="none"/>
+    <path d="M180,88 Q195,80 210,88 Q225,96 240,88 Q255,80 270,88" stroke="#c8914a" stroke-width="2" fill="none"/>
+    <!-- Bamboo/wooden bars (graduated sizes) -->
+    ${[
+      {x:42,w:18,h:52,c:'#daa520'},{x:65,w:18,h:49,c:'#c8960c'},{x:88,w:18,h:46,c:'#daa520'},
+      {x:111,w:18,h:43,c:'#c8960c'},{x:134,w:18,h:40,c:'#daa520'},{x:157,w:18,h:37,c:'#c8960c'},
+      {x:180,w:18,h:34,c:'#daa520'},{x:203,w:18,h:31,c:'#c8960c'},{x:226,w:18,h:28,c:'#daa520'},
+      {x:249,w:18,h:25,c:'#c8960c'}
+    ].map(b=>`<rect x="${b.x}" y="${130-b.h}" width="${b.w}" height="${b.h}" fill="${b.c}" rx="3" stroke="#9C6B3C" stroke-width="1"/>`).join('')}
+    <!-- Mallets (2 players) -->
+    <!-- Left player mallet -->
+    <line x1="80" y1="70" x2="65" y2="95" stroke="#8B4513" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="80" cy="70" r="6" fill="#c8914a"/>
+    <line x1="170" y1="68" x2="155" y2="90" stroke="#8B4513" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="170" cy="68" r="6" fill="#c8914a"/>
+    <!-- Right player mallets -->
+    <line x1="210" y1="65" x2="200" y2="90" stroke="#8B4513" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="210" cy="65" r="6" fill="#c8914a"/>
+    <line x1="235" y1="68" x2="248" y2="92" stroke="#8B4513" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="235" cy="68" r="6" fill="#c8914a"/>
+    <!-- Player hands/silhouette -->
+    <path d="M65,55 Q78,45 90,55" stroke="#f5c87a" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <circle cx="65" cy="55" r="5" fill="#f5c87a"/>
+    <circle cx="90" cy="55" r="5" fill="#f5c87a"/>
+    <!-- Music notes -->
+    <text x="30" y="45" font-size="18" opacity="0.8">♪</text>
+    <text x="240" y="45" font-size="16" opacity="0.7">♫</text>
+    <rect x="65" y="8" width="170" height="26" rx="13" fill="rgba(184,134,11,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">🎵 Kolintang</text>
+  </svg>`,
+
+  tongkonan: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#e8f4e8"/>
+    <!-- Mountain background -->
+    <polygon points="0,100 80,40 160,100" fill="#4a7a2c" opacity="0.4"/>
+    <polygon points="140,100 220,35 300,100" fill="#5a8a3c" opacity="0.4"/>
+    <!-- Ground -->
+    <rect x="0" y="118" width="300" height="42" fill="#7ec850"/>
+    <!-- Buffalo skulls decoration (row of them) -->
+    ${[60,90,120,150,180,210].map(x=>`<circle cx="${x}" cy="116" r="6" fill="#e8e0d0" stroke="#c0b8a8" stroke-width="1"/>
+    <path d="M${x-7},116 Q${x-10},112 ${x-6},110" stroke="#c0b8a8" stroke-width="2" fill="none"/>
+    <path d="M${x+7},116 Q${x+10},112 ${x+6},110" stroke="#c0b8a8" stroke-width="2" fill="none"/>`).join('')}
+    <!-- Main house body -->
+    <rect x="55" y="90" width="190" height="30" fill="#deb887"/>
+    <!-- Ornate carvings on wall -->
+    ${[70,100,130,160,190,220].map(x=>`<path d="M${x},90 Q${x+8},82 ${x+16},90 Q${x+8},98 ${x},90Z" fill="#e74c3c" opacity="0.6"/>`).join('')}
+    <!-- Iconic curved boat-shaped roof -->
+    <path d="M30,90 Q150,45 270,90" fill="#c0392b" stroke="#922b21" stroke-width="2"/>
+    <path d="M40,90 Q150,52 260,90" fill="#e74c3c"/>
+    <!-- Roof overhang decorations -->
+    <path d="M30,90 Q20,96 25,100 Q32,96 40,90" fill="#c0392b"/>
+    <path d="M270,90 Q280,96 275,100 Q268,96 260,90" fill="#c0392b"/>
+    <!-- Pa'tedong buffalo carving at gable -->
+    <circle cx="150" cy="65" r="12" fill="#f1c40f" opacity="0.8"/>
+    <!-- Colorful patterns on roof ridge -->
+    ${[80,100,120,140,160,180,200].map(x=>`<circle cx="${x}" cy="60" r="3" fill="#f1c40f"/>`).join('')}
+    <rect x="60" y="8" width="180" height="26" rx="13" fill="rgba(192,57,43,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">🏠 Rumah Tongkonan</text>
+  </svg>`,
+
+  // PAPUA
+  tifa: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#1a2a1a"/>
+    <!-- Jungle night -->
+    <circle cx="50" cy="80" r="40" fill="#1a4a1a" opacity="0.6"/>
+    <circle cx="250" cy="85" r="45" fill="#1a4a1a" opacity="0.6"/>
+    <!-- Central tall tifa drum -->
+    <g transform="translate(150,80)">
+      <!-- Drum body (cylindrical, slightly tapered) -->
+      <path d="M-14,50 Q-18,0 -14,-55 Q0,-60 14,-55 Q18,0 14,50Z" fill="#8B4513"/>
+      <path d="M-13,48 Q-16,0 -13,-53 Q0,-57 13,-53 Q16,0 13,48Z" fill="#9C6B3C"/>
+      <!-- Lizard skin head on top -->
+      <ellipse cx="0" cy="-54" rx="14" ry="6" fill="#c8914a"/>
+      <!-- Carved patterns -->
+      <path d="M-10,-30 Q0,-35 10,-30 Q5,-22 0,-20 Q-5,-22 -10,-30Z" fill="#e74c3c" opacity="0.7"/>
+      <path d="M-10,-10 Q0,-15 10,-10 Q5,-2 0,0 Q-5,-2 -10,-10Z" fill="#f39c12" opacity="0.7"/>
+      <path d="M-10,10 Q0,5 10,10 Q5,18 0,20 Q-5,18 -10,10Z" fill="#27ae60" opacity="0.7"/>
+      <!-- Bottom base -->
+      <ellipse cx="0" cy="50" rx="14" ry="6" fill="#6B3410"/>
+    </g>
+    <!-- Side drums -->
+    <g transform="translate(90,100)">
+      <path d="M-10,30 Q-13,0 -10,-35 Q0,-38 10,-35 Q13,0 10,30Z" fill="#8B4513"/>
+      <ellipse cx="0" cy="-35" rx="10" ry="4" fill="#c8914a"/>
+      <ellipse cx="0" cy="30" rx="10" ry="4" fill="#6B3410"/>
+    </g>
+    <g transform="translate(210,100)">
+      <path d="M-10,30 Q-13,0 -10,-35 Q0,-38 10,-35 Q13,0 10,30Z" fill="#8B4513"/>
+      <ellipse cx="0" cy="-35" rx="10" ry="4" fill="#c8914a"/>
+      <ellipse cx="0" cy="30" rx="10" ry="4" fill="#6B3410"/>
+    </g>
+    <!-- Drummer's hands -->
+    <path d="M125,42 Q135,30 148,38" stroke="#f5c87a" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M175,42 Q165,30 152,38" stroke="#f5c87a" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <!-- Sound waves -->
+    <path d="M175,80 Q190,75 195,80 Q190,85 175,80" stroke="#f1c40f" stroke-width="1.5" fill="rgba(241,196,15,0.2)"/>
+    <path d="M185,72 Q205,65 213,72 Q205,80 185,72" stroke="#f1c40f" stroke-width="1" fill="none" opacity="0.5"/>
+    <rect x="70" y="8" width="160" height="26" rx="13" fill="rgba(139,69,19,0.9)"/>
+    <text x="150" y="26" text-anchor="middle" fill="#ffd700" font-size="13" font-weight="bold" font-family="sans-serif">🥁 Tifa Papua</text>
+  </svg>`,
+
+  cendrawasih: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#1a2a10"/>
+    <!-- Tropical foliage background -->
+    <circle cx="30" cy="60" r="40" fill="#1a5c1a" opacity="0.8"/>
+    <circle cx="270" cy="55" r="45" fill="#1a5c1a" opacity="0.8"/>
+    <circle cx="150" cy="30" r="35" fill="#27ae60" opacity="0.3"/>
+    <!-- Branch -->
+    <path d="M40,95 Q120,80 200,90 Q240,88 280,95" stroke="#5D2A0E" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <path d="M40,95 Q120,80 200,90 Q240,88 280,95" stroke="#8B4513" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <!-- Leaves on branch -->
+    <path d="M80,87 Q75,70 88,65 Q92,75 80,87Z" fill="#2ecc71"/>
+    <path d="M140,83 Q135,66 148,61 Q152,71 140,83Z" fill="#27ae60"/>
+    <path d="M200,88 Q195,71 208,66 Q212,76 200,88Z" fill="#2ecc71"/>
+    <!-- Bird of Paradise (Cendrawasih) -->
+    <g transform="translate(150,80)">
+      <!-- Body -->
+      <ellipse cx="0" cy="0" rx="18" ry="12" fill="#4a0080"/>
+      <!-- Head -->
+      <circle cx="18" cy="-5" r="11" fill="#2d0050"/>
+      <!-- Beak -->
+      <path d="M28,-5 Q35,-8 37,-5 Q35,-2 28,-5Z" fill="#ffd700"/>
+      <!-- Bright chest -->
+      <path d="M-5,0 Q0,-8 10,0 Q5,8 -5,0Z" fill="#ffd700"/>
+      <!-- Eye -->
+      <circle cx="21" cy="-7" r="3" fill="#ffd700"/>
+      <circle cx="21" cy="-7" r="1.5" fill="#1a1a1a"/>
+      <!-- Magnificent plume feathers (signature feature) -->
+      <path d="M-15,5 Q-30,20 -50,40 Q-55,60 -45,65 Q-35,60 -40,45 Q-25,30 -15,5" fill="#ff8c00" opacity="0.9"/>
+      <path d="M-12,8 Q-20,25 -35,50 Q-38,68 -28,70 Q-18,65 -23,50 Q-15,28 -12,8" fill="#ff6b00" opacity="0.85"/>
+      <path d="M-8,10 Q-10,30 -20,55 Q-22,70 -12,70 Q-2,65 -8,52 Q-3,30 -8,10" fill="#ffaa00" opacity="0.9"/>
+      <path d="M-5,8 Q0,28 -5,52 Q-5,65 5,63 Q12,57 5,48 Q3,27 -5,8" fill="#ffcc00" opacity="0.85"/>
+      <!-- Tail feathers -->
+      <path d="M-18,-2 Q-35,-10 -48,-5 Q-40,5 -18,5" fill="#4a0080"/>
+      <path d="M-18,2 Q-38,10 -52,8 Q-45,18 -18,12" fill="#3d006b"/>
+      <!-- Wing hint -->
+      <path d="M-5,-8 Q5,-18 15,-12 Q10,-5 -5,-8Z" fill="#2d0050"/>
+    </g>
+    <rect x="60" y="8" width="180" height="26" rx="13" fill="rgba(74,0,128,0.9)"/>
+    <text x="150" y="26" text-anchor="middle" fill="#ffd700" font-size="13" font-weight="bold" font-family="sans-serif">🦅 Burung Cendrawasih</text>
+  </svg>`,
+
+  festival_baliem: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="valleyG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#87CEEB"/><stop offset="50%" stop-color="#a5d6a7"/><stop offset="100%" stop-color="#558b2f"/></linearGradient></defs>
+    <rect width="300" height="160" fill="url(#valleyG)"/>
+    <!-- Mountain backdrop -->
+    <polygon points="0,90 50,20 100,90" fill="#4a6741" opacity="0.6"/>
+    <polygon points="100,90 175,10 250,90" fill="#3d5c35" opacity="0.7"/>
+    <polygon points="200,90 260,30 300,90" fill="#4a6741" opacity="0.6"/>
+    <!-- Ground/valley floor -->
+    <rect x="0" y="115" width="300" height="45" fill="#558b2f"/>
+    <!-- Warriors in formation -->
+    ${[50,85,120,155,190,225,260].map((x,i)=>`
+    <g transform="translate(${x},112)">
+      <circle cx="0" cy="-28" r="8" fill="#f5c87a"/>
+      <!-- Koteka body -->
+      <rect x="-6" y="-18" width="12" height="20" fill="#8B6914" rx="3"/>
+      <!-- Koteka item -->
+      <path d="M3,-18 Q6,-28 5,-36 Q1,-26 3,-18Z" fill="#c8960c"/>
+      <!-- Headdress -->
+      <path d="M-6,-35 Q-8,-45 -2,-48 Q0,-38 0,-35" fill="${['#e74c3c','#27ae60','#3498db','#f39c12','#9b59b6','#e74c3c','#27ae60'][i]}"/>
+      <path d="M0,-36 Q0,-48 4,-50 Q3,-38 0,-35" fill="${['#f39c12','#e74c3c','#f1c40f','#e74c3c','#3498db','#27ae60','#9b59b6'][i]}"/>
+      <!-- Spear -->
+      <line x1="8" y1="-20" x2="12" y2="8" stroke="#8B4513" stroke-width="2"/>
+      <path d="M12,8 Q15,2 12,-4 Q9,2 12,8Z" fill="#808080"/>
+    </g>`).join('')}
+    <!-- Smoke/fire in bg -->
+    <path d="M150,112 Q148,100 152,90 Q156,100 150,112" fill="rgba(200,100,0,0.3)"/>
+    <rect x="50" y="8" width="200" height="26" rx="13" fill="rgba(85,139,47,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">🎭 Festival Lembah Baliem</text>
+  </svg>`,
+
+  jayawijaya: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="mountG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a1a3a"/><stop offset="50%" stop-color="#87CEEB"/><stop offset="100%" stop-color="#a5d6a7"/></linearGradient></defs>
+    <rect width="300" height="160" fill="url(#mountG)"/>
+    <!-- Stars in dark sky -->
+    ${Array.from({length:20},(_,i)=>`<circle cx="${Math.sin(i*53)*140+150}" cy="${Math.cos(i*37)*25+22}" r="${0.5+Math.random()}" fill="white"/>`).join('')}
+    <!-- Main peak (Puncak Jaya / Carstensz) -->
+    <polygon points="80,120 150,10 220,120" fill="#9e9e9e"/>
+    <polygon points="90,120 150,18 210,120" fill="#bdbdbd"/>
+    <!-- Snow cap -->
+    <path d="M120,58 Q150,18 180,58 Q165,50 150,48 Q135,50 120,58Z" fill="white"/>
+    <path d="M125,65 Q150,30 175,65 Q160,58 150,56 Q140,58 125,65Z" fill="rgba(255,255,255,0.8)"/>
+    <!-- Ice glacier lines -->
+    <path d="M138,55 Q148,45 158,55" stroke="rgba(200,220,255,0.6)" stroke-width="1.5" fill="none"/>
+    <path d="M135,62 Q150,50 165,62" stroke="rgba(200,220,255,0.5)" stroke-width="1" fill="none"/>
+    <!-- Side peaks -->
+    <polygon points="0,120 60,55 120,120" fill="#757575"/>
+    <polygon points="5,120 60,60 115,120" fill="#9e9e9e"/>
+    <!-- Snow on side -->
+    <path d="M40,75 Q60,58 80,75 Q68,68 60,66 Q52,68 40,75Z" fill="rgba(255,255,255,0.8)"/>
+    <polygon points="180,120 240,55 300,120" fill="#757575"/>
+    <polygon points="185,120 240,60 295,120" fill="#9e9e9e"/>
+    <path d="M220,75 Q240,58 260,75 Q248,68 240,66 Q232,68 220,75Z" fill="rgba(255,255,255,0.8)"/>
+    <!-- Green valley at bottom -->
+    <rect x="0" y="120" width="300" height="40" fill="#2d5a1b"/>
+    <!-- Cloud wisps -->
+    <ellipse cx="80" cy="68" rx="25" ry="10" fill="rgba(255,255,255,0.4)"/>
+    <ellipse cx="225" cy="65" rx="22" ry="9" fill="rgba(255,255,255,0.4)"/>
+    <rect x="50" y="8" width="200" height="26" rx="13" fill="rgba(26,26,58,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">❄️ Puncak Jayawijaya</text>
+  </svg>`,
+
+  suku_dani: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#2d4a1e"/>
+    <!-- Valley setting -->
+    <rect x="0" y="120" width="300" height="40" fill="#3d6b28"/>
+    <polygon points="0,100 50,50 100,100" fill="#2d5a1e" opacity="0.6"/>
+    <polygon points="200,100 260,40 300,100" fill="#2d5a1e" opacity="0.6"/>
+    <!-- Honai (traditional round house) -->
+    <circle cx="50" cy="108" r="25" fill="#8B4513"/>
+    <path d="M25,106 Q50,80 75,106" fill="#5D2A0E"/>
+    <circle cx="50" cy="95" r="15" fill="#6B3410"/>
+    <!-- Honai 2 -->
+    <circle cx="250" cy="110" r="22" fill="#8B4513"/>
+    <path d="M228,108 Q250,84 272,108" fill="#5D2A0E"/>
+    <!-- Dani warrior figures (3) -->
+    <g transform="translate(120,108)">
+      <circle cx="0" cy="-28" r="9" fill="#c87a40"/>
+      <rect x="-8" y="-18" width="16" height="22" fill="#5D2A0E" rx="2"/>
+      <!-- Headdress with feathers -->
+      <path d="M-6,-36 Q-10,-50 -4,-56 Q-1,-42 0,-36" fill="#f39c12"/>
+      <path d="M0,-37 Q0,-52 5,-57 Q5,-43 3,-37" fill="#e74c3c"/>
+      <path d="M3,-36 Q10,-48 14,-52 Q10,-40 7,-36" fill="#27ae60"/>
+      <!-- Koteka -->
+      <path d="M5,-18 Q8,-28 7,-38 Q3,-26 5,-18Z" fill="#c8960c"/>
+      <!-- Bow and arrow -->
+      <path d="M16,-22 Q22,-12 18,8" stroke="#8B4513" stroke-width="2.5" fill="none"/>
+      <line x1="16" y1="-22" x2="18" y2="8" stroke="#5D2A0E" stroke-width="1.5"/>
+    </g>
+    <g transform="translate(155,112)">
+      <circle cx="0" cy="-28" r="9" fill="#c87a40"/>
+      <rect x="-8" y="-18" width="16" height="22" fill="#4a2000" rx="2"/>
+      <path d="M-5,-36 Q-8,-48 -2,-52 Q0,-40 0,-36" fill="#3498db"/>
+      <path d="M0,-37 Q2,-50 8,-53 Q5,-40 3,-37" fill="#f1c40f"/>
+      <path d="M5,-18 Q7,-30 6,-38 Q2,-26 5,-18Z" fill="#c8960c"/>
+    </g>
+    <g transform="translate(190,115)">
+      <circle cx="0" cy="-28" r="9" fill="#c87a40"/>
+      <rect x="-8" y="-18" width="16" height="22" fill="#6B3410" rx="2"/>
+      <path d="M-5,-36 Q-12,-44 -6,-50 Q-2,-40 0,-36" fill="#9b59b6"/>
+      <path d="M2,-36 Q10,-46 14,-50 Q8,-40 6,-36" fill="#e74c3c"/>
+      <path d="M6,-18 Q9,-28 8,-38 Q4,-26 6,-18Z" fill="#c8960c"/>
+    </g>
+    <rect x="60" y="8" width="180" height="26" rx="13" fill="rgba(45,74,30,0.9)"/>
+    <text x="150" y="26" text-anchor="middle" fill="#ffd700" font-size="13" font-weight="bold" font-family="sans-serif">🌿 Suku Dani</text>
+  </svg>`,
+
+  ukiran_asmat: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="160" fill="#1a0f05"/>
+    <!-- Dark museum-like background -->
+    <rect x="20" y="20" width="260" height="130" fill="#2c1810" rx="5"/>
+    <!-- Central tall carved pole/figure -->
+    <g transform="translate(150,75)">
+      <!-- Tall totem post -->
+      <rect x="-15" y="-55" width="30" height="110" fill="#8B4513"/>
+      <!-- Top figure head -->
+      <circle cx="0" cy="-62" r="15" fill="#6B3410"/>
+      <!-- Face features carved -->
+      <ellipse cx="-5" cy="-65" rx="3" ry="4" fill="#2c1810"/>
+      <ellipse cx="5" cy="-65" rx="3" ry="4" fill="#2c1810"/>
+      <path d="M-4,-58 Q0,-55 4,-58" stroke="#2c1810" stroke-width="1.5" fill="none"/>
+      <!-- Arms of top figure -->
+      <path d="M-15,-48 Q-30,-40 -35,-30" stroke="#7a3b00" stroke-width="5" stroke-linecap="round"/>
+      <path d="M15,-48 Q30,-40 35,-30" stroke="#7a3b00" stroke-width="5" stroke-linecap="round"/>
+      <!-- Carved patterns on body -->
+      <path d="M-12,-40 Q0,-44 12,-40 Q8,-32 0,-30 Q-8,-32 -12,-40Z" fill="#c8914a" opacity="0.8"/>
+      <path d="M-12,-20 Q0,-24 12,-20 Q8,-12 0,-10 Q-8,-12 -12,-20Z" fill="#e74c3c" opacity="0.7"/>
+      <path d="M-12,0 Q0,-4 12,0 Q8,8 0,10 Q-8,8 -12,0Z" fill="#c8914a" opacity="0.8"/>
+      <path d="M-12,20 Q0,16 12,20 Q8,28 0,30 Q-8,28 -12,20Z" fill="#e74c3c" opacity="0.7"/>
+      <!-- Mid figure face -->
+      <circle cx="0" cy="-18" r="10" fill="#7a3b00"/>
+      <ellipse cx="-3" cy="-20" rx="2" ry="3" fill="#2c1810"/>
+      <ellipse cx="3" cy="-20" rx="2" ry="3" fill="#2c1810"/>
+    </g>
+    <!-- Side decorative carvings -->
+    <g transform="translate(70,75)" opacity="0.7">
+      <rect x="-10" y="-40" width="20" height="80" fill="#6B3410"/>
+      <path d="M-8,-30 Q0,-35 8,-30 Q4,-22 0,-20 Q-4,-22 -8,-30Z" fill="#c8914a"/>
+      <path d="M-8,-5 Q0,-10 8,-5 Q4,3 0,5 Q-4,3 -8,-5Z" fill="#c8914a"/>
+      <path d="M-8,18 Q0,13 8,18 Q4,26 0,28 Q-4,26 -8,18Z" fill="#c8914a"/>
+    </g>
+    <g transform="translate(230,75)" opacity="0.7">
+      <rect x="-10" y="-40" width="20" height="80" fill="#6B3410"/>
+      <path d="M-8,-30 Q0,-35 8,-30 Q4,-22 0,-20 Q-4,-22 -8,-30Z" fill="#c8914a"/>
+      <path d="M-8,-5 Q0,-10 8,-5 Q4,3 0,5 Q-4,3 -8,-5Z" fill="#c8914a"/>
+      <path d="M-8,18 Q0,13 8,18 Q4,26 0,28 Q-4,26 -8,18Z" fill="#c8914a"/>
+    </g>
+    <!-- Display spotlight -->
+    <path d="M150,15 L110,75 L190,75Z" fill="rgba(255,200,100,0.08)"/>
+    <circle cx="150" cy="15" r="8" fill="rgba(255,200,100,0.3)"/>
+    <rect x="60" y="8" width="180" height="26" rx="13" fill="rgba(44,24,16,0.9)"/>
+    <text x="150" y="26" text-anchor="middle" fill="#daa520" font-size="13" font-weight="bold" font-family="sans-serif">🗿 Ukiran Asmat</text>
+  </svg>`,
+
+  danau_sentani: `<svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="skyDawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ff7043"/><stop offset="40%" stop-color="#ffcc80"/><stop offset="70%" stop-color="#81d4fa"/></linearGradient>
+      <linearGradient id="lakeS" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#29b6f6"/><stop offset="100%" stop-color="#0277bd"/></linearGradient>
+    </defs>
+    <rect width="300" height="100" fill="url(#skyDawn)"/>
+    <!-- Sun rising -->
+    <circle cx="150" cy="88" r="25" fill="#ff9800" opacity="0.9"/>
+    <circle cx="150" cy="88" r="18" fill="#ffcc02"/>
+    <!-- Mountains around lake -->
+    <polygon points="0,95 40,45 80,95" fill="#3d6b28" opacity="0.9"/>
+    <polygon points="60,95 110,30 160,95" fill="#2d5a1b" opacity="0.8"/>
+    <polygon points="150,95 210,40 270,95" fill="#3d6b28" opacity="0.9"/>
+    <polygon points="240,95 280,55 300,95" fill="#2d5a1b" opacity="0.8"/>
+    <!-- Lake surface -->
+    <rect x="0" y="95" width="300" height="65" fill="url(#lakeS)"/>
+    <!-- Sun reflection on lake -->
+    <ellipse cx="150" cy="110" rx="30" ry="12" fill="rgba(255,200,50,0.4)"/>
+    <!-- Wave shimmer -->
+    <path d="M0,105 Q50,98 100,105 Q150,112 200,105 Q250,98 300,105" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
+    <!-- Islands in lake -->
+    <ellipse cx="80" cy="100" rx="25" ry="8" fill="#4a8c30"/>
+    <circle cx="80" cy="96" r="6" fill="#3d7a25"/>
+    <ellipse cx="210" cy="102" rx="20" ry="7" fill="#4a8c30"/>
+    <circle cx="210" cy="98" r="5" fill="#3d7a25"/>
+    <!-- Traditional boats on lake -->
+    <path d="M40,110 Q70,104 100,110 Q70,120 40,110Z" fill="#8B4513"/>
+    <!-- Sentani pattern decorations floating -->
+    ${[120,165,210].map(x=>`<ellipse cx="${x}" cy="118" rx="12" ry="5" fill="#f39c12" opacity="0.5"/>`).join('')}
+    <rect x="50" y="8" width="200" height="26" rx="13" fill="rgba(2,119,189,0.85)"/>
+    <text x="150" y="26" text-anchor="middle" fill="white" font-size="13" font-weight="bold" font-family="sans-serif">🏔️ Danau Sentani</text>
+  </svg>`
+};
+
 // ===================== DATA =====================
 const ISLANDS = [
   { id:'sumatera', name:'Sumatera', emoji:'🌋', color:'#e74c3c',
-    reward:{ icon:'🏠', name:'Rumah Gadang', desc:'Rumah adat Minangkabau, Sumatera Barat dengan atap gonjong' },
+    reward:{ icon:'🏠', name:'Rumah Gadang', desc:'Rumah adat Minangkabau dengan atap gonjong' },
     bonus:{ icon:'🌺', name:'Bunga Rafflesia', desc:'Bunga terbesar di dunia dari hutan Sumatera' }
   },
   { id:'jawa', name:'Jawa', emoji:'🏯', color:'#3498db',
@@ -831,176 +1822,344 @@ const ISLANDS = [
   }
 ];
 
+// Each island has 14 questions, rolling through them
 const QUESTIONS = {
   sumatera: [
     { q:'Rumah adat Sumatera Barat yang atapnya seperti tanduk kerbau disebut...?',
-      options:['Rumah Joglo','Rumah Gadang','Rumah Limas','Rumah Bolon'], answer:1,
+      img:'rumah_gadang', options:['Rumah Joglo','Rumah Gadang','Rumah Limas','Rumah Bolon'], answer:1,
       hint:'Rumah ini banyak ditemukan di daerah Minangkabau 🏠',
       explanation:'Rumah Gadang adalah rumah adat Minangkabau dengan atap gonjong yang menyerupai tanduk kerbau.' },
     { q:'Tarian Aceh yang terkenal dengan gerakan baris serentak dan kompak disebut...?',
-      options:['Tari Saman','Tari Kecak','Tari Piring','Tari Jaipong'], answer:0,
+      img:'tari_saman', options:['Tari Saman','Tari Kecak','Tari Piring','Tari Jaipong'], answer:0,
       hint:'Tarian ini berasal dari suku Gayo di Aceh 💃',
       explanation:'Tari Saman dari suku Gayo Aceh terkenal karena gerakan serentak yang sangat cepat dan kompak.' },
     { q:'Danau vulkanik terbesar di dunia yang berada di Sumatera Utara adalah...?',
-      options:['Danau Singkarak','Danau Maninjau','Danau Toba','Danau Ranau'], answer:2,
+      img:'danau_toba', options:['Danau Singkarak','Danau Maninjau','Danau Toba','Danau Ranau'], answer:2,
       hint:'Danau ini terbentuk dari letusan gunung berapi purba 🌋',
       explanation:'Danau Toba di Sumatera Utara adalah danau vulkanik terbesar di dunia! Di tengahnya ada Pulau Samosir.' },
     { q:'Masakan khas Sumatera Barat yang terkenal di seluruh dunia adalah...?',
-      options:['Soto Ayam','Rendang','Gado-gado','Pempek'], answer:1,
+      img:'rendang', options:['Soto Ayam','Rendang','Gado-gado','Pempek'], answer:1,
       hint:'Makanan ini dimasak lama dengan santan dan rempah-rempah 🍲',
       explanation:'Rendang adalah masakan khas Minangkabau yang pernah dinobatkan sebagai makanan terlezat di dunia!' },
     { q:'Bahasa daerah utama di Sumatera Utara adalah bahasa...?',
-      options:['Minangkabau','Batak','Melayu','Lampung'], answer:1,
+      img:'suku_batak', options:['Minangkabau','Batak','Melayu','Lampung'], answer:1,
       hint:'Bahasa ini digunakan suku asli Sumatera Utara 🗣️',
       explanation:'Bahasa Batak (Toba, Karo, Simalungun) adalah bahasa utama penduduk asli Sumatera Utara.' },
-    { q:'Suku yang terkenal di Sumatera Barat dan dikenal dengan sistem matrilinealnya adalah...?',
-      options:['Suku Batak','Suku Minangkabau','Suku Melayu','Suku Rejang'], answer:1,
+    { q:'Suku yang terkenal di Sumatera Barat dengan sistem matrilinealnya adalah...?',
+      img:'minangkabau', options:['Suku Batak','Suku Minangkabau','Suku Melayu','Suku Rejang'], answer:1,
       hint:'Suku ini mewarisi harta dari garis ibu 👩',
       explanation:'Suku Minangkabau unik karena menganut sistem matrilineal, yaitu garis keturunan dari pihak ibu.' },
-    { q:'Kota yang dikenal sebagai "Kota Pelajar" sekaligus ibu kota Sumatera Selatan adalah...?',
-      options:['Padang','Palembang','Pekanbaru','Banda Aceh'], answer:1,
-      hint:'Kota ini terkenal dengan makanan pempek 🐟',
-      explanation:'Palembang adalah ibu kota Sumatera Selatan yang terkenal dengan pempek dan Jembatan Ampera.' }
+    { q:'Ibu kota Sumatera Selatan yang terkenal dengan makanan pempek adalah...?',
+      img:'palembang', options:['Padang','Palembang','Pekanbaru','Banda Aceh'], answer:1,
+      hint:'Kota ini memiliki Jembatan Ampera yang terkenal 🌉',
+      explanation:'Palembang adalah ibu kota Sumatera Selatan yang terkenal dengan pempek dan Jembatan Ampera.' },
+    { q:'Bunga raksasa yang menjadi ciri khas hutan Sumatera adalah...?',
+      img:'danau_toba', options:['Bunga Anggrek','Rafflesia Arnoldii','Bunga Melati','Bunga Bangkai'], answer:1,
+      hint:'Bunga ini terkenal sebagai bunga terbesar di dunia 🌺',
+      explanation:'Rafflesia Arnoldii adalah bunga terbesar di dunia yang hanya tumbuh di hutan Sumatera.' },
+    { q:'Alat musik tradisional khas Batak Toba yang terkenal adalah...?',
+      img:'suku_batak', options:['Angklung','Gondang Sabangunan','Kolintang','Sasando'], answer:1,
+      hint:'Alat musik ini dimainkan dalam upacara adat Batak 🎵',
+      explanation:'Gondang Sabangunan adalah ansambel musik sakral suku Batak Toba yang digunakan dalam berbagai upacara.' },
+    { q:'Ibu kota Provinsi Aceh yang merupakan ujung barat Indonesia adalah...?',
+      img:'tari_saman', options:['Medan','Banda Aceh','Palembang','Padang'], answer:1,
+      hint:'Kota ini adalah kota paling barat di Indonesia 🗺️',
+      explanation:'Banda Aceh adalah ibu kota Provinsi Aceh, sekaligus kota paling barat di Indonesia.' },
+    { q:'Pakaian adat pria Minangkabau yang khas berupa celana hitam lebar disebut...?',
+      img:'minangkabau', options:['Beskap','Jas Tutup','Sarawa','Baju Bodo'], answer:2,
+      hint:'Pakaian ini dilengkapi dengan destar (ikat kepala) 👘',
+      explanation:'Sarawa adalah celana hitam longgar bagian dari pakaian adat pria Minangkabau yang dipakai dalam upacara.' },
+    { q:'Senjata tradisional khas Sumatera Barat yang berbentuk melengkung adalah...?',
+      img:'rendang', options:['Keris','Rencong','Kujang','Karih'], answer:3,
+      hint:'Senjata ini dipakai dalam tari tradisional piring 🗡️',
+      explanation:'Karih adalah senjata tradisional Minangkabau berbentuk belati melengkung yang digunakan dalam upacara adat.' },
+    { q:'Gajah Sumatera merupakan salah satu hewan yang hampir punah karena...?',
+      img:'danau_toba', options:['Perubahan iklim','Perambahan hutan','Polusi air','Penyakit'], answer:1,
+      hint:'Habitat hutan gajah terus berkurang setiap tahunnya 🐘',
+      explanation:'Gajah Sumatera (Elephas maximus sumatranus) terancam punah terutama karena hilangnya habitat akibat deforestasi.' },
+    { q:'Festival budaya terbesar di Sumatera Utara yang merayakan danau kebanggaan disebut...?',
+      img:'danau_toba', options:['Festival Danau Toba','Pesta Bunga Tomohon','Festival Krakatau','Pesta Kesenian Bali'], answer:0,
+      hint:'Festival ini diadakan di tepi danau vulkanik terbesar dunia 🎉',
+      explanation:'Festival Danau Toba adalah festival budaya tahunan yang merayakan keindahan dan kekayaan budaya Danau Toba.' }
   ],
+
   jawa: [
     { q:'Seni pertunjukan bayangan boneka dari kulit yang terkenal dari Jawa disebut...?',
-      options:['Ketoprak','Ludruk','Wayang Kulit','Reog'], answer:2,
+      img:'wayang_kulit', options:['Ketoprak','Ludruk','Wayang Kulit','Reog'], answer:2,
       hint:'Pertunjukan ini menggunakan layar putih dan lampu 🎭',
       explanation:'Wayang Kulit adalah seni pertunjukan Jawa menggunakan boneka kulit yang diproyeksikan sebagai bayangan.' },
-    { q:'Motif batik tertua dan paling bersejarah dari Jawa adalah...?',
-      options:['Batik Pesisir','Batik Parang','Batik Mega Mendung','Batik Jumputan'], answer:1,
+    { q:'Motif batik tertua dari Jawa yang berasal dari keraton adalah...?',
+      img:'batik_parang', options:['Batik Pesisir','Batik Parang','Batik Mega Mendung','Batik Jumputan'], answer:1,
       hint:'Motif ini berasal dari keraton Yogyakarta dan Solo 👘',
       explanation:'Batik Parang adalah motif batik tertua dari Jawa yang melambangkan kekuasaan dan keberanian.' },
     { q:'Rumah adat tradisional Jawa dengan atap bertingkat disebut...?',
-      options:['Rumah Joglo','Rumah Limasan','Rumah Panggung','Rumah Betawi'], answer:0,
+      img:'rumah_joglo', options:['Rumah Joglo','Rumah Limasan','Rumah Panggung','Rumah Betawi'], answer:0,
       hint:'Rumah ini sering terlihat di keraton Yogyakarta 🏰',
       explanation:'Rumah Joglo adalah rumah adat Jawa dengan atap tumpang sari (bertingkat) yang melambangkan status sosial.' },
     { q:'Tarian Jawa untuk menyambut tamu yang berasal dari Surakarta adalah...?',
-      options:['Tari Serimpi','Tari Gambyong','Tari Kecak','Tari Saman'], answer:1,
+      img:'tari_gambyong', options:['Tari Serimpi','Tari Gambyong','Tari Kecak','Tari Saman'], answer:1,
       hint:'Tarian ini gerakannya lembut dan anggun 💃',
       explanation:'Tari Gambyong berasal dari Surakarta (Solo), biasa ditampilkan untuk menyambut tamu kehormatan.' },
     { q:'Makanan khas Yogyakarta yang dibuat dari nangka muda berwarna coklat adalah...?',
-      options:['Nasi Gudeg','Nasi Rawon','Nasi Pecel','Nasi Kucing'], answer:0,
+      img:'gudeg', options:['Nasi Gudeg','Nasi Rawon','Nasi Pecel','Nasi Kucing'], answer:0,
       hint:'Makanan ini terasa manis dan gurih 🍛',
       explanation:'Gudeg adalah makanan khas Yogyakarta dari nangka muda yang dimasak dengan santan dan rempah berwarna coklat.' },
-    { q:'Candi Hindu terbesar di dunia yang berada di Jawa Tengah adalah...?',
-      options:['Borobudur','Prambanan','Mendut','Plaosan'], answer:1,
+    { q:'Candi Hindu terbesar di Indonesia yang ada di Jawa Tengah adalah...?',
+      img:'candi_prambanan', options:['Borobudur','Prambanan','Mendut','Plaosan'], answer:1,
       hint:'Candi ini didedikasikan untuk Dewa Siwa 🛕',
       explanation:'Candi Prambanan adalah candi Hindu terbesar di Indonesia dan salah satu yang terbesar di dunia.' },
-    { q:'Alat musik tradisional Jawa yang terdiri dari berbagai instrumen disebut...?',
-      options:['Kolintang','Gamelan','Angklung','Sasando'], answer:1,
+    { q:'Orkestra tradisional Jawa yang terdiri dari berbagai instrumen disebut...?',
+      img:'gamelan', options:['Kolintang','Gamelan','Angklung','Sasando'], answer:1,
       hint:'Alat musik ini biasa mengiringi wayang dan tari 🎶',
-      explanation:'Gamelan adalah orkestra tradisional Jawa yang terdiri dari berbagai instrumen perkusi dan dipelajari di seluruh dunia.' }
+      explanation:'Gamelan adalah orkestra tradisional Jawa yang terdiri dari berbagai instrumen perkusi dan dipelajari di seluruh dunia.' },
+    { q:'Candi Buddha terbesar di dunia yang terletak di Jawa Tengah adalah...?',
+      img:'candi_prambanan', options:['Candi Borobudur','Candi Prambanan','Candi Mendut','Candi Pawon'], answer:0,
+      hint:'Candi ini termasuk keajaiban dunia dari UNESCO 🏛️',
+      explanation:'Candi Borobudur di Magelang, Jawa Tengah adalah candi Buddha terbesar di dunia yang diakui UNESCO.' },
+    { q:'Seni bela diri tradisional dari Jawa Barat yang berasal dari suku Sunda adalah...?',
+      img:'tari_gambyong', options:['Pencak Silat','Capoeira','Tarung Derajat','Kuntao'], answer:0,
+      hint:'Seni bela diri ini juga banyak ditemukan di seluruh Indonesia 🥋',
+      explanation:'Pencak Silat adalah seni bela diri tradisional Indonesia, yang berkembang kuat di Jawa dan Sumatera Barat.' },
+    { q:'Kereta tradisional kerajaan Yogyakarta yang dianggap keramat disebut...?',
+      img:'rumah_joglo', options:['Kyai Sehun','Kyai Puspaka','Kyai Plered','Kyai Rajamala'], answer:0,
+      hint:'Kereta ini digunakan dalam prosesi pernikahan kerajaan 🐴',
+      explanation:'Kyai Sehun adalah kereta kebesaran kerajaan Yogyakarta yang dianggap keramat dan digunakan dalam upacara penting.' },
+    { q:'Minuman khas Jawa yang terbuat dari jahe dan berbagai rempah disebut...?',
+      img:'gudeg', options:['Bir Pletok','Bajigur','Wedang Jahe','Wedang Uwuh'], answer:3,
+      hint:'Minuman rempah dari Yogyakarta yang menghangatkan badan ☕',
+      explanation:'Wedang Uwuh adalah minuman rempah khas Yogyakarta terdiri dari berbagai rempah yang menghangatkan tubuh.' },
+    { q:'Tokoh pewayangan Jawa yang terkenal sebagai simbol kebenaran dan kebijaksanaan adalah...?',
+      img:'wayang_kulit', options:['Rahwana','Arjuna','Yudhistira','Werkudara'], answer:1,
+      hint:'Tokoh ini adalah pemanah sakti dari keluarga Pandawa 🏹',
+      explanation:'Arjuna adalah tokoh wayang Jawa yang melambangkan keberanian, kebenaran, dan keanggunan dari keluarga Pandawa.' },
+    { q:'Batik yang berasal dari daerah pesisir utara Jawa dan dikenal warna-warninya adalah...?',
+      img:'batik_parang', options:['Batik Keraton','Batik Pesisir','Batik Batik Parang','Batik Wahyu Tumurun'], answer:1,
+      hint:'Batik ini memiliki warna lebih cerah dan motif lebih bebas 🎨',
+      explanation:'Batik Pesisir dari pantai utara Jawa dipengaruhi budaya China dan Arab, warnanya lebih cerah dan beragam motifnya.' },
+    { q:'Senjata tradisional Jawa berupa keris bermata dua yang berlekuk-lekuk disebut...?',
+      img:'wayang_kulit', options:['Keris','Tombak','Pedang','Mandau'], answer:0,
+      hint:'Senjata ini juga dianggap memiliki kekuatan spiritual 🗡️',
+      explanation:'Keris adalah senjata tradisional Jawa bermata dua dengan bilah berlekuk yang dipercaya memiliki kekuatan spiritual.' }
   ],
+
   kalimantan: [
     { q:'Suku asli yang paling terkenal di Kalimantan adalah suku...?',
-      options:['Bugis','Dayak','Toraja','Batak'], answer:1,
+      img:'suku_dayak', options:['Bugis','Dayak','Toraja','Batak'], answer:1,
       hint:'Suku ini dikenal dengan rumah panjangnya 🏠',
       explanation:'Suku Dayak adalah penduduk asli Kalimantan dengan berbagai sub-suku seperti Ngaju, Iban, Kenyah, dan lainnya.' },
     { q:'Senjata tradisional khas Suku Dayak Kalimantan adalah...?',
-      options:['Keris','Rencong','Mandau','Badik'], answer:2,
+      img:'mandau', options:['Keris','Rencong','Mandau','Badik'], answer:2,
       hint:'Senjata ini berbentuk seperti parang dengan ukiran khas ⚔️',
       explanation:'Mandau adalah senjata tradisional Suku Dayak berbentuk parang dengan ukiran khas dan hiasan bulu di gagang.' },
     { q:'Rumah adat suku Dayak yang sangat panjang disebut...?',
-      options:['Rumah Betang','Rumah Lamin','Rumah Banjar','Rumah Bubungan Tinggi'], answer:0,
+      img:'rumah_betang', options:['Rumah Betang','Rumah Lamin','Rumah Banjar','Rumah Bubungan Tinggi'], answer:0,
       hint:'Rumah ini bisa dihuni puluhan keluarga sekaligus 🏘️',
       explanation:'Rumah Betang adalah rumah panjang Dayak Kalimantan Tengah yang bisa dihuni oleh puluhan hingga ratusan keluarga.' },
     { q:'Hewan langka yang hanya hidup di Kalimantan (Borneo) adalah...?',
-      options:['Harimau Sumatera','Orangutan Borneo','Komodo','Cendrawasih'], answer:1,
+      img:'orangutan', options:['Harimau Sumatera','Orangutan Borneo','Komodo','Cendrawasih'], answer:1,
       hint:'Hewan ini mirip manusia dan sangat cerdas 🦧',
-      explanation:'Orangutan Borneo (Pongo pygmaeus) adalah primata endemik Kalimantan yang kini terancam punah karena perambahan hutan.' },
+      explanation:'Orangutan Borneo (Pongo pygmaeus) adalah primata endemik Kalimantan yang kini terancam punah.' },
     { q:'Kota yang dikenal sebagai "Kota Sungai" di Kalimantan Selatan adalah...?',
-      options:['Pontianak','Samarinda','Balikpapan','Banjarmasin'], answer:3,
+      img:'banjarmasin', options:['Pontianak','Samarinda','Balikpapan','Banjarmasin'], answer:3,
       hint:'Kota ini punya pasar terapung yang terkenal 🛶',
       explanation:'Banjarmasin dikenal sebagai Kota Sungai karena banyak sungai yang membelah kota dan memiliki pasar terapung terkenal.' },
-    { q:'Tarian perang tradisional suku Dayak yang megah disebut...?',
-      options:['Tari Enggang','Tari Hudog','Tari Gantar','Tari Kancet Papatai'], answer:3,
+    { q:'Tarian perang tradisional suku Dayak yang menggambarkan keberanian prajurit adalah...?',
+      img:'tari_kancet', options:['Tari Enggang','Tari Hudog','Tari Gantar','Tari Kancet Papatai'], answer:3,
       hint:'Tarian ini menggambarkan keberanian prajurit Dayak ⚔️',
       explanation:'Tari Kancet Papatai adalah tarian perang suku Dayak Kenyah yang menggambarkan keberanian seorang prajurit.' },
-    { q:'Makanan khas Kalimantan Selatan yang terkenal dengan ikannya adalah...?',
-      options:['Soto Banjar','Rawon','Nasi Goreng Seafood','Papeda'], answer:0,
-      hint:'Makanan ini adalah soto dari Banjarmasin 🍜',
-      explanation:'Soto Banjar adalah kuliner khas Kalimantan Selatan dengan kuah bening berbumbu rempah dan biasanya disantap dengan ketupat.' }
+    { q:'Makanan khas Kalimantan Selatan yang terkenal dengan kuah beningnya adalah...?',
+      img:'soto_banjar', options:['Soto Banjar','Rawon','Nasi Goreng Seafood','Papeda'], answer:0,
+      hint:'Makanan ini adalah soto khas dari Banjarmasin 🍜',
+      explanation:'Soto Banjar adalah kuliner khas Kalimantan Selatan dengan kuah bening berbumbu rempah dan disantap dengan ketupat.' },
+    { q:'Hutan tropis terluas di Asia Tenggara yang sebagian besar berada di Kalimantan adalah...?',
+      img:'orangutan', options:['Hutan Amazon','Hutan Borneo','Hutan Kongo','Hutan Daintree'], answer:1,
+      hint:'Hutan ini adalah rumah bagi orangutan dan bekantan 🌿',
+      explanation:'Hutan hujan tropis Borneo (Kalimantan) adalah salah satu hutan tertua di dunia dengan keanekaragaman hayati luar biasa.' },
+    { q:'Tambang batu bara terbesar di Indonesia yang terletak di Kalimantan Timur adalah...?',
+      img:'suku_dayak', options:['Tambang Freeport','Tambang Kaltim Prima Coal','Tambang Newmont','Tambang Nusantara'], answer:1,
+      hint:'Tambang ini mengekspor batu bara ke banyak negara ⚒️',
+      explanation:'Kaltim Prima Coal (KPC) adalah salah satu perusahaan tambang batu bara terbesar di Indonesia yang berlokasi di Kalimantan Timur.' },
+    { q:'Tarian yang menceritakan seorang gadis Dayak yang dilamar pria menggunakan benih padi disebut...?',
+      img:'tari_kancet', options:['Tari Kancet Papatai','Tari Hudoq','Tari Gantar','Tari Enggang'], answer:2,
+      hint:'Tarian ini menceritakan tentang benih padi dan pelamaran 💃',
+      explanation:'Tari Gantar adalah tarian Dayak Benuaq yang menceritakan seorang pria yang melamar wanita dengan menggunakan benih padi.' },
+    { q:'Kota yang dijuluki "Kota Khatulistiwa" di Kalimantan Barat adalah...?',
+      img:'banjarmasin', options:['Banjarmasin','Palangkaraya','Pontianak','Samarinda'], answer:2,
+      hint:'Kota ini tepat dilalui garis khatulistiwa 🌍',
+      explanation:'Pontianak dijuluki Kota Khatulistiwa karena dilalui garis khatulistiwa. Di sana terdapat Tugu Khatulistiwa sebagai penandanya.' },
+    { q:'Rumah adat suku Dayak Kenyah yang berbentuk panggung panjang disebut...?',
+      img:'rumah_betang', options:['Rumah Betang','Rumah Lamin','Rumah Banjar','Rumah Adat Baloy'], answer:1,
+      hint:'Rumah ini dimiliki suku Dayak Kenyah di Kalimantan Timur 🏘️',
+      explanation:'Rumah Lamin adalah rumah adat suku Dayak Kenyah di Kalimantan Timur, berbentuk panggung panjang yang indah dengan ukiran.' },
+    { q:'Bekantan adalah hewan khas Kalimantan yang terkenal dengan ciri khasnya berupa...?',
+      img:'orangutan', options:['Bulu lebat berwarna oranye','Hidung panjang dan besar','Tanduk seperti rusa','Ekor panjang berwarna biru'], answer:1,
+      hint:'Hewan ini sering disebut "monyet belanda" oleh masyarakat 🐒',
+      explanation:'Bekantan (Nasalis larvatus) adalah primata endemik Kalimantan yang terkenal dengan hidung besarnya yang khas.' },
+    { q:'Tarian yang dilakukan untuk upacara menyambut panen di Kalimantan adalah...?',
+      img:'tari_kancet', options:['Tari Hudoq','Tari Saman','Tari Tor-Tor','Tari Zapin'], answer:0,
+      hint:'Tarian ini dilakukan dengan memakai topeng kayu berwarna-warni 🎭',
+      explanation:'Tari Hudoq adalah tarian ritual suku Dayak Bahau yang dilakukan saat panen untuk memohon perlindungan dari roh leluhur.' }
   ],
+
   sulawesi: [
     { q:'Kapal tradisional dari Sulawesi Selatan yang terkenal di dunia adalah...?',
-      options:['Kapal Lancang','Perahu Pinisi','Kapal Jong','Kapal Proa'], answer:1,
+      img:'perahu_pinisi', options:['Kapal Lancang','Perahu Pinisi','Kapal Jong','Kapal Proa'], answer:1,
       hint:'Kapal ini dibuat tanpa paku dari kayu 🚢',
       explanation:'Perahu Pinisi adalah kapal tradisional suku Bugis-Makassar yang pernah berlayar ke berbagai penjuru dunia.' },
-    { q:'Upacara pemakaman adat suku Toraja Sulawesi Selatan disebut...?',
-      options:['Ngaben','Rambu Solo','Tabuik','Kasada'], answer:1,
+    { q:'Upacara pemakaman adat suku Toraja di Sulawesi Selatan disebut...?',
+      img:'rambu_solo', options:['Ngaben','Rambu Solo','Tabuik','Kasada'], answer:1,
       hint:'Upacara ini berlangsung berhari-hari dan sangat meriah 🎺',
       explanation:'Rambu Solo adalah upacara pemakaman suku Toraja yang sangat meriah, melambangkan perjalanan ke dunia lain.' },
-    { q:'Taman Nasional di Sulawesi Utara yang terkenal dengan keelokan bawah lautnya adalah...?',
-      options:['Bunaken','Komodo','Wakatobi','Lorentz'], answer:0,
+    { q:'Taman Nasional di Sulawesi Utara terkenal dengan keelokan bawah lautnya adalah...?',
+      img:'bunaken', options:['Bunaken','Komodo','Wakatobi','Lorentz'], answer:0,
       hint:'Taman ini memiliki lebih dari 390 spesies terumbu karang 🐠',
       explanation:'Taman Nasional Bunaken di Sulawesi Utara adalah surga bawah laut dengan keanekaragaman hayati yang luar biasa.' },
     { q:'Makanan khas Sulawesi Utara berupa bubur sayuran yang lezat disebut...?',
-      options:['Coto Makassar','Sop Konro','Tinutuan','Pallubasa'], answer:2,
+      img:'tinutuan', options:['Coto Makassar','Sop Konro','Tinutuan','Pallubasa'], answer:2,
       hint:'Makanan ini juga dikenal sebagai Bubur Manado 🥣',
       explanation:'Tinutuan atau Bubur Manado adalah makanan khas Sulawesi Utara yang penuh sayuran dan sangat bergizi.' },
-    { q:'Suku yang terkenal sebagai pelaut tangguh dan penjelajah dari Sulawesi adalah...?',
-      options:['Suku Minahasa','Suku Bugis','Suku Toraja','Suku Gorontalo'], answer:1,
+    { q:'Suku yang terkenal sebagai pelaut tangguh penjelajah dari Sulawesi adalah...?',
+      img:'suku_bugis', options:['Suku Minahasa','Suku Bugis','Suku Toraja','Suku Gorontalo'], answer:1,
       hint:'Suku ini menjelajahi lautan Nusantara hingga mancanegara ⚓',
       explanation:'Suku Bugis terkenal sebagai pelaut pemberani yang telah menjelajahi lautan Nusantara dan bahkan ke mancanegara.' },
-    { q:'Alat musik tradisional Sulawesi Utara yang terbuat dari bambu adalah...?',
-      options:['Kolintang','Tifa','Angklung','Sasando'], answer:0,
+    { q:'Alat musik tradisional Sulawesi Utara yang terbuat dari kayu adalah...?',
+      img:'kolintang', options:['Kolintang','Tifa','Angklung','Sasando'], answer:0,
       hint:'Alat musik ini dibuat dari kayu kolintang 🎵',
       explanation:'Kolintang adalah alat musik tradisional Minahasa, Sulawesi Utara yang terbuat dari kayu dan dimainkan dipukul.' },
     { q:'Rumah adat suku Toraja yang atapnya melengkung seperti perahu disebut...?',
-      options:['Rumah Tongkonan','Rumah Saoraja','Rumah Tambi','Rumah Buton'], answer:0,
+      img:'tongkonan', options:['Rumah Tongkonan','Rumah Saoraja','Rumah Tambi','Rumah Buton'], answer:0,
       hint:'Rumah ini dihiasi ukiran berwarna merah, hitam, dan kuning 🏠',
-      explanation:'Rumah Tongkonan adalah rumah adat suku Toraja dengan atap melengkung yang dihiasi ukiran cantik berwarna-warni.' }
+      explanation:'Rumah Tongkonan adalah rumah adat suku Toraja dengan atap melengkung yang dihiasi ukiran cantik berwarna-warni.' },
+    { q:'Makanan khas Sulawesi Selatan yang terkenal berupa sup daging sapi khas Makassar adalah...?',
+      img:'tinutuan', options:['Tinutuan','Coto Makassar','Sop Konro','Ayam Taliwang'], answer:1,
+      hint:'Makanan ini adalah sup berbumbu khas dari Makassar 🥣',
+      explanation:'Coto Makassar adalah masakan khas Sulawesi Selatan berupa sup yang dibuat dari jeroan sapi dengan bumbu rempah khas.' },
+    { q:'Ibu kota provinsi Sulawesi Selatan yang merupakan kota terbesar di Sulawesi adalah...?',
+      img:'suku_bugis', options:['Manado','Palu','Makassar','Kendari'], answer:2,
+      hint:'Kota ini dikenal sebagai gerbang Kawasan Timur Indonesia 🏙️',
+      explanation:'Makassar adalah ibu kota Sulawesi Selatan dan kota terbesar di Sulawesi, juga sebagai pintu gerbang Indonesia Timur.' },
+    { q:'Kupu-kupu raksasa endemik Sulawesi yang terkenal keindahannya adalah...?',
+      img:'bunaken', options:['Kupu Rajah Brooke','Ornithoptera Croesus','Troides Helena','Papilio Ulysses'], answer:1,
+      hint:'Kupu-kupu ini termasuk yang terbesar dan terindah di dunia 🦋',
+      explanation:'Ornithoptera Croesus atau Golden Birdwing adalah kupu-kupu endemik Sulawesi Utara yang termasuk yang terindah di dunia.' },
+    { q:'Tradisi menaruh jenazah di tebing batu yang unik dari Toraja disebut...?',
+      img:'rambu_solo', options:['Ngaben','Liang','Patane','Tau-tau'], answer:3,
+      hint:'Boneka kayu yang menggambarkan wajah almarhum dipajang di tebing 👤',
+      explanation:'Tau-tau adalah patung kayu berbentuk manusia yang menggambarkan almarhum, dipajang di tebing batu sebagai representasi arwah.' },
+    { q:'Tari perang dari Sulawesi Tengah yang dilakukan kaum pria dengan penuh semangat adalah...?',
+      img:'kolintang', options:['Tari Dero','Tari Balia','Tari Moduai','Tari Pontanu'], answer:0,
+      hint:'Tari ini dilakukan secara massal dalam lingkaran besar 💃',
+      explanation:'Tari Dero adalah tarian tradisional Sulawesi Tengah yang dilakukan secara massal dengan membentuk lingkaran besar.' },
+    { q:'Festival internasional bawah laut yang diadakan di Wakatobi, Sulawesi Tenggara adalah...?',
+      img:'bunaken', options:['Sail Indonesia','Festival Wakatobi Wave','Sail Banda','Festival Raja Ampat'], answer:1,
+      hint:'Festival ini mempromosikan keindahan bawah laut Wakatobi 🌊',
+      explanation:'Festival Wakatobi Wave adalah festival tahunan yang mengangkat keindahan alam bawah laut dan budaya Wakatobi kepada dunia.' },
+    { q:'Tarian dari Makassar yang dilakukan oleh para wanita dengan gerakan lemah gemulai adalah...?',
+      img:'tongkonan', options:['Tari Pakarena','Tari Paduppa','Tari Kipas','Tari Bissu'], answer:0,
+      hint:'Tarian ini melambangkan kisah perpisahan antara manusia dan para dewa 💃',
+      explanation:'Tari Pakarena adalah tarian tradisional dari Gowa, Makassar yang melambangkan kesopanan, kesetiaan, dan kelembutan perempuan.' }
   ],
+
   papua: [
-    { q:'Alat musik pukul khas Papua yang berbentuk seperti drum panjang adalah...?',
-      options:['Kolintang','Tifa','Sasando','Gendang'], answer:1,
+    { q:'Alat musik pukul khas Papua berbentuk seperti drum panjang adalah...?',
+      img:'tifa', options:['Kolintang','Tifa','Sasando','Gendang'], answer:1,
       hint:'Alat musik ini digunakan dalam upacara adat Papua 🥁',
       explanation:'Tifa adalah alat musik pukul khas Papua dan Maluku, digunakan dalam upacara adat dan perayaan.' },
     { q:'Burung cantik berwarna-warni yang menjadi simbol Papua disebut...?',
-      options:['Elang Jawa','Cendrawasih','Jalak Bali','Kakatua'], answer:1,
+      img:'cendrawasih', options:['Elang Jawa','Cendrawasih','Jalak Bali','Kakatua'], answer:1,
       hint:'Burung ini dijuluki "Burung Surga" karena bulunya sangat indah 🦅',
       explanation:'Burung Cendrawasih (Bird of Paradise) adalah burung khas Papua yang terkenal dengan bulu-bulunya yang indah berwarna-warni.' },
     { q:'Festival budaya Papua yang menampilkan perang-perangan adat suku di pegunungan adalah...?',
-      options:['Pasola Festival','Festival Danau Sentani','Festival Lembah Baliem','Festival Wakatobi'], answer:2,
+      img:'festival_baliem', options:['Pasola Festival','Festival Danau Sentani','Festival Lembah Baliem','Festival Wakatobi'], answer:2,
       hint:'Festival ini diadakan di Lembah Baliem, Papua Pegunungan 🎭',
       explanation:'Festival Lembah Baliem menampilkan tradisi berbagai suku Papua di Pegunungan Tengah, termasuk perang-perangan adat.' },
     { q:'Puncak tertinggi di Indonesia yang ada di Papua bernama...?',
-      options:['Pegunungan Jayawijaya','Gunung Rinjani','Gunung Semeru','Gunung Kerinci'], answer:0,
+      img:'jayawijaya', options:['Pegunungan Jayawijaya','Gunung Rinjani','Gunung Semeru','Gunung Kerinci'], answer:0,
       hint:'Puncak ini juga disebut Puncak Jaya dan memiliki salju abadi ❄️',
       explanation:'Pegunungan Jayawijaya di Papua memiliki Puncak Jaya (Carstensz) setinggi 4.884 m dengan salju abadi di puncaknya!' },
     { q:'Suku terbesar di Papua Pegunungan yang terkenal dengan tradisi kotekanya adalah...?',
-      options:['Suku Asmat','Suku Dani','Suku Biak','Suku Sentani'], answer:1,
+      img:'suku_dani', options:['Suku Asmat','Suku Dani','Suku Biak','Suku Sentani'], answer:1,
       hint:'Suku ini tinggal di Lembah Baliem, Papua 🌿',
       explanation:'Suku Dani adalah suku terbesar di Papua yang tinggal di Lembah Baliem, terkenal dengan koteka dan tradisi perang adat.' },
     { q:'Kerajinan ukir kayu yang sangat terkenal dari Papua, karya suku Asmat adalah...?',
-      options:['Ukiran Patung Asmat','Anyaman Dayak','Batik Papua','Tenun Ikat'], answer:0,
+      img:'ukiran_asmat', options:['Ukiran Patung Asmat','Anyaman Dayak','Batik Papua','Tenun Ikat'], answer:0,
       hint:'Kerajinan ini diakui sebagai warisan budaya dunia 🗿',
       explanation:'Ukiran Patung Asmat adalah kerajinan kayu khas suku Asmat Papua yang sangat terkenal dan bernilai seni tinggi.' },
-    { q:'Danau terbesar di Papua yang terkenal keindahannya dan dikelilingi pegunungan adalah...?',
-      options:['Danau Sentani','Danau Toba','Danau Poso','Danau Tempe'], answer:0,
+    { q:'Danau terbesar di Papua yang terkenal keindahannya dekat Kota Jayapura adalah...?',
+      img:'danau_sentani', options:['Danau Sentani','Danau Toba','Danau Poso','Danau Tempe'], answer:0,
       hint:'Danau ini ada di dekat Kota Jayapura 🏔️',
-      explanation:'Danau Sentani adalah danau terbesar di Papua yang dikelilingi pegunungan indah dan merupakan tempat Festival Danau Sentani.' }
+      explanation:'Danau Sentani adalah danau terbesar di Papua yang dikelilingi pegunungan indah dan merupakan tempat Festival Danau Sentani.' },
+    { q:'Pakaian adat asli Suku Dani yang terbuat dari bahan alami disebut...?',
+      img:'suku_dani', options:['Koteka','Baju Bodo','Noken','Rumbai'], answer:0,
+      hint:'Pakaian ini berbentuk tabung dari kulit labu 👕',
+      explanation:'Koteka adalah penutup badan tradisional laki-laki Suku Dani yang terbuat dari kulit labu kering.' },
+    { q:'Tas anyaman khas Papua yang dibuat dari kulit kayu dan digunakan di kepala adalah...?',
+      img:'festival_baliem', options:['Koteka','Noken','Tifa','Bilum'], answer:1,
+      hint:'Tas ini diakui UNESCO sebagai warisan budaya tak benda 👜',
+      explanation:'Noken adalah tas anyaman khas Papua dari kulit kayu yang dikenakan di kepala, diakui UNESCO sebagai warisan budaya.' },
+    { q:'Burung yang merupakan lambang dalam lambang daerah Provinsi Papua adalah...?',
+      img:'cendrawasih', options:['Cendrawasih','Kakatua Raja','Kasuari','Elang Botak'], answer:0,
+      hint:'Burung ini dikenal dengan nama "Bird of Paradise" 🦜',
+      explanation:'Cendrawasih menjadi simbol Papua karena keindahan bulunya yang unik. Burung ini juga ada dalam lambang provinsi Papua.' },
+    { q:'Suku yang terkenal sebagai pengrajin kayu terbaik di Papua dan hasil karyanya mendunia adalah...?',
+      img:'ukiran_asmat', options:['Suku Dani','Suku Asmat','Suku Biak','Suku Mee'], answer:1,
+      hint:'Kerajinan suku ini pernah ditampilkan di museum internasional 🗿',
+      explanation:'Suku Asmat terkenal sebagai pengrajin kayu terbaik di Papua. Ukiran Asmat bahkan dipamerkan di museum-museum internasional.' },
+    { q:'Sungai terbesar dan terpanjang di Papua yang bermuara ke Laut Arafuru adalah...?',
+      img:'jayawijaya', options:['Sungai Baliem','Sungai Membramo','Sungai Digul','Sungai Fly'], answer:1,
+      hint:'Sungai ini sering disebut "Amazon-nya Papua" 🌊',
+      explanation:'Sungai Memberamo adalah sungai terpanjang di Papua yang mengalir melalui hutan lebat dan sering disebut "Amazon Papua".' },
+    { q:'Festival tahunan yang menampilkan seni budaya dan keindahan Danau Sentani adalah...?',
+      img:'danau_sentani', options:['Festival Lembah Baliem','Festival Danau Sentani','Festival Asmat','Sail Papua'], answer:1,
+      hint:'Festival ini diadakan di tepian danau indah di dekat Jayapura 🎉',
+      explanation:'Festival Danau Sentani adalah festival budaya tahunan yang merayakan kekayaan seni dan budaya Papua di tepian Danau Sentani.' },
+    { q:'Tanaman sagu yang menjadi makanan pokok sebagian besar masyarakat Papua berasal dari...?',
+      img:'suku_dani', options:['Pohon kelapa sawit','Pohon enau/aren','Pohon palem sagu','Pohon bambu'], answer:2,
+      hint:'Pohon ini tumbuh subur di daerah rawa dan lembab 🌿',
+      explanation:'Tepung sagu berasal dari pohon palem sagu (Metroxylon sagu) yang banyak tumbuh di Papua dan digunakan sebagai makanan pokok.' }
   ]
 };
 
 // ===================== STATE =====================
 const state = {
-  completed: JSON.parse(localStorage.getItem('nusantara_v2_completed') || '[]'),
-  scores: JSON.parse(localStorage.getItem('nusantara_v2_scores') || '{}'),
-  collection: JSON.parse(localStorage.getItem('nusantara_v2_collection') || '[]'),
-  totalScore: parseInt(localStorage.getItem('nusantara_v2_total') || '0'),
+  completed: JSON.parse(localStorage.getItem('quiz_v3_completed') || '[]'),
+  scores: JSON.parse(localStorage.getItem('quiz_v3_scores') || '{}'),
+  collection: JSON.parse(localStorage.getItem('quiz_v3_collection') || '[]'),
+  totalScore: parseInt(localStorage.getItem('quiz_v3_total') || '0'),
+  questionIndices: JSON.parse(localStorage.getItem('quiz_v3_qidx') || '{}'),
+  visitCount: JSON.parse(localStorage.getItem('quiz_v3_visits') || '{}'),
   currentIslandIdx: 0, currentQ: 0, answered: false,
   correct: 0, elapsed: 0, timerInterval: null,
   timeLeft: 30, quizStartTime: 0, streak: 0,
-  hintUsed: false, sessionScore: 0
+  hintUsed: false, sessionScore: 0,
+  currentQuestions: [] // shuffled subset for this session
 };
 
 function saveState() {
-  localStorage.setItem('nusantara_v2_completed', JSON.stringify(state.completed));
-  localStorage.setItem('nusantara_v2_scores', JSON.stringify(state.scores));
-  localStorage.setItem('nusantara_v2_collection', JSON.stringify(state.collection));
-  localStorage.setItem('nusantara_v2_total', state.totalScore.toString());
+  localStorage.setItem('quiz_v3_completed', JSON.stringify(state.completed));
+  localStorage.setItem('quiz_v3_scores', JSON.stringify(state.scores));
+  localStorage.setItem('quiz_v3_collection', JSON.stringify(state.collection));
+  localStorage.setItem('quiz_v3_total', state.totalScore.toString());
+  localStorage.setItem('quiz_v3_qidx', JSON.stringify(state.questionIndices));
+  localStorage.setItem('quiz_v3_visits', JSON.stringify(state.visitCount));
+}
+
+// Rolling question selection: pick 7 questions from bank, rotating each visit
+function pickQuestions(islandId) {
+  const all = QUESTIONS[islandId];
+  const totalQ = all.length;
+  const pickCount = 7;
+  const visitKey = islandId;
+  const visit = (state.visitCount[visitKey] || 0);
+  // Rotate starting index by visit count
+  const startIdx = (visit * pickCount) % totalQ;
+  const picked = [];
+  for (let i = 0; i < pickCount; i++) {
+    picked.push(all[(startIdx + i) % totalQ]);
+  }
+  // Increment visit
+  state.visitCount[visitKey] = visit + 1;
+  return picked;
 }
 
 // ===================== NAVIGATION =====================
@@ -1008,7 +2167,6 @@ function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
-
 function showMap() { updateMapUI(); showScreen('screen-map'); }
 function showCollection() { renderCollection(); showScreen('screen-collection'); }
 
@@ -1019,11 +2177,13 @@ function showHowToPlay() {
     <div class="levelup-card">
       <span class="levelup-emoji">📖</span>
       <div class="levelup-title">Cara Bermain</div>
-      <div style="text-align:left;font-size:0.92rem;line-height:1.8;color:#555;margin-bottom:1.5rem;">
+      <div style="text-align:left;font-size:0.9rem;line-height:1.8;color:#555;margin-bottom:1.5rem;">
         🗺️ <b>Pilih pulau</b> di peta Nusantara<br>
         ❓ <b>Jawab 7 soal</b> budaya per pulau<br>
+        🔄 <b>Soal bergilir</b> — pulau sama → soal baru!<br>
+        🖼️ <b>Gambar ilustrasi</b> ada di setiap soal<br>
         ⏱️ <b>30 detik</b> untuk setiap soal<br>
-        💡 <b>Minta petunjuk</b> jika kesulitan (−5 poin)<br>
+        💡 <b>Petunjuk</b> tersedia jika kesulitan (−5 poin)<br>
         🔥 <b>Jawaban beruntun</b> dapat bonus poin!<br>
         🏆 <b>Kumpulkan koleksi</b> budaya sebagai hadiah<br>
         🔒 <b>Selesaikan</b> pulau sebelumnya dulu!
@@ -1044,6 +2204,8 @@ function updateMapUI() {
     btn.classList.remove('locked','completed');
     btn.querySelector('.lock-icon') && btn.querySelector('.lock-icon').remove();
     btn.querySelector('.star-icon') && btn.querySelector('.star-icon').remove();
+    btn.querySelector('.island-visit-count') && btn.querySelector('.island-visit-count').remove();
+    const visits = state.visitCount[id] || 0;
     if (isLocked) {
       btn.classList.add('locked');
       const lock = document.createElement('div');
@@ -1054,6 +2216,12 @@ function updateMapUI() {
       const star = document.createElement('div');
       star.className = 'star-icon'; star.textContent = '⭐';
       btn.appendChild(star);
+    }
+    if (visits > 0 && !isLocked) {
+      const vc = document.createElement('div');
+      vc.className = 'island-visit-count';
+      vc.textContent = '×' + visits;
+      btn.appendChild(vc);
     }
   });
   const done = state.completed.length;
@@ -1075,7 +2243,11 @@ function startQuiz(islandIdx) {
   state.quizStartTime = Date.now(); state.streak = 0;
   state.sessionScore = 0; state.hintUsed = false;
 
+  // Rolling questions
   const island = ISLANDS[islandIdx];
+  state.currentQuestions = pickQuestions(island.id);
+  saveState();
+
   document.getElementById('quiz-island-badge').textContent = island.emoji;
   document.getElementById('quiz-island-badge').style.background = island.color + '22';
   document.getElementById('quiz-island-name').textContent = island.name;
@@ -1086,12 +2258,27 @@ function startQuiz(islandIdx) {
 
 function renderQuestion() {
   const island = ISLANDS[state.currentIslandIdx];
-  const questions = QUESTIONS[island.id];
-  const q = questions[state.currentQ];
-  const total = questions.length;
+  const q = state.currentQuestions[state.currentQ];
+  const total = state.currentQuestions.length;
+  const visitNum = state.visitCount[island.id] || 1;
 
   document.getElementById('quiz-progress').textContent = `Soal ${state.currentQ + 1} dari ${total}`;
-  document.getElementById('question-num').innerHTML = `❓ Pertanyaan ${state.currentQ + 1} <span style="font-size:10px;background:${island.color}22;color:${island.color};padding:2px 8px;border-radius:99px;">${island.name}</span>`;
+
+  const isRolling = visitNum > 1;
+  document.getElementById('question-num').innerHTML = `❓ Pertanyaan ${state.currentQ + 1} 
+    <span style="font-size:10px;background:${island.color}22;color:${island.color};padding:2px 8px;border-radius:99px;">${island.name}</span>
+    ${isRolling ? `<span class="rolling-badge">🔄 Putaran ${visitNum}</span>` : ''}`;
+
+  // Render illustration
+  const imgWrap = document.getElementById('question-image-wrap');
+  const svgKey = q.img;
+  if (svgKey && ILLUSTRATIONS[svgKey]) {
+    imgWrap.innerHTML = ILLUSTRATIONS[svgKey];
+    imgWrap.style.display = 'flex';
+  } else {
+    imgWrap.style.display = 'none';
+  }
+
   document.getElementById('question-text').textContent = q.q;
 
   const grid = document.getElementById('options-grid');
@@ -1111,7 +2298,6 @@ function renderQuestion() {
   document.getElementById('hint-btn').style.display = 'block';
   state.answered = false; state.hintUsed = false;
 
-  // Update streak badge
   const streakBadge = document.getElementById('streak-badge');
   if (state.streak >= 2) {
     streakBadge.style.display = 'inline-flex';
@@ -1130,10 +2316,7 @@ function startTimer() {
   state.timerInterval = setInterval(() => {
     state.timeLeft--;
     updateTimerUI();
-    if (state.timeLeft <= 0) {
-      clearInterval(state.timerInterval);
-      if (!state.answered) timeOut();
-    }
+    if (state.timeLeft <= 0) { clearInterval(state.timerInterval); if (!state.answered) timeOut(); }
   }, 1000);
 }
 
@@ -1146,8 +2329,7 @@ function updateTimerUI() {
 function timeOut() {
   playSFX('timeout');
   state.answered = true; state.streak = 0;
-  const island = ISLANDS[state.currentIslandIdx];
-  const q = QUESTIONS[island.id][state.currentQ];
+  const q = state.currentQuestions[state.currentQ];
   document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
   document.querySelectorAll('.option-btn')[q.answer].classList.add('correct');
   showFeedback(false, '⏰ Waktu habis! Jawaban: ' + q.options[q.answer], q.explanation);
@@ -1160,14 +2342,12 @@ function selectAnswer(idx) {
   state.answered = true;
   clearInterval(state.timerInterval);
 
-  const island = ISLANDS[state.currentIslandIdx];
-  const q = QUESTIONS[island.id][state.currentQ];
+  const q = state.currentQuestions[state.currentQ];
   const isCorrect = idx === q.answer;
 
   document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
   document.querySelectorAll('.option-btn')[q.answer].classList.add('correct');
   if (!isCorrect) document.querySelectorAll('.option-btn')[idx].classList.add('wrong');
-
   document.getElementById('hint-btn').style.display = 'none';
 
   if (isCorrect) {
@@ -1191,15 +2371,13 @@ function selectAnswer(idx) {
     state.streak = 0;
     showFeedback(false, '❌ Kurang tepat. Jawaban: ' + q.options[q.answer], q.explanation);
   }
-
   document.getElementById('next-btn').classList.add('visible');
 }
 
 function showHint() {
   if (state.answered || state.hintUsed) return;
   state.hintUsed = true;
-  const island = ISLANDS[state.currentIslandIdx];
-  const q = QUESTIONS[island.id][state.currentQ];
+  const q = state.currentQuestions[state.currentQ];
   document.getElementById('hint-btn').style.display = 'none';
   document.getElementById('hint-area').innerHTML = `<div class="hint-box">💡 Petunjuk: ${q.hint}</div>`;
 }
@@ -1210,16 +2388,14 @@ function showFeedback(correct, title, explanation) {
       <div class="feedback-icon">${correct ? '🎉' : '📚'}</div>
       <div class="feedback-text">
         <strong>${title}</strong><br>
-        <span style="font-weight:600;font-size:0.88rem;">${explanation}</span>
+        <span style="font-weight:600;font-size:0.86rem;">${explanation}</span>
       </div>
     </div>`;
 }
 
 function nextQuestion() {
-  const island = ISLANDS[state.currentIslandIdx];
-  const total = QUESTIONS[island.id].length;
   state.currentQ++;
-  if (state.currentQ >= total) showResult();
+  if (state.currentQ >= state.currentQuestions.length) showResult();
   else renderQuestion();
 }
 
@@ -1229,7 +2405,7 @@ function retryQuiz() { startQuiz(state.currentIslandIdx); }
 function showResult() {
   clearInterval(state.timerInterval);
   const island = ISLANDS[state.currentIslandIdx];
-  const total = QUESTIONS[island.id].length;
+  const total = state.currentQuestions.length;
   const pct = state.correct / total;
   const timeSpent = Math.round((Date.now() - state.quizStartTime) / 1000);
   const stars = pct >= 0.85 ? 3 : pct >= 0.6 ? 2 : pct >= 0.4 ? 1 : 0;
@@ -1269,7 +2445,7 @@ function showResult() {
       document.getElementById('reward-icon').textContent = reward.icon;
       document.getElementById('reward-name').textContent = '🎁 Baru Didapat! ' + reward.name;
       document.getElementById('reward-desc').textContent = reward.desc;
-      if (earned) confetti();
+      confetti();
     } else {
       document.getElementById('reward-card').style.display = 'flex';
       document.getElementById('reward-icon').textContent = reward.icon;
@@ -1278,7 +2454,6 @@ function showResult() {
     }
     if (!state.completed.includes(state.currentIslandIdx)) {
       state.completed.push(state.currentIslandIdx);
-      // Show level up overlay after brief delay
       if (state.completed.length < 5) {
         setTimeout(() => showLevelUp(island, state.completed.length), 1500);
       }
@@ -1310,25 +2485,26 @@ function showLevelUp(island, nextLevel) {
 function renderCollection() {
   const body = document.getElementById('collection-body');
   body.innerHTML = '';
-
   const totalCollected = state.collection.length;
   const summaryDiv = document.createElement('div');
   summaryDiv.style.cssText = 'background:linear-gradient(135deg,#e8f8ef,#e3f2fd);border-radius:20px;padding:1.2rem;margin-bottom:1.5rem;text-align:center;';
   summaryDiv.innerHTML = `
     <div style="font-size:2rem;margin-bottom:4px;">🏆</div>
-    <div style="font-family:\'Baloo 2\',cursive;font-size:1.5rem;font-weight:900;">${totalCollected}/5 Koleksi</div>
+    <div style="font-family:'Baloo 2',cursive;font-size:1.5rem;font-weight:900;">${totalCollected}/5 Koleksi</div>
     <div style="color:var(--muted);font-size:13px;font-weight:700;">Total Skor: ${state.totalScore} poin</div>
     <div style="margin-top:10px;background:#e0e0e0;border-radius:99px;height:10px;overflow:hidden;">
       <div style="height:100%;width:${totalCollected/5*100}%;background:linear-gradient(90deg,#ff6b6b,#f1c40f,#2ecc71);border-radius:99px;transition:width 1s ease;"></div>
     </div>`;
   body.appendChild(summaryDiv);
 
-  ISLANDS.forEach((island, i) => {
+  ISLANDS.forEach((island) => {
     const section = document.createElement('div');
     section.className = 'collection-section';
     const title = document.createElement('div');
     title.className = 'section-title';
     title.innerHTML = `${island.emoji} ${island.name}`;
+    const visits = state.visitCount[island.id] || 0;
+    if (visits > 0) title.innerHTML += ` <span style="font-size:11px;background:#e3f2fd;color:#1565c0;padding:2px 8px;border-radius:99px;">Dikunjungi ${visits}×</span>`;
     section.appendChild(title);
     const grid = document.createElement('div');
     grid.className = 'collection-grid';
@@ -1375,26 +2551,10 @@ function confetti() {
 
 // ===================== INIT =====================
 updateMapUI();
-
-// Start music on first interaction
 document.addEventListener('click', function initMusic() {
   startMusic();
   document.removeEventListener('click', initMusic);
 }, { once: false });
-
-// Tip messages
-const TIPS = [
-  '💡 Jawab cepat untuk dapat poin lebih banyak!',
-  '🔥 Jawab beruntun untuk bonus streak!',
-  '📚 Baca soal dengan teliti sebelum menjawab!',
-  '🌟 Selesaikan semua pulau untuk jadi Petualang Nusantara!'
-];
-let tipIdx = 0;
-setInterval(() => {
-  if (document.getElementById('screen-menu').classList.contains('active')) {
-    // menu tip rotation could be added here
-  }
-}, 5000);
 </script>
 </body>
 </html>
