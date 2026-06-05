@@ -1114,9 +1114,10 @@ const ISLANDS = [
   }
 ];
 
-// Each island has 14 questions, rolling through them
+// Each island has 30 questions (10 per level), rotating 5 per visit → 2 plays before repeat
 const QUESTIONS = {
   sumatera: [
+    // === MUDAH (0-9) ===
     { q:'Rumah adat Sumatera Barat yang atapnya seperti tanduk kerbau disebut...?', options:['Rumah Joglo','Rumah Gadang','Rumah Limas','Rumah Bolon'], answer:1,
       hint:'Rumah ini banyak ditemukan di daerah Minangkabau 🏠',
       explanation:'Rumah Gadang adalah rumah adat Minangkabau dengan atap gonjong yang menyerupai tanduk kerbau.' },
@@ -1129,9 +1130,6 @@ const QUESTIONS = {
     { q:'Masakan khas Sumatera Barat yang terkenal di seluruh dunia adalah...?', options:['Soto Ayam','Rendang','Gado-gado','Pempek'], answer:1,
       hint:'Makanan ini dimasak lama dengan santan dan rempah-rempah 🍲',
       explanation:'Rendang adalah masakan khas Minangkabau yang pernah dinobatkan sebagai makanan terlezat di dunia!' },
-    { q:'Bahasa daerah utama di Sumatera Utara adalah bahasa...?', options:['Minangkabau','Batak','Melayu','Lampung'], answer:1,
-      hint:'Bahasa ini digunakan suku asli Sumatera Utara 🗣️',
-      explanation:'Bahasa Batak (Toba, Karo, Simalungun) adalah bahasa utama penduduk asli Sumatera Utara.' },
     { q:'Suku yang terkenal di Sumatera Barat dengan sistem matrilinealnya adalah...?', options:['Suku Batak','Suku Minangkabau','Suku Melayu','Suku Rejang'], answer:1,
       hint:'Suku ini mewarisi harta dari garis ibu 👩',
       explanation:'Suku Minangkabau unik karena menganut sistem matrilineal, yaitu garis keturunan dari pihak ibu.' },
@@ -1141,15 +1139,47 @@ const QUESTIONS = {
     { q:'Bunga raksasa yang menjadi ciri khas hutan Sumatera adalah...?', options:['Bunga Anggrek','Rafflesia Arnoldii','Bunga Melati','Bunga Bangkai'], answer:1,
       hint:'Bunga ini terkenal sebagai bunga terbesar di dunia 🌺',
       explanation:'Rafflesia Arnoldii adalah bunga terbesar di dunia yang hanya tumbuh di hutan Sumatera.' },
-    { q:'Alat musik tradisional khas Batak Toba yang terkenal adalah...?', options:['Angklung','Gondang Sabangunan','Kolintang','Sasando'], answer:1,
-      hint:'Alat musik ini dimainkan dalam upacara adat Batak 🎵',
-      explanation:'Gondang Sabangunan adalah ansambel musik sakral suku Batak Toba yang digunakan dalam berbagai upacara.' },
     { q:'Ibu kota Provinsi Aceh yang merupakan ujung barat Indonesia adalah...?', options:['Medan','Banda Aceh','Palembang','Padang'], answer:1,
       hint:'Kota ini adalah kota paling barat di Indonesia 🗺️',
       explanation:'Banda Aceh adalah ibu kota Provinsi Aceh, sekaligus kota paling barat di Indonesia.' },
+    { q:'Makanan khas Sumatera Selatan berbentuk bola ikan yang digoreng disebut...?', options:['Pempek','Tempoyak','Pindang','Celimpungan'], answer:0,
+      hint:'Makanan ini enak dimakan dengan kuah cuka 🍢',
+      explanation:'Pempek adalah makanan khas Palembang yang terbuat dari daging ikan dan tepung sagu, dimakan dengan kuah cuka pedas.' },
+    { q:'Bahasa daerah utama di Sumatera Utara adalah bahasa...?', options:['Minangkabau','Batak','Melayu','Lampung'], answer:1,
+      hint:'Bahasa ini digunakan suku asli Sumatera Utara 🗣️',
+      explanation:'Bahasa Batak (Toba, Karo, Simalungun) adalah bahasa utama penduduk asli Sumatera Utara.' },
+    // === SEDANG (10-19) ===
+    { q:'Alat musik tradisional khas Batak Toba yang terkenal adalah...?', options:['Angklung','Gondang Sabangunan','Kolintang','Sasando'], answer:1,
+      hint:'Alat musik ini dimainkan dalam upacara adat Batak 🎵',
+      explanation:'Gondang Sabangunan adalah ansambel musik sakral suku Batak Toba yang digunakan dalam berbagai upacara.' },
     { q:'Pakaian adat pria Minangkabau yang khas berupa celana hitam lebar disebut...?', options:['Beskap','Jas Tutup','Sarawa','Baju Bodo'], answer:2,
       hint:'Pakaian ini dilengkapi dengan destar (ikat kepala) 👘',
       explanation:'Sarawa adalah celana hitam longgar bagian dari pakaian adat pria Minangkabau yang dipakai dalam upacara.' },
+    { q:'Senjata tradisional khas Aceh yang menjadi lambang kebanggaan masyarakatnya adalah...?', options:['Keris','Rencong','Kujang','Mandau'], answer:1,
+      hint:'Senjata ini berbentuk melengkung dan dipakai di pinggang 🗡️',
+      explanation:'Rencong adalah senjata tradisional khas Aceh, melambangkan keberanian dan harga diri masyarakat Aceh.' },
+    { q:'Tari yang berasal dari Sumatera Barat dengan gerakan piring yang berputar disebut...?', options:['Tari Saman','Tari Tor-Tor','Tari Piring','Tari Zapin'], answer:2,
+      hint:'Penari memegang piring di kedua tangan sambil menari 🍽️',
+      explanation:'Tari Piring adalah tarian tradisional Minangkabau yang memperlihatkan keahlian penari dalam memutarkan piring.' },
+    { q:'Harimau yang menjadi hewan endemik dan hampir punah di Sumatera adalah...?', options:['Harimau Benggala','Harimau Sumatera','Harimau Siberia','Harimau Malaya'], answer:1,
+      hint:'Harimau ini hanya hidup di Pulau Sumatera 🐯',
+      explanation:'Harimau Sumatera (Panthera tigris sumatrae) adalah subspesies harimau terkecil yang hanya ditemukan di Sumatera.' },
+    { q:'Kota terbesar di Sumatera yang dijuluki "Kota Medan" adalah ibu kota provinsi...?', options:['Sumatera Barat','Riau','Sumatera Utara','Aceh'], answer:2,
+      hint:'Kota ini terkenal dengan Istana Maimun dan kuliner khas Melayu 🏙️',
+      explanation:'Medan adalah ibu kota Provinsi Sumatera Utara dan kota terbesar di Sumatera.' },
+    { q:'Adat merantau yang terkenal dalam budaya Minangkabau bertujuan untuk...?', options:['Mencari istri','Menambah ilmu dan pengalaman','Melarikan diri','Berdagang paksa'], answer:1,
+      hint:'Pemuda Minang pergi merantau untuk mandiri dan berkembang 🌍',
+      explanation:'Merantau dalam budaya Minangkabau adalah tradisi meninggalkan kampung halaman untuk menempa diri, menambah ilmu, dan mencari pengalaman.' },
+    { q:'Tari Tor-Tor adalah tarian sakral yang berasal dari suku...?', options:['Minangkabau','Batak','Melayu','Rejang'], answer:1,
+      hint:'Tarian ini dipakai dalam upacara adat suku asli Sumatera Utara 💃',
+      explanation:'Tari Tor-Tor adalah tarian tradisional suku Batak Sumatera Utara, digunakan dalam upacara adat dan penyambutan tamu.' },
+    { q:'Pulau yang terletak di tengah Danau Toba disebut...?', options:['Pulau Nias','Pulau Samosir','Pulau Siberut','Pulau Bangka'], answer:1,
+      hint:'Pulau ini lebih besar dari negara Singapura 🏝️',
+      explanation:'Pulau Samosir adalah pulau besar di tengah Danau Toba yang merupakan pusat kebudayaan Batak Toba.' },
+    { q:'Festival Krakatau yang terkenal diadakan di provinsi...?', options:['Sumatera Barat','Sumatera Selatan','Lampung','Bangka Belitung'], answer:2,
+      hint:'Festival ini merayakan keindahan Gunung Anak Krakatau 🌋',
+      explanation:'Festival Krakatau diadakan di Lampung untuk memperingati dan merayakan keberadaan Gunung Anak Krakatau.' },
+    // === SULIT (20-29) ===
     { q:'Senjata tradisional khas Sumatera Barat yang berbentuk melengkung adalah...?', options:['Keris','Rencong','Kujang','Karih'], answer:3,
       hint:'Senjata ini dipakai dalam tari tradisional piring 🗡️',
       explanation:'Karih adalah senjata tradisional Minangkabau berbentuk belati melengkung yang digunakan dalam upacara adat.' },
@@ -1158,100 +1188,224 @@ const QUESTIONS = {
       explanation:'Gajah Sumatera (Elephas maximus sumatranus) terancam punah terutama karena hilangnya habitat akibat deforestasi.' },
     { q:'Festival budaya terbesar di Sumatera Utara yang merayakan danau kebanggaan disebut...?', options:['Festival Danau Toba','Pesta Bunga Tomohon','Festival Krakatau','Pesta Kesenian Bali'], answer:0,
       hint:'Festival ini diadakan di tepi danau vulkanik terbesar dunia 🎉',
-      explanation:'Festival Danau Toba adalah festival budaya tahunan yang merayakan keindahan dan kekayaan budaya Danau Toba.' }
+      explanation:'Festival Danau Toba adalah festival budaya tahunan yang merayakan keindahan dan kekayaan budaya Danau Toba.' },
+    { q:'Sistem pemerintahan adat Minangkabau yang dipimpin oleh penghulu disebut...?', options:['Nagari','Banjar','Marga','Gampong'], answer:0,
+      hint:'Sistem ini adalah bentuk pemerintahan desa khas Minangkabau 🏛️',
+      explanation:'Nagari adalah satuan pemerintahan adat Minangkabau setingkat desa yang dipimpin oleh para penghulu (kepala suku).' },
+    { q:'Upacara adat kematian suku Batak yang dilakukan setelah bertahun-tahun penguburan disebut...?', options:['Saurmatua','Mangongkal Holi','Manulangi','Paulak Une'], answer:1,
+      hint:'Upacara ini melibatkan pemindahan tulang leluhur 🪦',
+      explanation:'Mangongkal Holi adalah upacara adat Batak Toba yang melibatkan penggalian dan pemindahan tulang leluhur ke makam baru yang lebih baik.' },
+    { q:'Harimau Sumatera dalam bahasa Latin disebut...?', options:['Panthera tigris corbetti','Panthera tigris sumatrae','Panthera tigris altaica','Panthera tigris jacksoni'], answer:1,
+      hint:'Nama Latin ini merujuk asal pulaunya 🐯',
+      explanation:'Harimau Sumatera bernama ilmiah Panthera tigris sumatrae, satu-satunya subspesies harimau yang tersisa di Sumatera.' },
+    { q:'Kesenian tradisional Melayu Riau yang memadukan syair dengan musik disebut...?', options:['Randai','Makyong','Didong','Saluang'], answer:1,
+      hint:'Kesenian ini termasuk warisan budaya tak benda UNESCO 🎶',
+      explanation:'Makyong adalah seni pertunjukan Melayu yang memadukan tari, musik, dan syair, diakui UNESCO sebagai warisan budaya tak benda.' },
+    { q:'Batang Arau adalah sungai yang membelah kota tua di...?', options:['Banda Aceh','Padang','Pekanbaru','Jambi'], answer:1,
+      hint:'Kota ini terkenal dengan bangunan kolonial di tepi sungai 🌊',
+      explanation:'Batang Arau adalah sungai bersejarah yang membelah kota tua Padang, Sumatera Barat, tempat banyak bangunan kolonial berada.' },
+    { q:'Bundo Kanduang dalam adat Minangkabau adalah sebutan untuk...?', options:['Perempuan tua biasa','Ibu yang dihormati pemimpin kaum','Dukun perempuan','Pengantin wanita'], answer:1,
+      hint:'Figur ini menjadi pemimpin dalam keluarga besar Minangkabau 👸',
+      explanation:'Bundo Kanduang adalah perempuan pemimpin dalam adat Minangkabau, menjadi figur sentral dan teladan dalam keluarga serta kaum.' },
+    { q:'Aksara asli yang digunakan oleh suku Batak untuk menulis teks adat disebut...?', options:['Aksara Jawa','Aksara Lontara','Aksara Batak','Aksara Sunda'], answer:2,
+      hint:'Aksara ini dipahatkan pada bambu dan kayu 📜',
+      explanation:'Aksara Batak adalah sistem tulisan tradisional suku Batak yang digunakan untuk menulis naskah adat, mantra, dan sejarah.' },
   ],
 
   jawa: [
+    // === MUDAH (0-9) ===
     { q:'Seni pertunjukan bayangan boneka dari kulit yang terkenal dari Jawa disebut...?', options:['Ketoprak','Ludruk','Wayang Kulit','Reog'], answer:2,
       hint:'Pertunjukan ini menggunakan layar putih dan lampu 🎭',
       explanation:'Wayang Kulit adalah seni pertunjukan Jawa menggunakan boneka kulit yang diproyeksikan sebagai bayangan.' },
-    { q:'Motif batik tertua dari Jawa yang berasal dari keraton adalah...?', options:['Batik Pesisir','Batik Parang','Batik Mega Mendung','Batik Jumputan'], answer:1,
-      hint:'Motif ini berasal dari keraton Yogyakarta dan Solo 👘',
-      explanation:'Batik Parang adalah motif batik tertua dari Jawa yang melambangkan kekuasaan dan keberanian.' },
-    { q:'Rumah adat tradisional Jawa dengan atap bertingkat disebut...?', options:['Rumah Joglo','Rumah Limasan','Rumah Panggung','Rumah Betawi'], answer:0,
-      hint:'Rumah ini sering terlihat di keraton Yogyakarta 🏰',
-      explanation:'Rumah Joglo adalah rumah adat Jawa dengan atap tumpang sari (bertingkat) yang melambangkan status sosial.' },
-    { q:'Tarian Jawa untuk menyambut tamu yang berasal dari Surakarta adalah...?', options:['Tari Serimpi','Tari Gambyong','Tari Kecak','Tari Saman'], answer:1,
-      hint:'Tarian ini gerakannya lembut dan anggun 💃',
-      explanation:'Tari Gambyong berasal dari Surakarta (Solo), biasa ditampilkan untuk menyambut tamu kehormatan.' },
     { q:'Makanan khas Yogyakarta yang dibuat dari nangka muda berwarna coklat adalah...?', options:['Nasi Gudeg','Nasi Rawon','Nasi Pecel','Nasi Kucing'], answer:0,
       hint:'Makanan ini terasa manis dan gurih 🍛',
       explanation:'Gudeg adalah makanan khas Yogyakarta dari nangka muda yang dimasak dengan santan dan rempah berwarna coklat.' },
-    { q:'Candi Hindu terbesar di Indonesia yang ada di Jawa Tengah adalah...?', options:['Borobudur','Prambanan','Mendut','Plaosan'], answer:1,
-      hint:'Candi ini didedikasikan untuk Dewa Siwa 🛕',
-      explanation:'Candi Prambanan adalah candi Hindu terbesar di Indonesia dan salah satu yang terbesar di dunia.' },
-    { q:'Orkestra tradisional Jawa yang terdiri dari berbagai instrumen disebut...?', options:['Kolintang','Gamelan','Angklung','Sasando'], answer:1,
-      hint:'Alat musik ini biasa mengiringi wayang dan tari 🎶',
-      explanation:'Gamelan adalah orkestra tradisional Jawa yang terdiri dari berbagai instrumen perkusi dan dipelajari di seluruh dunia.' },
+    { q:'Rumah adat tradisional Jawa dengan atap bertingkat disebut...?', options:['Rumah Joglo','Rumah Limasan','Rumah Panggung','Rumah Betawi'], answer:0,
+      hint:'Rumah ini sering terlihat di keraton Yogyakarta 🏰',
+      explanation:'Rumah Joglo adalah rumah adat Jawa dengan atap tumpang sari (bertingkat) yang melambangkan status sosial.' },
     { q:'Candi Buddha terbesar di dunia yang terletak di Jawa Tengah adalah...?', options:['Candi Borobudur','Candi Prambanan','Candi Mendut','Candi Pawon'], answer:0,
       hint:'Candi ini termasuk keajaiban dunia dari UNESCO 🏛️',
       explanation:'Candi Borobudur di Magelang, Jawa Tengah adalah candi Buddha terbesar di dunia yang diakui UNESCO.' },
-    { q:'Seni bela diri tradisional dari Jawa Barat yang berasal dari suku Sunda adalah...?', options:['Pencak Silat','Capoeira','Tarung Derajat','Kuntao'], answer:0,
-      hint:'Seni bela diri ini juga banyak ditemukan di seluruh Indonesia 🥋',
-      explanation:'Pencak Silat adalah seni bela diri tradisional Indonesia, yang berkembang kuat di Jawa dan Sumatera Barat.' },
+    { q:'Orkestra tradisional Jawa yang terdiri dari berbagai instrumen disebut...?', options:['Kolintang','Gamelan','Angklung','Sasando'], answer:1,
+      hint:'Alat musik ini biasa mengiringi wayang dan tari 🎶',
+      explanation:'Gamelan adalah orkestra tradisional Jawa yang terdiri dari berbagai instrumen perkusi dan dipelajari di seluruh dunia.' },
+    { q:'Candi Hindu terbesar di Indonesia yang ada di Jawa Tengah adalah...?', options:['Borobudur','Prambanan','Mendut','Plaosan'], answer:1,
+      hint:'Candi ini didedikasikan untuk Dewa Siwa 🛕',
+      explanation:'Candi Prambanan adalah candi Hindu terbesar di Indonesia dan salah satu yang terbesar di dunia.' },
+    { q:'Senjata tradisional Jawa yang dipercaya memiliki kekuatan spiritual adalah...?', options:['Keris','Tombak','Pedang','Mandau'], answer:0,
+      hint:'Senjata ini bilahnya berlekuk-lekuk 🗡️',
+      explanation:'Keris adalah senjata tradisional Jawa bermata dua dengan bilah berlekuk yang dipercaya memiliki kekuatan spiritual.' },
+    { q:'Kota yang dijuluki Kota Gudeg di Jawa adalah...?', options:['Solo','Semarang','Yogyakarta','Surabaya'], answer:2,
+      hint:'Kota ini juga dikenal sebagai kota pelajar 🏛️',
+      explanation:'Yogyakarta dijuluki Kota Gudeg karena makanan khasnya, sekaligus dikenal sebagai kota pelajar dan budaya.' },
+    { q:'Tarian Jawa untuk menyambut tamu yang berasal dari Surakarta adalah...?', options:['Tari Serimpi','Tari Gambyong','Tari Kecak','Tari Saman'], answer:1,
+      hint:'Tarian ini gerakannya lembut dan anggun 💃',
+      explanation:'Tari Gambyong berasal dari Surakarta (Solo), biasa ditampilkan untuk menyambut tamu kehormatan.' },
+    { q:'Seni bela diri tradisional yang berasal dari Indonesia dan berkembang di Jawa adalah...?', options:['Karate','Pencak Silat','Taekwondo','Judo'], answer:1,
+      hint:'Seni bela diri ini juga ditampilkan dalam acara adat 🥋',
+      explanation:'Pencak Silat adalah seni bela diri tradisional Indonesia yang berkembang pesat di Jawa dan diakui UNESCO.' },
+    // === SEDANG (10-19) ===
+    { q:'Motif batik tertua dari Jawa yang berasal dari keraton adalah...?', options:['Batik Pesisir','Batik Parang','Batik Mega Mendung','Batik Jumputan'], answer:1,
+      hint:'Motif ini berasal dari keraton Yogyakarta dan Solo 👘',
+      explanation:'Batik Parang adalah motif batik tertua dari Jawa yang melambangkan kekuasaan dan keberanian.' },
+    { q:'Tokoh pewayangan Jawa yang terkenal sebagai pemanah sakti dari keluarga Pandawa adalah...?', options:['Rahwana','Arjuna','Yudhistira','Werkudara'], answer:1,
+      hint:'Tokoh ini melambangkan keberanian dan keanggunan 🏹',
+      explanation:'Arjuna adalah tokoh wayang Jawa yang melambangkan keberanian, kebenaran, dan keanggunan dari keluarga Pandawa.' },
+    { q:'Batik dari pesisir utara Jawa yang dipengaruhi budaya China dan Arab disebut...?', options:['Batik Keraton','Batik Pesisir','Batik Parang','Batik Wahyu Tumurun'], answer:1,
+      hint:'Batik ini memiliki warna lebih cerah dan motif lebih bebas 🎨',
+      explanation:'Batik Pesisir dari pantai utara Jawa dipengaruhi budaya China dan Arab, warnanya lebih cerah dan beragam motifnya.' },
+    { q:'Minuman rempah khas Yogyakarta yang menghangatkan badan disebut...?', options:['Bir Pletok','Bajigur','Wedang Jahe','Wedang Uwuh'], answer:3,
+      hint:'Minuman ini terbuat dari berbagai rempah seperti kayu manis dan cengkeh ☕',
+      explanation:'Wedang Uwuh adalah minuman rempah khas Yogyakarta terdiri dari berbagai rempah yang menghangatkan tubuh.' },
+    { q:'Kesenian kuda lumping yang terkenal dari Jawa adalah bagian dari seni...?', options:['Tari Tradisional','Wayang Orang','Jaranan/Jaran Kepang','Ketoprak'], answer:2,
+      hint:'Kesenian ini memperlihatkan penari seolah kerasukan menunggang kuda 🐴',
+      explanation:'Jaran Kepang (Kuda Lumping) adalah kesenian Jawa yang memperlihatkan penari menunggang kuda anyaman bambu dalam kondisi trance.' },
+    { q:'Angklung adalah alat musik bambu yang berasal dari Jawa bagian...?', options:['Tengah','Timur','Barat (Sunda)','Selatan'], answer:2,
+      hint:'Alat musik ini berasal dari budaya Sunda 🎵',
+      explanation:'Angklung adalah alat musik bambu khas Sunda (Jawa Barat) yang diakui UNESCO sebagai warisan budaya tak benda.' },
+    { q:'Upacara memandikan pusaka kerajaan Yogyakarta yang dilakukan setahun sekali disebut...?', options:['Sekaten','Jamasan Pusaka','Grebeg Maulud','Labuhan'], answer:1,
+      hint:'Upacara ini dilakukan untuk merawat benda-benda bertuah keraton 👑',
+      explanation:'Jamasan Pusaka adalah upacara pencucian/pemandian benda-benda pusaka milik Keraton Yogyakarta yang dilakukan secara rutin.' },
+    { q:'Kota yang terkenal sebagai pusat batik di Jawa Tengah selain Yogyakarta adalah...?', options:['Pekalongan','Semarang','Tegal','Purwokerto'], answer:0,
+      hint:'Kota ini dijuluki Kota Batik Dunia 👘',
+      explanation:'Pekalongan dijuluki Kota Batik Dunia karena merupakan salah satu sentra batik terbesar dan terpenting di Indonesia.' },
+    { q:'Pertunjukan seni teater tradisional Jawa yang menceritakan kisah rakyat disebut...?', options:['Wayang Golek','Ketoprak','Reog','Lenong'], answer:1,
+      hint:'Pertunjukan ini menggunakan dialog campuran Jawa dan Indonesia 🎭',
+      explanation:'Ketoprak adalah seni teater tradisional Jawa yang mementaskan kisah-kisah sejarah dan rakyat dengan dialog berbahasa Jawa.' },
+    { q:'Gunung berapi aktif di Jawa Tengah yang sering meletus dan paling terkenal adalah...?', options:['Gunung Merbabu','Gunung Merapi','Gunung Lawu','Gunung Sindoro'], answer:1,
+      hint:'Gunung ini terletak dekat Yogyakarta dan sangat aktif 🌋',
+      explanation:'Gunung Merapi di perbatasan Jawa Tengah-DIY adalah salah satu gunung berapi paling aktif di Indonesia.' },
+    // === SULIT (20-29) ===
     { q:'Kereta tradisional kerajaan Yogyakarta yang dianggap keramat disebut...?', options:['Kyai Sehun','Kyai Puspaka','Kyai Plered','Kyai Rajamala'], answer:0,
       hint:'Kereta ini digunakan dalam prosesi pernikahan kerajaan 🐴',
       explanation:'Kyai Sehun adalah kereta kebesaran kerajaan Yogyakarta yang dianggap keramat dan digunakan dalam upacara penting.' },
-    { q:'Minuman khas Jawa yang terbuat dari jahe dan berbagai rempah disebut...?', options:['Bir Pletok','Bajigur','Wedang Jahe','Wedang Uwuh'], answer:3,
-      hint:'Minuman rempah dari Yogyakarta yang menghangatkan badan ☕',
-      explanation:'Wedang Uwuh adalah minuman rempah khas Yogyakarta terdiri dari berbagai rempah yang menghangatkan tubuh.' },
-    { q:'Tokoh pewayangan Jawa yang terkenal sebagai simbol kebenaran dan kebijaksanaan adalah...?', options:['Rahwana','Arjuna','Yudhistira','Werkudara'], answer:1,
-      hint:'Tokoh ini adalah pemanah sakti dari keluarga Pandawa 🏹',
-      explanation:'Arjuna adalah tokoh wayang Jawa yang melambangkan keberanian, kebenaran, dan keanggunan dari keluarga Pandawa.' },
-    { q:'Batik yang berasal dari daerah pesisir utara Jawa dan dikenal warna-warninya adalah...?', options:['Batik Keraton','Batik Pesisir','Batik Batik Parang','Batik Wahyu Tumurun'], answer:1,
-      hint:'Batik ini memiliki warna lebih cerah dan motif lebih bebas 🎨',
-      explanation:'Batik Pesisir dari pantai utara Jawa dipengaruhi budaya China dan Arab, warnanya lebih cerah dan beragam motifnya.' },
-    { q:'Senjata tradisional Jawa berupa keris bermata dua yang berlekuk-lekuk disebut...?', options:['Keris','Tombak','Pedang','Mandau'], answer:0,
-      hint:'Senjata ini juga dianggap memiliki kekuatan spiritual 🗡️',
-      explanation:'Keris adalah senjata tradisional Jawa bermata dua dengan bilah berlekuk yang dipercaya memiliki kekuatan spiritual.' }
+    { q:'Filosofi Jawa "Memayu Hayuning Bawana" bermakna...?', options:['Berjuang demi kemenangan','Memperindah dan menjaga keselamatan dunia','Hormati yang tua','Jadilah yang terbaik'], answer:1,
+      hint:'Filosofi ini mengajarkan harmoni dengan alam semesta 🌏',
+      explanation:'Memayu Hayuning Bawana adalah filosofi Jawa yang berarti memperindah, menjaga keselamatan, dan melestarikan dunia semesta.' },
+    { q:'Tari Bedhaya Ketawang adalah tarian sakral keraton yang hanya boleh ditampilkan dalam...?', options:['Pernikahan umum','Penobatan Sultan','Ulang tahun biasa','Festival seni'], answer:1,
+      hint:'Tarian ini sangat sakral dan hanya untuk momen agung 👑',
+      explanation:'Tari Bedhaya Ketawang adalah tarian sakral Keraton Yogyakarta yang hanya dipentaskan pada upacara penobatan Sultan.' },
+    { q:'Prasasti Canggal yang ditemukan di Jawa Tengah ditulis menggunakan huruf...?', options:['Arab','Pallawa','Latin','China'], answer:1,
+      hint:'Prasasti ini merupakan prasasti tertua di Jawa 📜',
+      explanation:'Prasasti Canggal (732 M) adalah prasasti tertua di Jawa yang ditulis dalam huruf Pallawa dan bahasa Sansekerta.' },
+    { q:'Konsep "Sangkan Paraning Dumadi" dalam filsafat Jawa berarti...?', options:['Kerja keras','Asal dan tujuan manusia','Persatuan bangsa','Keberanian sejati'], answer:1,
+      hint:'Konsep ini berhubungan dengan makna keberadaan manusia 🧘',
+      explanation:'Sangkan Paraning Dumadi adalah konsep filsafat Jawa tentang asal-usul dan tujuan akhir kehidupan manusia.' },
+    { q:'Senjata pusaka berbentuk tombak pendek khas Jawa Barat disebut...?', options:['Keris','Kujang','Clurit','Badik'], answer:1,
+      hint:'Senjata ini juga menjadi simbol Provinsi Jawa Barat 🗡️',
+      explanation:'Kujang adalah senjata tradisional khas Sunda (Jawa Barat) yang bentuknya unik dan menjadi simbol identitas budaya Sunda.' },
+    { q:'Wayang Golek adalah wayang tiga dimensi dari kayu yang berasal dari budaya...?', options:['Jawa','Sunda','Madura','Betawi'], answer:1,
+      hint:'Wayang ini berasal dari daerah Jawa Barat 🪆',
+      explanation:'Wayang Golek adalah wayang boneka kayu tiga dimensi yang merupakan kesenian tradisional masyarakat Sunda, Jawa Barat.' },
+    { q:'Upacara adat Jawa yang dilakukan untuk menolak bala dan memohon keselamatan desa disebut...?', options:['Sekaten','Ruwatan','Tingkeban','Mitoni'], answer:1,
+      hint:'Upacara ini sering melibatkan pertunjukan wayang semalam suntuk 🎭',
+      explanation:'Ruwatan adalah upacara adat Jawa untuk membebaskan seseorang dari kesialan atau "sukerta" dengan pagelaran wayang kulit.' },
+    { q:'Kitab sastra Jawa kuno yang berisi ajaran moral dan budi pekerti disebut...?', options:['Serat Centhini','Serat Wedhatama','Negarakertagama','Sutasoma'], answer:1,
+      hint:'Kitab ini berisi nasihat kebijaksanaan karya KGPAA Mangkunegara IV 📖',
+      explanation:'Serat Wedhatama adalah karya sastra Jawa karangan KGPAA Mangkunegara IV yang berisi ajaran budi pekerti dan filsafat.' },
+    { q:'Tradisi slametan dalam budaya Jawa adalah bentuk...?', options:['Upacara perang','Syukuran bersama memohon keselamatan','Perlombaan seni','Ritual perdukunan'], answer:1,
+      hint:'Tradisi ini biasa dilakukan saat ada hajatan atau peristiwa penting 🍱',
+      explanation:'Slametan adalah tradisi Jawa berupa kenduri/syukuran bersama-sama untuk memohon keselamatan kepada Tuhan.' },
   ],
 
   kalimantan: [
+    // === MUDAH (0-9) ===
     { q:'Suku asli yang paling terkenal di Kalimantan adalah suku...?', options:['Bugis','Dayak','Toraja','Batak'], answer:1,
       hint:'Suku ini dikenal dengan rumah panjangnya 🏠',
       explanation:'Suku Dayak adalah penduduk asli Kalimantan dengan berbagai sub-suku seperti Ngaju, Iban, Kenyah, dan lainnya.' },
     { q:'Senjata tradisional khas Suku Dayak Kalimantan adalah...?', options:['Keris','Rencong','Mandau','Badik'], answer:2,
       hint:'Senjata ini berbentuk seperti parang dengan ukiran khas ⚔️',
       explanation:'Mandau adalah senjata tradisional Suku Dayak berbentuk parang dengan ukiran khas dan hiasan bulu di gagang.' },
-    { q:'Rumah adat suku Dayak yang sangat panjang disebut...?', options:['Rumah Betang','Rumah Lamin','Rumah Banjar','Rumah Bubungan Tinggi'], answer:0,
-      hint:'Rumah ini bisa dihuni puluhan keluarga sekaligus 🏘️',
-      explanation:'Rumah Betang adalah rumah panjang Dayak Kalimantan Tengah yang bisa dihuni oleh puluhan hingga ratusan keluarga.' },
     { q:'Hewan langka yang hanya hidup di Kalimantan (Borneo) adalah...?', options:['Harimau Sumatera','Orangutan Borneo','Komodo','Cendrawasih'], answer:1,
       hint:'Hewan ini mirip manusia dan sangat cerdas 🦧',
       explanation:'Orangutan Borneo (Pongo pygmaeus) adalah primata endemik Kalimantan yang kini terancam punah.' },
     { q:'Kota yang dikenal sebagai "Kota Sungai" di Kalimantan Selatan adalah...?', options:['Pontianak','Samarinda','Balikpapan','Banjarmasin'], answer:3,
       hint:'Kota ini punya pasar terapung yang terkenal 🛶',
       explanation:'Banjarmasin dikenal sebagai Kota Sungai karena banyak sungai yang membelah kota dan memiliki pasar terapung terkenal.' },
-    { q:'Tarian perang tradisional suku Dayak yang menggambarkan keberanian prajurit adalah...?', options:['Tari Enggang','Tari Hudog','Tari Gantar','Tari Kancet Papatai'], answer:3,
-      hint:'Tarian ini menggambarkan keberanian prajurit Dayak ⚔️',
-      explanation:'Tari Kancet Papatai adalah tarian perang suku Dayak Kenyah yang menggambarkan keberanian seorang prajurit.' },
     { q:'Makanan khas Kalimantan Selatan yang terkenal dengan kuah beningnya adalah...?', options:['Soto Banjar','Rawon','Nasi Goreng Seafood','Papeda'], answer:0,
       hint:'Makanan ini adalah soto khas dari Banjarmasin 🍜',
       explanation:'Soto Banjar adalah kuliner khas Kalimantan Selatan dengan kuah bening berbumbu rempah dan disantap dengan ketupat.' },
-    { q:'Hutan tropis terluas di Asia Tenggara yang sebagian besar berada di Kalimantan adalah...?', options:['Hutan Amazon','Hutan Borneo','Hutan Kongo','Hutan Daintree'], answer:1,
-      hint:'Hutan ini adalah rumah bagi orangutan dan bekantan 🌿',
-      explanation:'Hutan hujan tropis Borneo (Kalimantan) adalah salah satu hutan tertua di dunia dengan keanekaragaman hayati luar biasa.' },
-    { q:'Tambang batu bara terbesar di Indonesia yang terletak di Kalimantan Timur adalah...?', options:['Tambang Freeport','Tambang Kaltim Prima Coal','Tambang Newmont','Tambang Nusantara'], answer:1,
-      hint:'Tambang ini mengekspor batu bara ke banyak negara ⚒️',
-      explanation:'Kaltim Prima Coal (KPC) adalah salah satu perusahaan tambang batu bara terbesar di Indonesia yang berlokasi di Kalimantan Timur.' },
-    { q:'Tarian yang menceritakan seorang gadis Dayak yang dilamar pria menggunakan benih padi disebut...?', options:['Tari Kancet Papatai','Tari Hudoq','Tari Gantar','Tari Enggang'], answer:2,
-      hint:'Tarian ini menceritakan tentang benih padi dan pelamaran 💃',
-      explanation:'Tari Gantar adalah tarian Dayak Benuaq yang menceritakan seorang pria yang melamar wanita dengan menggunakan benih padi.' },
     { q:'Kota yang dijuluki "Kota Khatulistiwa" di Kalimantan Barat adalah...?', options:['Banjarmasin','Palangkaraya','Pontianak','Samarinda'], answer:2,
       hint:'Kota ini tepat dilalui garis khatulistiwa 🌍',
       explanation:'Pontianak dijuluki Kota Khatulistiwa karena dilalui garis khatulistiwa. Di sana terdapat Tugu Khatulistiwa sebagai penandanya.' },
-    { q:'Rumah adat suku Dayak Kenyah yang berbentuk panggung panjang disebut...?', options:['Rumah Betang','Rumah Lamin','Rumah Banjar','Rumah Adat Baloy'], answer:1,
-      hint:'Rumah ini dimiliki suku Dayak Kenyah di Kalimantan Timur 🏘️',
-      explanation:'Rumah Lamin adalah rumah adat suku Dayak Kenyah di Kalimantan Timur, berbentuk panggung panjang yang indah dengan ukiran.' },
     { q:'Bekantan adalah hewan khas Kalimantan yang terkenal dengan ciri khasnya berupa...?', options:['Bulu lebat berwarna oranye','Hidung panjang dan besar','Tanduk seperti rusa','Ekor panjang berwarna biru'], answer:1,
       hint:'Hewan ini sering disebut "monyet belanda" oleh masyarakat 🐒',
       explanation:'Bekantan (Nasalis larvatus) adalah primata endemik Kalimantan yang terkenal dengan hidung besarnya yang khas.' },
+    { q:'Rumah adat suku Dayak yang sangat panjang dan bisa dihuni banyak keluarga disebut...?', options:['Rumah Betang','Rumah Lamin','Rumah Banjar','Rumah Bubungan Tinggi'], answer:0,
+      hint:'Rumah ini bisa dihuni puluhan keluarga sekaligus 🏘️',
+      explanation:'Rumah Betang adalah rumah panjang Dayak Kalimantan Tengah yang bisa dihuni oleh puluhan hingga ratusan keluarga.' },
+    { q:'Ibu kota Provinsi Kalimantan Tengah adalah...?', options:['Banjarmasin','Palangkaraya','Samarinda','Pontianak'], answer:1,
+      hint:'Kota ini pernah direncanakan menjadi ibu kota Indonesia 🏙️',
+      explanation:'Palangkaraya adalah ibu kota Provinsi Kalimantan Tengah, yang pernah masuk pertimbangan sebagai ibu kota Indonesia.' },
     { q:'Tarian yang dilakukan untuk upacara menyambut panen di Kalimantan adalah...?', options:['Tari Hudoq','Tari Saman','Tari Tor-Tor','Tari Zapin'], answer:0,
       hint:'Tarian ini dilakukan dengan memakai topeng kayu berwarna-warni 🎭',
-      explanation:'Tari Hudoq adalah tarian ritual suku Dayak Bahau yang dilakukan saat panen untuk memohon perlindungan dari roh leluhur.' }
+      explanation:'Tari Hudoq adalah tarian ritual suku Dayak Bahau yang dilakukan saat panen untuk memohon perlindungan dari roh leluhur.' },
+    // === SEDANG (10-19) ===
+    { q:'Tarian perang tradisional suku Dayak yang menggambarkan keberanian prajurit adalah...?', options:['Tari Enggang','Tari Hudog','Tari Gantar','Tari Kancet Papatai'], answer:3,
+      hint:'Tarian ini menggambarkan keberanian prajurit Dayak ⚔️',
+      explanation:'Tari Kancet Papatai adalah tarian perang suku Dayak Kenyah yang menggambarkan keberanian seorang prajurit.' },
+    { q:'Hutan tropis terluas di Asia Tenggara yang sebagian besar berada di Kalimantan adalah...?', options:['Hutan Amazon','Hutan Borneo','Hutan Kongo','Hutan Daintree'], answer:1,
+      hint:'Hutan ini adalah rumah bagi orangutan dan bekantan 🌿',
+      explanation:'Hutan hujan tropis Borneo (Kalimantan) adalah salah satu hutan tertua di dunia dengan keanekaragaman hayati luar biasa.' },
+    { q:'Rumah adat suku Dayak Kenyah yang berbentuk panggung panjang disebut...?', options:['Rumah Betang','Rumah Lamin','Rumah Banjar','Rumah Adat Baloy'], answer:1,
+      hint:'Rumah ini dimiliki suku Dayak Kenyah di Kalimantan Timur 🏘️',
+      explanation:'Rumah Lamin adalah rumah adat suku Dayak Kenyah di Kalimantan Timur, berbentuk panggung panjang yang indah dengan ukiran.' },
+    { q:'Tarian yang menceritakan pelamaran menggunakan benih padi dari Kalimantan disebut...?', options:['Tari Kancet Papatai','Tari Hudoq','Tari Gantar','Tari Enggang'], answer:2,
+      hint:'Tarian ini menceritakan tentang benih padi dan pelamaran 💃',
+      explanation:'Tari Gantar adalah tarian Dayak Benuaq yang menceritakan seorang pria yang melamar wanita dengan menggunakan benih padi.' },
+    { q:'Pasar terapung yang paling terkenal di Kalimantan Selatan terletak di...?', options:['Lok Baintan','Muara Kuin','Trisakti','Banua Anyar'], answer:0,
+      hint:'Pasar ini ramai di pagi hari dengan perahu-perahu pedagang 🛶',
+      explanation:'Pasar Terapung Lok Baintan adalah pasar terapung terkenal di Kalimantan Selatan di mana pedagang berjualan dari atas perahu.' },
+    { q:'Sungai terpanjang di Kalimantan yang melintas di tengah pulau adalah...?', options:['Sungai Kapuas','Sungai Mahakam','Sungai Barito','Sungai Kahayan'], answer:0,
+      hint:'Sungai ini merupakan sungai terpanjang di Indonesia 🌊',
+      explanation:'Sungai Kapuas di Kalimantan Barat adalah sungai terpanjang di Indonesia dengan panjang sekitar 1.143 km.' },
+    { q:'Upacara kematian suku Dayak yang memindahkan tulang leluhur ke tempat yang lebih layak disebut...?', options:['Tiwah','Ngaben','Rambu Solo','Kasada'], answer:0,
+      hint:'Upacara ini dilakukan beberapa tahun setelah kematian 🪦',
+      explanation:'Tiwah adalah upacara adat kematian Dayak Ngaju yang dilakukan untuk memindahkan tulang leluhur ke sandung (tempat tulang).' },
+    { q:'Kota yang menjadi ibu kota baru Indonesia (Nusantara) berada di provinsi...?', options:['Kalimantan Selatan','Kalimantan Tengah','Kalimantan Timur','Kalimantan Utara'], answer:2,
+      hint:'Kota baru ini dibangun di hutan Kalimantan 🏗️',
+      explanation:'Ibu kota baru Indonesia (Nusantara) dibangun di Kalimantan Timur, tepatnya di kawasan Penajam Paser Utara dan Kutai Kartanegara.' },
+    { q:'Tanaman unik yang bisa memakan serangga dan tumbuh di hutan Kalimantan disebut...?', options:['Rafflesia','Kantong Semar','Anggrek Hitam','Pohon Meranti'], answer:1,
+      hint:'Tanaman ini berbentuk seperti kendi yang berisi cairan 🌱',
+      explanation:'Kantong Semar (Nepenthes) adalah tanaman karnivora yang hidup di hutan Kalimantan dan memerangkap serangga dalam kantongnya.' },
+    { q:'Kerajinan anyaman khas Kalimantan yang dibuat dari rotan disebut...?', options:['Tenun Ikat','Anyaman Rotan','Batik Kalimantan','Ukiran Kayu'], answer:1,
+      hint:'Kerajinan ini menghasilkan tas, tikar, dan perabot rumah 🧺',
+      explanation:'Anyaman rotan adalah kerajinan tangan khas Kalimantan yang menghasilkan berbagai produk seperti tas, tikar, dan furnitur.' },
+    // === SULIT (20-29) ===
+    { q:'Tambang batu bara terbesar di Indonesia yang terletak di Kalimantan Timur adalah...?', options:['Tambang Freeport','Tambang Kaltim Prima Coal','Tambang Newmont','Tambang Nusantara'], answer:1,
+      hint:'Tambang ini mengekspor batu bara ke banyak negara ⚒️',
+      explanation:'Kaltim Prima Coal (KPC) adalah salah satu perusahaan tambang batu bara terbesar di Indonesia yang berlokasi di Kalimantan Timur.' },
+    { q:'Kesenian tradisional suku Banjar di Kalimantan Selatan yang merupakan teater rakyat disebut...?', options:['Baksa Kembang','Radap Rahayu','Mamanda','Tandak Banjar'], answer:2,
+      hint:'Kesenian ini merupakan teater rakyat khas Banjar 🎭',
+      explanation:'Mamanda adalah teater rakyat tradisional suku Banjar, Kalimantan Selatan, yang menampilkan kisah kerajaan dengan nuansa komedi.' },
+    { q:'Spesies pohon khas hutan Kalimantan yang kayunya sangat berharga disebut...?', options:['Jati','Meranti','Ulin (Kayu Besi)','Mahoni'], answer:2,
+      hint:'Kayu ini sangat keras dan tahan air, sering untuk konstruksi berat 🌳',
+      explanation:'Kayu Ulin (Eusideroxylon zwageri) atau kayu besi adalah pohon endemik Kalimantan yang kayunya sangat keras dan bernilai tinggi.' },
+    { q:'Filosofi hidup suku Dayak yang menekankan keseimbangan dengan alam disebut...?', options:['Huma Betang','Belom Bahadat','Adat Telo','Pali'], answer:1,
+      hint:'Filosofi ini mengajarkan cara hidup yang baik dan benar 🌿',
+      explanation:'Belom Bahadat adalah filosofi hidup suku Dayak Ngaju yang berarti hidup beradat, yaitu hidup selaras dengan alam dan sesama.' },
+    { q:'Tradisi tato pada tubuh masyarakat Dayak Iban memiliki makna sebagai...?', options:['Penanda usia','Tanda keberanian dan status sosial','Penanda suku saja','Hiasan semata'], answer:1,
+      hint:'Tato ini diukir dengan motif yang penuh makna 🎨',
+      explanation:'Tato tradisional Dayak Iban menandai keberanian, perjalanan hidup, dan status sosial seseorang dalam komunitasnya.' },
+    { q:'Anggrek hitam yang menjadi flora khas Kalimantan Timur nama ilmiahnya adalah...?', options:['Phalaenopsis amabilis','Coelogyne pandurata','Dendrobium anosmum','Vanda tricolor'], answer:1,
+      hint:'Anggrek ini memiliki lidah bunga berwarna gelap kehitaman 🌸',
+      explanation:'Anggrek Hitam (Coelogyne pandurata) adalah flora khas Kalimantan Timur yang terkenal karena lidah bunganya berwarna hijau dengan bercak hitam.' },
+    { q:'Kesultanan Banjar yang merupakan kerajaan Islam tertua di Kalimantan berpusat di...?', options:['Pontianak','Banjarmasin','Samarinda','Balikpapan'], answer:1,
+      hint:'Kesultanan ini memerintah wilayah Kalimantan Selatan 👑',
+      explanation:'Kesultanan Banjar berpusat di Banjarmasin adalah kerajaan Islam yang pernah berkuasa di Kalimantan Selatan sejak abad ke-16.' },
+    { q:'Tradisi memanggil roh leluhur dalam upacara adat Dayak yang dipimpin dukun disebut...?', options:['Belian','Tiwah','Nyobeng','Gawai'], answer:0,
+      hint:'Upacara ini dipimpin seorang basir atau balian 🔮',
+      explanation:'Belian adalah upacara pengobatan dan ritual Dayak yang dipimpin seorang dukun (basir/balian) untuk memanggil roh leluhur.' },
+    { q:'Motif ukiran khas Dayak Kenyah yang sering digunakan pada rumah dan perahu adalah...?', options:['Motif Pucuk Rebung','Motif Dayung','Motif Aso','Motif Naga Dayak'], answer:2,
+      hint:'Motif ini menggambarkan makhluk mitologis anjing-naga 🐉',
+      explanation:'Motif Aso adalah ukiran khas Dayak Kenyah yang menggambarkan anjing-naga mitologis, digunakan sebagai pelindung pada rumah dan perahu.' },
+    { q:'Burung enggang (rangkong) dianggap sakral oleh suku Dayak karena melambangkan...?', options:['Kecepatan berburu','Keagungan dan hubungan dengan leluhur','Kemakmuran pertanian','Kesuburan tanah'], answer:1,
+      hint:'Bulu burung ini sering dipakai dalam upacara adat 🦅',
+      explanation:'Burung Enggang (Buceros) dianggap sakral suku Dayak sebagai simbol keagungan, kemuliaan, dan hubungan spiritual dengan leluhur.' },
   ],
 
   sulawesi: [
+    // === MUDAH (0-9) ===
     { q:'Kapal tradisional dari Sulawesi Selatan yang terkenal di dunia adalah...?', options:['Kapal Lancang','Perahu Pinisi','Kapal Jong','Kapal Proa'], answer:1,
       hint:'Kapal ini dibuat tanpa paku dari kayu 🚢',
       explanation:'Perahu Pinisi adalah kapal tradisional suku Bugis-Makassar yang pernah berlayar ke berbagai penjuru dunia.' },
@@ -1282,6 +1436,7 @@ const QUESTIONS = {
     { q:'Kupu-kupu raksasa endemik Sulawesi yang terkenal keindahannya adalah...?', options:['Kupu Rajah Brooke','Ornithoptera Croesus','Troides Helena','Papilio Ulysses'], answer:1,
       hint:'Kupu-kupu ini termasuk yang terbesar dan terindah di dunia 🦋',
       explanation:'Ornithoptera Croesus atau Golden Birdwing adalah kupu-kupu endemik Sulawesi Utara yang termasuk yang terindah di dunia.' },
+    // === SEDANG (10-19) ===
     { q:'Tradisi menaruh jenazah di tebing batu yang unik dari Toraja disebut...?', options:['Ngaben','Liang','Patane','Tau-tau'], answer:3,
       hint:'Boneka kayu yang menggambarkan wajah almarhum dipajang di tebing 👤',
       explanation:'Tau-tau adalah patung kayu berbentuk manusia yang menggambarkan almarhum, dipajang di tebing batu sebagai representasi arwah.' },
@@ -1293,10 +1448,60 @@ const QUESTIONS = {
       explanation:'Festival Wakatobi Wave adalah festival tahunan yang mengangkat keindahan alam bawah laut dan budaya Wakatobi kepada dunia.' },
     { q:'Tarian dari Makassar yang dilakukan oleh para wanita dengan gerakan lemah gemulai adalah...?', options:['Tari Pakarena','Tari Paduppa','Tari Kipas','Tari Bissu'], answer:0,
       hint:'Tarian ini melambangkan kisah perpisahan antara manusia dan para dewa 💃',
-      explanation:'Tari Pakarena adalah tarian tradisional dari Gowa, Makassar yang melambangkan kesopanan, kesetiaan, dan kelembutan perempuan.' }
+      explanation:'Tari Pakarena adalah tarian tradisional dari Gowa, Makassar yang melambangkan kesopanan, kesetiaan, dan kelembutan perempuan.' },
+    { q:'Seni tenun tradisional dari Sulawesi yang memiliki motif khas hitam-kuning disebut...?', options:['Tenun Songket','Tenun Donggala','Tenun Sengkang','Tenun Ikat Bali'], answer:2,
+      hint:'Kain ini berasal dari Kabupaten Wajo, Sulawesi Selatan 🧵',
+      explanation:'Tenun Sengkang dari Wajo, Sulawesi Selatan adalah kain sutera tradisional yang terkenal dengan corak dan kualitasnya yang tinggi.' },
+    { q:'Kawasan taman nasional di Sulawesi yang terkenal dengan anoa dan babi rusa adalah...?', options:['TN Bunaken','TN Lore Lindu','TN Wakatobi','TN Bantimurung'], answer:1,
+      hint:'Taman ini juga punya situs batu megalitik kuno 🌿',
+      explanation:'Taman Nasional Lore Lindu di Sulawesi Tengah adalah habitat anoa dan babi rusa, serta terdapat situs megalitik kuno.' },
+    { q:'Legenda Raja Gowa yang terkenal pernah memerangi kolonial Belanda adalah...?', options:['Sultan Hasanuddin','Raja Bone','Sultan Ternate','Karaeng Pattingalloang'], answer:0,
+      hint:'Dia dijuluki "Ayam Jantan dari Timur" 👑',
+      explanation:'Sultan Hasanuddin adalah Raja Gowa yang gigih melawan VOC Belanda dan dijuluki "Ayam Jantan dari Timur" atas keberaniannya.' },
+    { q:'Makanan tradisional Sulawesi yang dibuat dari ikan yang dimasak dengan kuah santan pedas disebut...?', options:['Pallu Mara','Konro Bakar','Pallumara','Aunu Senebre'], answer:2,
+      hint:'Makanan ini adalah ikan kuah kuning pedas khas Makassar 🍛',
+      explanation:'Pallumara adalah masakan khas Makassar berupa ikan yang dimasak dengan santan dan rempah-rempah dengan cita rasa asam pedas.' },
+    { q:'Hewan primata endemik Sulawesi yang berwajah hitam dengan rambut berjambul adalah...?', options:['Macaca nigra','Tarsius','Anoa','Babi Rusa'], answer:0,
+      hint:'Hewan ini dikenal sebagai "yaki" oleh warga Minahasa 🐒',
+      explanation:'Macaca nigra atau Monyet Hitam Sulawesi adalah primata endemik yang hanya ada di Sulawesi Utara, terancam punah.' },
+    { q:'Kain khas Sulawesi Selatan yang ditenun dari sutera alam disebut...?', options:['Kain Tapis','Sutera Sengkang','Batik Makassar','Tenun Dayak'], answer:1,
+      hint:'Kain ini dihasilkan oleh pengrajin di Kabupaten Wajo 🧵',
+      explanation:'Sutera Sengkang adalah kain tenun sutera khas Sulawesi Selatan dari Kabupaten Wajo yang dikenal berkualitas tinggi.' },
+    // === SULIT (20-29) ===
+    { q:'Aksara tradisional yang digunakan oleh suku Bugis-Makassar untuk menulis disebut...?', options:['Aksara Lontara','Aksara Jawa','Aksara Batak','Aksara Rejang'], answer:0,
+      hint:'Aksara ini digunakan dalam naskah klasik Bugis-Makassar 📜',
+      explanation:'Aksara Lontara adalah sistem penulisan tradisional suku Bugis-Makassar yang digunakan dalam berbagai naskah sejarah dan adat.' },
+    { q:'Kitab adat dan hukum tradisional suku Bugis yang sangat terkenal disebut...?', options:['La Galigo','Sure Lagaligo','Lontara Bilang','Ade Pitu'], answer:0,
+      hint:'Karya sastra ini dianggap salah satu epos terpanjang di dunia 📖',
+      explanation:'La Galigo (Sure Lagaligo) adalah epos mitologi Bugis yang sangat panjang, dianggap salah satu naskah sastra terpanjang di dunia.' },
+    { q:'Konsep budaya Bugis tentang harga diri dan kehormatan yang sangat dijunjung tinggi adalah...?', options:['Siri na Pacce','Pangadereng','Mappasili','Mattuppu'], answer:0,
+      hint:'Konsep ini menentukan perilaku dan kehormatan orang Bugis 🏅',
+      explanation:'Siri na Pacce adalah falsafah hidup orang Bugis yang berhubungan dengan harga diri, kehormatan, dan rasa empati kepada sesama.' },
+    { q:'Danau vulkanik aktif di Sulawesi yang suhunya sangat panas dan berwarna kebiruan adalah...?', options:['Danau Matano','Danau Towuti','Danau Poso','Danau Rano Rano'], answer:0,
+      hint:'Danau ini terletak di pegunungan Sulawesi Selatan 🌋',
+      explanation:'Danau Matano di Sulawesi Selatan adalah salah satu danau terdalam di dunia dan memiliki keanekaragaman hayati yang unik.' },
+    { q:'Filosofi pelaut Bugis "Taro Ada Taro Gau" bermakna...?', options:['Berani berlayar jauh','Menepati janji dan satunya kata dengan perbuatan','Jadilah pemimpin','Hormati orang tua'], answer:1,
+      hint:'Filosofi ini mengajarkan kejujuran dan integritas 🌊',
+      explanation:'Taro Ada Taro Gau adalah prinsip hidup Bugis yang berarti satunya kata dengan perbuatan, mencerminkan integritas tinggi.' },
+    { q:'Pesta tradisional masyarakat Minahasa, Sulawesi Utara untuk merayakan panen adalah...?', options:['Mapalus','Tulude','Kabupaten Opo','Wale ne Opo'], answer:1,
+      hint:'Pesta ini diikuti dengan doa syukur dan tari-tarian adat 🎉',
+      explanation:'Tulude adalah upacara syukuran panen tradisional masyarakat Minahasa yang dilakukan dengan doa, tarian, dan pesta bersama.' },
+    { q:'Kerajaan maritim Islam pertama di Sulawesi yang kemudian menjadi pusat perdagangan adalah...?', options:['Kerajaan Bone','Kerajaan Gowa','Kerajaan Buton','Kerajaan Luwu'], answer:1,
+      hint:'Kerajaan ini pernah menguasai jalur perdagangan di Sulawesi Selatan 👑',
+      explanation:'Kerajaan Gowa adalah salah satu kerajaan maritim Islam terkuat di Sulawesi yang mengendalikan perdagangan di kawasan timur Nusantara.' },
+    { q:'Tari Bissu adalah tarian sakral yang dibawakan oleh kelompok khusus dalam masyarakat Bugis yaitu...?', options:['Para Prajurit','Pemangku adat berjenis kelamin ganda (calabai)','Para Pangeran','Kelompok nelayan'], answer:1,
+      hint:'Penari ini memiliki status sosial yang dihormati dalam adat Bugis 🌸',
+      explanation:'Tari Bissu dibawakan oleh bissu, yaitu individu dengan identitas gender khusus dalam masyarakat Bugis yang memiliki peran sakral dalam adat.' },
+    { q:'Alat musik tiup bambu khas Sulawesi Tengah yang dimainkan dalam kelompok disebut...?', options:['Suling','Pongori','Lalove','Kecapi'], answer:2,
+      hint:'Alat musik ini menghasilkan suara merdu dan sering dimainkan bersama 🎵',
+      explanation:'Lalove adalah alat musik tiup bambu khas suku Kaili di Sulawesi Tengah yang biasanya dimainkan dalam ensembel musik tradisional.' },
+    { q:'Ritual adat suku Toraja untuk memohon berkat pada bibit padi sebelum menanam disebut...?', options:['Ma Nene','Mangrara Banua','Maro','Rambu Tuka'], answer:3,
+      hint:'Ritual ini bagian dari sistem kepercayaan Aluk Todolo 🌾',
+      explanation:'Rambu Tuka adalah upacara adat Toraja yang berhubungan dengan kebahagiaan dan kehidupan, termasuk ritual pertanian untuk panen melimpah.' }
   ],
 
   papua: [
+    // === MUDAH (0-9) ===
     { q:'Alat musik pukul khas Papua berbentuk seperti drum panjang adalah...?', options:['Kolintang','Tifa','Sasando','Gendang'], answer:1,
       hint:'Alat musik ini digunakan dalam upacara adat Papua 🥁',
       explanation:'Tifa adalah alat musik pukul khas Papua dan Maluku, digunakan dalam upacara adat dan perayaan.' },
@@ -1324,6 +1529,10 @@ const QUESTIONS = {
     { q:'Tas anyaman khas Papua yang dibuat dari kulit kayu dan digunakan di kepala adalah...?', options:['Koteka','Noken','Tifa','Bilum'], answer:1,
       hint:'Tas ini diakui UNESCO sebagai warisan budaya tak benda 👜',
       explanation:'Noken adalah tas anyaman khas Papua dari kulit kayu yang dikenakan di kepala, diakui UNESCO sebagai warisan budaya.' },
+    { q:'Ibu kota Provinsi Papua yang merupakan kota terbesar di Papua adalah...?', options:['Sorong','Wamena','Jayapura','Merauke'], answer:2,
+      hint:'Kota ini terletak di ujung timur Indonesia 🏙️',
+      explanation:'Jayapura adalah ibu kota Provinsi Papua, kota terbesar di Papua yang terletak di tepi Teluk Yotefa.' },
+    // === SEDANG (10-19) ===
     { q:'Burung yang merupakan lambang dalam lambang daerah Provinsi Papua adalah...?', options:['Cendrawasih','Kakatua Raja','Kasuari','Elang Botak'], answer:0,
       hint:'Burung ini dikenal dengan nama "Bird of Paradise" 🦜',
       explanation:'Cendrawasih menjadi simbol Papua karena keindahan bulunya yang unik. Burung ini juga ada dalam lambang provinsi Papua.' },
@@ -1338,7 +1547,53 @@ const QUESTIONS = {
       explanation:'Festival Danau Sentani adalah festival budaya tahunan yang merayakan kekayaan seni dan budaya Papua di tepian Danau Sentani.' },
     { q:'Tanaman sagu yang menjadi makanan pokok sebagian besar masyarakat Papua berasal dari...?', options:['Pohon kelapa sawit','Pohon enau/aren','Pohon palem sagu','Pohon bambu'], answer:2,
       hint:'Pohon ini tumbuh subur di daerah rawa dan lembab 🌿',
-      explanation:'Tepung sagu berasal dari pohon palem sagu (Metroxylon sagu) yang banyak tumbuh di Papua dan digunakan sebagai makanan pokok.' }
+      explanation:'Tepung sagu berasal dari pohon palem sagu (Metroxylon sagu) yang banyak tumbuh di Papua dan digunakan sebagai makanan pokok.' },
+    { q:'Taman Nasional di Papua yang merupakan warisan alam dunia UNESCO adalah...?', options:['TN Teluk Cenderawasih','TN Lorentz','TN Wasur','TN Gunung Cyclops'], answer:1,
+      hint:'Taman ini mencakup pegunungan bersalju dan hutan tropis 🏔️',
+      explanation:'Taman Nasional Lorentz di Papua adalah warisan alam dunia UNESCO yang mencakup ekosistem dari puncak bersalju hingga rawa tropis.' },
+    { q:'Masyarakat Papua yang hidup di pesisir dan terkenal dengan kehidupan di atas air disebut...?', options:['Suku Dani','Suku Asmat','Suku Korowai','Suku Kamoro'], answer:2,
+      hint:'Suku ini terkenal dengan rumah pohon yang tinggi 🌳',
+      explanation:'Suku Korowai di Papua Selatan terkenal karena membangun rumah di atas pohon setinggi 10-35 meter sebagai perlindungan.' },
+    { q:'Papeda adalah makanan khas Papua yang terbuat dari...?', options:['Beras','Singkong','Sagu','Jagung'], answer:2,
+      hint:'Makanan ini bertekstur kenyal seperti lem dan dimakan dengan ikan 🍽️',
+      explanation:'Papeda adalah makanan khas Papua yang dibuat dari tepung sagu, bertekstur kenyal, biasa disajikan dengan ikan kuah kuning.' },
+    { q:'Kasuari adalah burung khas Papua yang terkenal karena...?', options:['Suaranya yang sangat merdu','Tidak bisa terbang dan sangat kuat','Bisa meniru suara manusia','Bulu paling indah di dunia'], answer:1,
+      hint:'Burung ini sangat berbahaya dan bisa menendang keras 🦩',
+      explanation:'Kasuari adalah burung besar yang tidak bisa terbang, terkenal sangat kuat dan berbahaya dengan tendangan yang mematikan.' },
+    { q:'Honai adalah rumah adat Papua yang bentuknya...?', options:['Panggung panjang','Bulat beratap ilalang seperti jamur','Berbentuk persegi panjang','Rumah di atas pohon'], answer:1,
+      hint:'Rumah ini kecil dan hangat untuk melindungi dari dinginnya pegunungan 🏠',
+      explanation:'Honai adalah rumah adat suku Dani di Papua Pegunungan, berbentuk bulat beratap ilalang untuk menahan udara dingin pegunungan.' },
+    // === SULIT (20-29) ===
+    { q:'Operasi Trikora adalah operasi militer Indonesia untuk membebaskan Papua Barat dari...?', options:['Jepang','Belanda','Australia','Malaysia'], answer:1,
+      hint:'Operasi ini berlangsung pada era Presiden Soekarno 🇮🇩',
+      explanation:'Operasi Trikora (1961-1963) adalah operasi militer Indonesia untuk merebut kembali Irian Barat (Papua) dari penjajahan Belanda.' },
+    { q:'Sistem kepercayaan asli masyarakat Asmat yang berhubungan erat dengan kematian dan leluhur disebut...?', options:['Aluk Todolo','Animisme','Anitisme','Manarmakeri'], answer:1,
+      hint:'Kepercayaan ini mendasari pembuatan ukiran dan upacara adat mereka 🌿',
+      explanation:'Masyarakat Asmat menganut animisme, kepercayaan bahwa leluhur hadir dalam kehidupan sehari-hari dan diwujudkan dalam ukiran kayu.' },
+    { q:'Tambang emas dan tembaga terbesar di dunia yang terletak di Papua adalah...?', options:['Tambang Kaltim Prima','Tambang Grasberg (Freeport)','Tambang Newmont','Tambang Aneka Tambang'], answer:1,
+      hint:'Tambang ini dioperasikan oleh perusahaan Amerika yang terkenal ⛏️',
+      explanation:'Tambang Grasberg yang dioperasikan PT Freeport Indonesia di Papua adalah salah satu tambang emas dan tembaga terbesar di dunia.' },
+    { q:'Spesies kanguru pohon yang hanya ditemukan di hutan Papua dan terancam punah adalah...?', options:['Kanguru Merah','Kanguru Pohon Mantel Emas','Walabi Hutan','Kanguru Abu-abu'], answer:1,
+      hint:'Hewan marsupial ini hidup di pepohonan hutan Papua 🌿',
+      explanation:'Kanguru Pohon Mantel Emas (Dendrolagus pulcherrimus) adalah spesies langka endemik Papua yang terancam punah akibat perburuan.' },
+    { q:'Raja Ampat yang terkenal di dunia adalah kepulauan di provinsi...?', options:['Papua','Papua Barat','Papua Selatan','Papua Pegunungan'], answer:1,
+      hint:'Kepulauan ini terkenal dengan keindahan terumbu karangnya yang luar biasa 🏝️',
+      explanation:'Raja Ampat berada di Provinsi Papua Barat Daya, dikenal sebagai salah satu destinasi selam terbaik di dunia dengan keanekaragaman hayati laut tertinggi.' },
+    { q:'Noken Papua diakui UNESCO sebagai warisan budaya tak benda pada tahun...?', options:['2008','2012','2015','2019'], answer:1,
+      hint:'Pengakuan ini diberikan karena nilai budaya dan kerajinan Noken yang tinggi 👜',
+      explanation:'Noken Papua diakui UNESCO sebagai Warisan Budaya Tak Benda pada tahun 2012, mengakui nilai budaya dan keunikan kerajinan tangan Papua.' },
+    { q:'Mumi manusia tertua yang ditemukan di Papua diperkirakan berumur...?', options:['100 tahun','250 tahun','300 tahun','500 tahun'], answer:3,
+      hint:'Mumi ini ditemukan di daerah pegunungan Papua 🪦',
+      explanation:'Mumi Agat (mumi Papua) diperkirakan berusia sekitar 250-500 tahun dan ditemukan di Pegunungan Tengah Papua, dijaga oleh suku setempat.' },
+    { q:'Pola lukisan telapak tangan di dinding gua yang ditemukan di Papua disebut...?', options:['Petroglif','Pictograf','Cap Tangan Prasejarah','Grafiti Adat'], answer:2,
+      hint:'Lukisan ini ditemukan di gua-gua daerah pegunungan dan pesisir 🖐️',
+      explanation:'Cap tangan prasejarah di dinding gua Papua adalah bukti seni rupa kuno tertua di Indonesia, menggambarkan kehadiran manusia purba di Papua.' },
+    { q:'Suku Korowai di Papua Selatan dikenal membangun rumah di atas pohon untuk alasan...?', options:['Menyerap sinar matahari lebih banyak','Perlindungan dari musuh dan banjir','Lebih dekat dengan dewa','Tradisi bercocok tanam'], answer:1,
+      hint:'Rumah ini bisa setinggi 50 meter di atas permukaan tanah 🌳',
+      explanation:'Suku Korowai membangun rumah di atas pohon (tinggi 10-50 meter) sebagai perlindungan dari musuh, serangan binatang buas, dan banjir.' },
+    { q:'Kitab atau naskah kuno yang menceritakan asal-usul leluhur masyarakat Biak Papua adalah...?', options:['Wor','Manarmakeri','La Galigo','Uga'], answer:1,
+      hint:'Kisah ini bercerita tentang manusia yang menjadi leluhur suku Biak 📖',
+      explanation:'Manarmakeri adalah tokoh mitologi dalam kepercayaan masyarakat Biak-Numfor Papua yang diyakini sebagai leluhur dan simbol kebangkitan.' }
   ]
 };
 
@@ -1419,7 +1674,7 @@ function showHowToPlay() {
       <div class="levelup-title">Cara Bermain</div>
       <div style="text-align:left;font-size:0.9rem;line-height:1.8;color:#555;margin-bottom:1.5rem;">
         🗺️ <b>Pilih pulau</b> di peta Nusantara<br>
-        ❓ <b>Jawab 7 soal</b> budaya per pulau<br>
+        ❓ <b>Jawab 5 soal</b> budaya per pulau<br>
         🔄 <b>Soal bergilir</b> — pulau sama → soal baru!<br>
         🖼️ <b>Gambar ilustrasi</b> ada di setiap soal<br>
         ⏱️ <b>30 detik</b> untuk setiap soal<br>
@@ -1435,11 +1690,11 @@ function showHowToPlay() {
 
 // ===================== MAP UI =====================
 const ISLAND_INFO = [
-  { id:'sumatera', facts:'14 soal • Budaya Sumatera', score_key: 0 },
-  { id:'jawa',     facts:'14 soal • Budaya Jawa',     score_key: 1 },
-  { id:'kalimantan',facts:'14 soal • Budaya Kalimantan',score_key:2 },
-  { id:'sulawesi', facts:'14 soal • Budaya Sulawesi', score_key: 3 },
-  { id:'papua',    facts:'14 soal • Budaya Papua',    score_key: 4 },
+  { id:'sumatera', facts:'30 soal • Budaya Sumatera', score_key: 0 },
+  { id:'jawa',     facts:'30 soal • Budaya Jawa',     score_key: 1 },
+  { id:'kalimantan',facts:'30 soal • Budaya Kalimantan',score_key:2 },
+  { id:'sulawesi', facts:'30 soal • Budaya Sulawesi', score_key: 3 },
+  { id:'papua',    facts:'30 soal • Budaya Papua',    score_key: 4 },
 ];
 
 function updateMapUI() {
@@ -1903,12 +2158,16 @@ function showLevelTransition(island, doneLvl, nextLvl, callback) {
           <div class="desc">${nextLvl.desc}</div>
         </div>
       </div>
-      <button class="levelup-btn" style="background:linear-gradient(135deg,${nextLvl.color},${nextLvl.color}cc);"
-        onclick="playSFX('click');this.closest('.level-up-popup').remove();(${callback.toString()})()">
+      <button class="levelup-btn" id="level-transition-btn" style="background:linear-gradient(135deg,${nextLvl.color},${nextLvl.color}cc);">
         Siap! Ayo Mulai 🚀
       </button>
     </div>`;
   document.body.appendChild(overlay);
+  document.getElementById('level-transition-btn').addEventListener('click', () => {
+    playSFX('click');
+    overlay.remove();
+    callback();
+  });
   confetti();
 }
 
@@ -1942,9 +2201,14 @@ function showIslandCompleteCelebration(island) {
           <div class="desc">Petualangan baru menanti! Kamu pasti bisa!</div>
         </div>
       </div>` : ''}
-      <button class="levelup-btn" onclick="playSFX('click');this.closest('.levelup-overlay').remove();showMap()">🗺️ Lanjut ke Peta!</button>
+      <button class="levelup-btn" id="island-complete-btn">🗺️ Lanjut ke Peta!</button>
     </div>`;
   document.body.appendChild(overlay);
+  document.getElementById('island-complete-btn').addEventListener('click', () => {
+    playSFX('click');
+    overlay.remove();
+    showMap();
+  });
   bigConfetti();
 }
 
@@ -1975,12 +2239,16 @@ function showHardLevelCelebration(island, onDone) {
       <div style="font-size:1.1rem;font-weight:900;color:#e67e22;margin-bottom:1.3rem;">
         🎁 Koleksi ${island.emoji} ${island.name} Terbuka!
       </div>
-      <button class="levelup-btn" style="background:linear-gradient(135deg,#9b59b6,#6c3483);"
-        onclick="playSFX('click');this.closest('.levelup-overlay').remove();(${onDone.toString()})()">
+      <button class="levelup-btn" id="hard-celeb-btn" style="background:linear-gradient(135deg,#9b59b6,#6c3483);">
         🎉 Yeay, Terima Kasih!
       </button>
     </div>`;
   document.body.appendChild(overlay);
+  document.getElementById('hard-celeb-btn').addEventListener('click', () => {
+    playSFX('click');
+    overlay.remove();
+    onDone();
+  });
   bigConfetti();
 }
 
