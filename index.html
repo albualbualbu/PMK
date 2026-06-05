@@ -1610,11 +1610,11 @@ const LEVELS = [
 // ===================== STATE =====================
 const state = {
   // Persistent
-  islandLevelDone: JSON.parse(localStorage.getItem('quiz_v4_done') || '{}'),
-  collection:      JSON.parse(localStorage.getItem('quiz_v4_collection') || '[]'),
-  totalScore:      parseInt(localStorage.getItem('quiz_v4_total') || '0'),
-  visitCount:      JSON.parse(localStorage.getItem('quiz_v4_visits') || '{}'),
-  completed:       JSON.parse(localStorage.getItem('quiz_v4_completed') || '[]'),
+  islandLevelDone: JSON.parse(localStorage.getItem('quiz_v5_done') || '{}'),
+  collection:      JSON.parse(localStorage.getItem('quiz_v5_collection') || '[]'),
+  totalScore:      parseInt(localStorage.getItem('quiz_v5_total') || '0'),
+  visitCount:      JSON.parse(localStorage.getItem('quiz_v5_visits') || '{}'),
+  completed:       JSON.parse(localStorage.getItem('quiz_v5_completed') || '[]'),
   // Session
   currentIslandIdx: 0, currentLevelIdx: 0,
   currentQ: 0, answered: false,
@@ -1625,11 +1625,11 @@ const state = {
 };
 
 function saveState() {
-  localStorage.setItem('quiz_v4_done',       JSON.stringify(state.islandLevelDone));
-  localStorage.setItem('quiz_v4_collection',  JSON.stringify(state.collection));
-  localStorage.setItem('quiz_v4_total',        state.totalScore.toString());
-  localStorage.setItem('quiz_v4_visits',       JSON.stringify(state.visitCount));
-  localStorage.setItem('quiz_v4_completed',    JSON.stringify(state.completed));
+  localStorage.setItem('quiz_v5_done',       JSON.stringify(state.islandLevelDone));
+  localStorage.setItem('quiz_v5_collection',  JSON.stringify(state.collection));
+  localStorage.setItem('quiz_v5_total',        state.totalScore.toString());
+  localStorage.setItem('quiz_v5_visits',       JSON.stringify(state.visitCount));
+  localStorage.setItem('quiz_v5_completed',    JSON.stringify(state.completed));
 }
 
 // Key for level progress per island
